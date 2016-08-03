@@ -89,6 +89,24 @@ class JSONClient
     }
 
     /**
+     * Retrieves the current session token.
+     * @return string session token.
+     */
+    public function getSessionToken() 
+    {
+        return $this->sessionToken;
+    }
+
+    /**
+     * Retrieves the Unix timestamp when session token was requested.
+     * @return int|number
+     */
+    public function getSessionTokenTime() 
+    {
+        return $this->sessionTokenTime;
+    }
+    
+    /**
      * Tests if the client is signed on.
      *
      * @return boolean <code>true</code> if the client is signed on, <code>false</code> otherwise.
