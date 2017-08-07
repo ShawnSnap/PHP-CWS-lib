@@ -27,7 +27,7 @@
  */
 
 //Load constants
-require_once '/CwsConstants.php';
+require_once  __DIR__ .'/CwsConstants.php';
 
 //Load exceptions
 require_once __DIR__ . '/exception/CwsException.php';
