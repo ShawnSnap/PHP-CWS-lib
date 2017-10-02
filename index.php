@@ -35,7 +35,12 @@ require_once __DIR__ . '/exception/CwsCommunicationException.php';
 require_once __DIR__ . '/exception/CwsServiceException.php';
 
 //Load model
-require_once __DIR__ . '/model/CwsModel.php';
+require_once __DIR__ . '/model/CwsAdmin.php';
+require_once __DIR__ . '/model/CwsCustomerManagement.php';
+require_once __DIR__ . '/model/CwsDataServicesBilling.php';
+require_once __DIR__ . '/model/CwsServiceInformation.php';
+require_once __DIR__ . '/model/CwsTransactionManagement.php';
+require_once __DIR__ . '/model/CwsTransactionProcessing.php';
 require_once __DIR__ . '/model/CwsRest.php';
 
 //Load Util
