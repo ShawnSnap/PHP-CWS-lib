@@ -1,6 +1,6 @@
 <?php
 /**
- *  Copyright (c) 2013 EVO Payments International - All Rights Reserved.
+ *  Copyright (c) 2013-2019 EVO Payments International - All Rights Reserved.
  *
  * This software and documentation is subject to and made
  * available only pursuant to the terms of an executed license
