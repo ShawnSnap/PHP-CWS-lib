@@ -24,7 +24,7 @@
  * and does not represent a commitment on the part of EVO Payments International.
  *
  * Sample Code is for reference Only and is intended to be used for educational purposes. It's the responsibility of
- * the software company to properly integrate into thier solution code that best meets thier production needs.
+ * the software company to properly integrate into their solution code that best meets their production needs.
  */
 namespace Evosnap\Cws;
 
@@ -34,15 +34,15 @@ final class CwsConstants
     // 29 minutes in ms
     const SESSION_TOKEN_TIME = 1740;
 
-    const CWS_SIS_BASEURL = 'https://api.cip.goevo.com/2.1.28/REST/SIS.svc';
+    const CWS_SIS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/SIS.svc';
 
-    const CWS_TPS_BASEURL = 'https://api.cip.goevo.com/2.1.28/REST/TPS.svc';
+    const CWS_TPS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/TPS.svc';
 
-    const CWS_TMS_BASEURL = 'https://api.cip.goevo.com/2.1.28/REST/DataServices/TMS.svc';
+    const CWS_TMS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/DataServices/TMS.svc';
 
-    const CWS_UAT_SIS_BASEURL = 'https://api.cipcert.goevo.com/2.1.28/REST/SIS.svc';
+    const CWS_UAT_SIS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/SIS.svc';
 
-    const CWS_UAT_TPS_BASEURL = 'https://api.cipcert.goevo.com/2.1.28/REST/TPS.svc';
+    const CWS_UAT_TPS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/TPS.svc';
 
-    const CWS_UAT_TMS_BASEURL = 'https://api.cipcert.goevo.com/2.1.28/REST/DataServices/TMS.svc';
+    const CWS_UAT_TMS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/DataServices/TMS.svc';
 }

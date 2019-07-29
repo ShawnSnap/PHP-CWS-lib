@@ -32,7 +32,6 @@ use \Evosnap\Cws\Service\ServiceInformationServiceJson;
 use \Evosnap\Cws\Service\TransactionManagementServiceJson;
 use \Evosnap\Cws\Service\TransactionProcessingServiceJsonImpl;
 use \Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionsParameters;
-
 /**
  * JSON Client for CWS EVO Snap* API.
  *
@@ -71,7 +70,7 @@ class JSONClient
      */
     public function __construct($clientConfig, $identityToken, $serviceKey = null, $sessionToken = null, $sessionTokenTime = -1)
     {
-        if (empty($clientConfig)) {
+        if(empty($clientConfig)){
             $clientConfig = new CwsClientConfig();
             
             $clientConfig->live = false;
@@ -84,31 +83,29 @@ class JSONClient
         $this->serviceKey = $serviceKey;
         $this->sessionToken = $sessionToken;
         $this->sessionTokenTime = $sessionTokenTime;
-        $this->serviceInformationService = new ServiceInformationServiceJson($clientConfig->live ? CwsConstants::CWS_SIS_BASEURL : CwsConstants::CWS_UAT_SIS_BASEURL, $clientConfig);
-        $this->transactionManagementService = new TransactionManagementServiceJson($clientConfig->live ? CwsConstants::CWS_TMS_BASEURL : CwsConstants::CWS_UAT_TMS_BASEURL, $clientConfig);
-        $this->transactionProcessingService = new TransactionProcessingServiceJsonImpl($clientConfig->live ? CwsConstants::CWS_TPS_BASEURL : CwsConstants::CWS_UAT_TPS_BASEURL, $clientConfig);
+        $this->serviceInformationService = new ServiceInformationServiceJson($clientConfig->live? CwsConstants::CWS_SIS_BASEURL : CwsConstants::CWS_UAT_SIS_BASEURL, $clientConfig);
+        $this->transactionManagementService = new TransactionManagementServiceJson($clientConfig->live? CwsConstants::CWS_TMS_BASEURL : CwsConstants::CWS_UAT_TMS_BASEURL, $clientConfig);
+        $this->transactionProcessingService = new TransactionProcessingServiceJsonImpl($clientConfig->live? CwsConstants::CWS_TPS_BASEURL : CwsConstants::CWS_UAT_TPS_BASEURL, $clientConfig);
     }
 
     /**
      * Retrieves the current session token.
-     * 
      * @return string session token.
      */
-    public function getSessionToken()
+    public function getSessionToken() 
     {
         return $this->sessionToken;
     }
 
     /**
      * Retrieves the Unix timestamp when session token was requested.
-     * 
      * @return int|number
      */
-    public function getSessionTokenTime()
+    public function getSessionTokenTime() 
     {
         return $this->sessionTokenTime;
     }
-
+    
     /**
      * Tests if the client is signed on.
      *
@@ -455,7 +452,7 @@ class JSONClient
         return $this->transactionProcessingService->authorizeAndCapture($this->sessionToken, $transaction, $applicationProfileId, $merchantProfileId, $workflowId);
     }
 
-    /**
+	/**
      * ManageAccount
      *
      * @param Transaction $transaction
@@ -476,7 +473,7 @@ class JSONClient
         $this->openSession();
         return $this->transactionProcessingService->manageAccount($this->sessionToken, $transaction, $applicationProfileId, $merchantProfileId, $workflowId);
     }
-
+    
     /**
      * Undos a transaction.
      *
@@ -542,22 +539,6 @@ class JSONClient
     }
 
     /**
-     * Sends a receipt to a customer.
-     *
-     * @param string $email
-     *            customer's email.
-     * @param string $transactionId
-     *            transaction ID.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
-     */
-    public function sendReceipt($email, $transactionId)
-    {
-        $this->openSession();
-        $this->transactionProcessingService->sendReceipt($this->sessionToken, $email, $transactionId);
-    }
-
-    /**
      * CwsTransactionManagementClient section.
      */
     
@@ -617,4 +598,5 @@ class JSONClient
         $this->openSession();
         return $this->transactionManagementService->queryTransactionsSummary($this->sessionToken, $queryTransactionsParameters, $pagingParameters, $includeRelated);
     }
+
 }
