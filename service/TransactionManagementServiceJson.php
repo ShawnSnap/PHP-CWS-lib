@@ -27,7 +27,11 @@
  */
 namespace Evosnap\Cws\Service;
 
-use Datacontract\I2004\I07\Ipc\Luna\Servicefactory\Endpoints\Tms\Queuerequests\QueryTransactionFamiliesRequest;
+use Evosnap\Cws\Exception\CwsCommunicationException;
+use Evosnap\Cws\Exception\CwsServiceException;
+use Evosnap\Cws\Model\Rest\CwsClientConfig;
+use Evosnap\Cws\V2\I0\Dataservices\PagingParameters;
+use Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionsParameters;
 use Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsDetail;
 use Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsSummary;
 use Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsFamilies;

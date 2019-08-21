@@ -27,6 +27,15 @@
  */
 namespace Evosnap\Cws\Service;
 
+use Evosnap\Cws\Exception\CwsCommunicationException;
+use Evosnap\Cws\Exception\CwsServiceException;
+use Evosnap\Cws\Model\Rest\CwsClientConfig;
+use Evosnap\Cws\V2\I0\Serviceinformation\ApplicationData;
+use Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfile;
+use Evosnap\Cws\V2\I0\Serviceinformation\ServiceInformation;
+use Evosnap\Cws\V2\I0\Serviceinformation\Rest\UserInfo;
+use Evosnap\Cws\V2\I0\Transactions\Rest\DelegatedSignOn;
+
 /**
  * Service information service JSON implementation.
  *

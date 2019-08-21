@@ -28,7 +28,7 @@
  */
 namespace Evosnap\Cws\Util;
 
-use Evosnap\Ews\Exception\CwsServiceException;
+use Evosnap\Cws\Exception\CwsServiceException;
 use Evosnap\Cws\Exception\CwsCommunicationException;
 
 /**
@@ -250,7 +250,7 @@ final class HttpConnections
             }
             
             $result = $this->executeRequest($cc);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw new CwsCommunicationException($e);
         } finally {
             curl_close($cc);
