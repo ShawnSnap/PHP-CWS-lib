@@ -25,9 +25,7 @@
  * Sample Code is for reference Only and is intended to be used for educational purposes. It's the responsibility of
  * the software company to properly integrate into thier solution code that best meets thier production needs.
  */
-namespace Evosnap\Ews\Exception;
-
-use Evosnap\Cws\Exception\CwsException;
+namespace Evosnap\Cws\Exception;
 
 /**
  * CWS Service Exception
