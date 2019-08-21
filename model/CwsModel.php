@@ -27,22 +27,17 @@
  */
 namespace Evosnap\Cws\Model;
 
-class BaseObject implements \JsonSerializable {
+if(!class_exists('\Evosnap\Cws\Model\BaseObject')){
+    class BaseObject implements \JsonSerializable {
 
-    public function __construct($type = null){
-        if(!empty($type)){
-            $this->{'$type'} = $type;
+        public function __construct($type = null){
+            if(!empty($type)){
+                $this->{'$type'} = $type;
+            }
         }
-    }
 
-    public function jsonSerialize() {
-        $array = (array)$this;
-   		if(array_key_exists('$type', $array)){
-            $oldArray = $array;
-            $array = array('$type' => $oldArray['$type']);
-            unset($oldArray['$type']);
-            $array = array_merge($array, $oldArray);
-        }
+        public function jsonSerialize() {
+            $array = (array)$this;
        		if(array_key_exists('$type', $array)){
                 $oldArray = $array;
                 $array = array('$type' => $oldArray['$type']);
