@@ -416,6 +416,40 @@ class TransactionProcessingServiceJsonImpl extends BaseHttpService
         $result = $this->getHttpConnections()->sendPostRequest($requestUrl, $sessionToken, $body);
         return json_decode($result);
     }
+
+    /**
+     * Authorize a transaction.
+     *
+     * @param string $sessionToken
+     *            the session token.
+     * @param Transaction $transaction
+     *            the transaction to execute.
+     * @param string $applicationProfileId
+     *            the application profile ID.
+     * @param string $merchantProfileId
+     *            the merchant profile ID.
+     * @param string $workflowId
+     *            the workflow ID. If no workflow is going to be used,
+     *            then the service ID should be provided.
+     * @return Response transaction response.
+     * @throws CwsServiceException CWS Service Exception.
+     * @throws CwsCommunicationException Communication exception.
+     */
+    public function verify($sessionToken, $transaction, $applicationProfileId, $merchantProfileId, $workflowId)
+    {
+        $requestUrl = $this->getUrl('/' . $workflowId. '/verify');
+
+        $verify = new AuthorizeTransaction();
+        $verify->ApplicationProfileId = $applicationProfileId;
+        $verify->MerchantProfileId = $merchantProfileId;
+        $verify->Transaction = $transaction;
+
+        $body = json_encode($verify);
+        print_r($body);
+
+        $result = $this->getHttpConnections()->sendPostRequest($requestUrl,$sessionToken,$body);
+        return json_decode($result);
+    }
     
     /**
      * Sends a receipt to a customer.

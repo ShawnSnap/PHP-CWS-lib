@@ -554,6 +554,25 @@ class JSONClient
         $this->openSession();
         $this->transactionProcessingService->sendReceipt($this->sessionToken, $email, $transactionId);
     }
+
+    /**
+     * Verify if card is valid 
+     *
+     * @param Transaction $transaction
+     *            the transaction to execute.
+     * @param string $applicationProfileId
+     *            the application profile ID.
+     * @param string $merchantProfileId
+     *            the merchant profile ID.
+     * @param string $workflowId
+     *            the workflow ID. If no workflow is going to be used,
+     *            then the service ID should be provided.
+     */
+    public function verify($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
+    {
+        $this->openSession();
+        return $this->transactionProcessingService->verify($this->sessionToken,$transaction,$applicationProfileId,$merchantProfileId,$workflowId);
+    }
     
     /**
      * CwsTransactionManagementClient section.
