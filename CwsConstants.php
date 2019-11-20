@@ -34,15 +34,15 @@ final class CwsConstants
     // 29 minutes in ms
     const SESSION_TOKEN_TIME = 1740;
 
-    const CWS_SIS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/SIS.svc';
+    const CWS_SIS_BASEURL = 'https://api.cip.goevo.com/2.1.33/REST/SIS.svc';
 
-    const CWS_TPS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/TPS.svc';
+    const CWS_TPS_BASEURL = 'https://api.cip.goevo.com/2.1.33/REST/TPS.svc';
 
-    const CWS_TMS_BASEURL = 'https://api.cip.goevo.com/2.1.30/REST/DataServices/TMS.svc';
+    const CWS_TMS_BASEURL = 'https://api.cip.goevo.com/2.1.33/REST/DataServices/TMS.svc';
 
-    const CWS_UAT_SIS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/SIS.svc';
+    const CWS_UAT_SIS_BASEURL = 'https://api.cipcert.goevo.com/2.1.33/REST/SIS.svc';
 
-    const CWS_UAT_TPS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/TPS.svc';
+    const CWS_UAT_TPS_BASEURL = 'https://api.cipcert.goevo.com/2.1.33/REST/TPS.svc';
 
-    const CWS_UAT_TMS_BASEURL = 'https://api.cipcert.goevo.com/2.1.30/REST/DataServices/TMS.svc';
+    const CWS_UAT_TMS_BASEURL = 'https://api.cipcert.goevo.com/2.1.33/REST/DataServices/TMS.svc';
 }

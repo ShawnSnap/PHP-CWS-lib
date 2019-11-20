@@ -17,7 +17,7 @@ Below is an "composer.json" example file that will download the library:
         }
     ],
     "require": {
-        "evo/cws-snap": "2.1.27"
+        "evo/cws-snap": "2.1.33"
     }
 }
 ```
