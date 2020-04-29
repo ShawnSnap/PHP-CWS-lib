@@ -27,10866 +27,12991 @@
  */
 namespace Evosnap\Cws\Model;
 
-class BaseObject implements \JsonSerializable {
+if(!class_exists('\Evosnap\Cws\Model\BaseObject')){
+    class BaseObject implements \JsonSerializable {
 
-    public function __construct($type = null){
-        if(!empty($type)){
-            $this->{'$type'} = $type;
-        }
-    }
-
-    public function jsonSerialize() {
-        $array = (array)$this;
-   		if(array_key_exists('$type', $array)){
-            $oldArray = $array;
-            $array = array('$type' => $oldArray['$type']);
-            unset($oldArray['$type']);
-            $array = array_merge($array, $oldArray);
+        public function __construct($type = null){
+            if(!empty($type)){
+                $this->{'$type'} = $type;
+            }
         }
 
-        return array_filter($array);
+        public function jsonSerialize() {
+            $array = (array)$this;
+       		if(array_key_exists('$type', $array)){
+                $oldArray = $array;
+                $array = array('$type' => $oldArray['$type']);
+                unset($oldArray['$type']);
+                $array = array_merge($array, $oldArray);
+            }
+
+            return array_filter($array);
+        }
     }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-namespace Datacontract\I2004\I07\Evosnap\Servicefactory\Endpoints\Cms;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\ProcessingResponse')){
 
-class Constants extends \Evosnap\Cws\Model\BaseObject {
+    class ProcessingResponse extends \Evosnap\Cws\Model\BaseObject {
 
-}
-
-
-namespace Datacontract\I2004\I07\Ipc\Luna\Servicefactory\Endpoints\Tms\Queuerequests;
-
-class QueryTransactionsSummaryRequest extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var boolean
-	*/
-	public $IncludeRelated;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Datacontract\I2004\I07\Ipc\Luna\Servicefactory\Endpoints\Tms\Queuerequests;
-
-class QueryTransactionsDetailRequest extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var TransactionDetailFormat
-	*/
-	public $TransactionDetailFormat;
-
-	/**
-	* @var boolean
-	*/
-	public $IncludeRelated;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Datacontract\I2004\I07\Ipc\Luna\Servicefactory\Endpoints\Tms\Queuerequests;
-
-class QueryBatchRequest extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querybatchparameters
-	*/
-	public $QueryBatchParameters;
-
-}
-
-
-namespace Datacontract\I2004\I07\Ipc\Luna\Servicefactory\Endpoints\Tms\Queuerequests;
-
-class QueryTransactionFamiliesRequest extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices;
-
-class DateRange extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $StartDateTime;
-
-	/**
-	* @var dateTime
-	*/
-	public $EndDateTime;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices;
-
-class PagingParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageSize;
-
-	/**
-	* @var int
-	*/
-	public $Page;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices;
-
-class DSBaseFault extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $ErrorID;
-
-	/**
-	* @var string
-	*/
-	public $ProblemType;
-
-	/**
-	* @var string
-	*/
-	public $Operation;
-
-	/**
-	* @var string
-	*/
-	public $HelpURL;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionClassTypePair extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TransactionType;
-
-	/**
-	* @var string
-	*/
-	public $TransactionClass;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionNotification extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $NotificationDate;
-
-	/**
-	* @var ReconciliationState
-	*/
-	public $ReconciliationState;
-
-	/**
-	* @var decimal
-	*/
-	public $ReconciliationBalance;
-
-	/**
-	* @var string
-	*/
-	public $SerializedNotification;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class FamilyDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TransactionState
-	*/
-	public $FamilyState;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-	
-	/**
-	* @var string
-	*/
-	public $CurrencyCode;
-	
-	/**
-	* @var dateTime
-	*/
-	public $CaptureDateTime;
-
-	/**
-	* @var guid
-	*/
-	public $FamilyId;
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var decimal
-	*/
-	public $NetAmount;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TransactionIds;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionmetadata
-	*/
-	public $TransactionMetaData;
-
-	/**
-	* @var string
-	*/
-	public $CustomerId;
-
-	/**
-	* @var decimal
-	*/
-	public $CapturedAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $LastAuthorizedAmount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class StoredValueData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CardRestrictionValue;
-
-	/**
-	* @var decimal
-	*/
-	public $NewBalance;
-
-	/**
-	* @var decimal
-	*/
-	public $PreviousBalance;
-
-	/**
-	* @var CVResult
-	*/
-	public $CVResult;
-
-	/**
-	* @var CardStatus
-	*/
-	public $CardStatus;
-
-	/**
-	* @var string
-	*/
-	public $OrderId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class QueryTransactionsParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var BooleanParameter
-	*/
-	public $IsAcknowledged;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $ServiceIds;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $ApprovalCodes;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $BatchIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofreconciliationstate
-	*/
-	public $ReconciliationStates;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $OrderNumbers;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionclasstypepair
-	*/
-	public $TransactionClassTypePairs;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapturestate
-	*/
-	public $CaptureStates;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $TransactionDateRange;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofdecimal
-	*/
-	public $Amounts;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantProfileIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoftypecardtype
-	*/
-	public $CardTypes;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TransactionIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\arrayoftransactionstate
-	*/
-	public $TransactionStates;
-
-	/**
-	* @var QueryType
-	*/
-	public $QueryType;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $ServiceKeys;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CaptureDateRange;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class CWSTransaction extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\response
-	*/
-	public $Response;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionmetadata
-	*/
-	public $MetaData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\applicationdata
-	*/
-	public $ApplicationData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofilemerchantdata
-	*/
-	public $MerchantProfileMerchantData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class QueryBatchParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $BatchIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $BatchDateRange;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantProfileIds;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TransactionIds;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $ServiceKeys;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class CompleteTransaction extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $SerializedTransaction;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\cwstransaction
-	*/
-	public $CWSTransaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class ElectronicCheckData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $MaskedAccountNumber;
-
-	/**
-	* @var TransactionType
-	*/
-	public $TransactionType;
-
-	/**
-	* @var string
-	*/
-	public $CheckNumber;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class BatchDetailData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var CaptureState
-	*/
-	public $CaptureState;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var dateTime
-	*/
-	public $BatchCaptureDate;
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
-	*/
-	public $SummaryData;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TransactionIds;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class BatchDetailsResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalItems;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var Evosnap\Cws\V2\I0\Dataservices\Tms\BatchDetailData
-	*/
-	public $TransactionDetails;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class BankcardData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsresult
-	*/
-	public $AVSResult;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var CVResult
-	*/
-	public $CVResult;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var string
-	*/
-	public $OrderId;
-	
-	/**
-	* @var ThreeDSecureInformation
-	*/
-	public $ThreeDSecureInformation;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionInformation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var BooleanParameter
-	*/
-	public $IsAcknowledged;
-
-	/**
-	* @var TransactionState
-	*/
-	public $TransactionState;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\storedvaluedata
-	*/
-	public $StoredValueData;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var string
-	*/
-	public $OrderNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\electroniccheckdata
-	*/
-	public $ElectronicCheckData;
-
-	/**
-	* @var decimal
-	*/
-	public $CapturedAmount;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-	/**
-	* @var string
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var CaptureState
-	*/
-	public $CaptureState;
-
-	/**
-	* @var ReconciliationState
-	*/
-	public $ReconciliationState;
-
-	/**
-	* @var string
-	*/
-	public $TransactionStatusCode;
-	
-	/**
-	* @var string
-	*/
-	public $TransactionStatusMessage;
-
-	/**
-	* @var dateTime
-	*/
-	public $CaptureDateTime;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var string
-	*/
-	public $TipAmount;
-
-	/**
-	* @var Status
-	*/
-	public $Status;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionclasstypepair
-	*/
-	public $TransactionClassTypePair;
-
-	/**
-	* @var string
-	*/
-	public $OriginatorTransactionId;
-	
-	/**
-	* @var boolean
-	*/
-	public $ProcessedAs3DSecure;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionTimestamp;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-	
-	/**
-	* @var boolean
-	*/
-	public $MultiplePartialCapture;
-	
-	/**
-	* @var boolean
-	*/
-	public $MultiplePartialCaptureFinal;
-
-	/**
-	* @var string
-	*/
-	public $Reference;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var string
-	*/
-	public $CustomerId;
-
-	/**
-	* @var string
-	*/
-	public $OriginalAmount;
-
-	/**
-	* @var string
-	*/
-	public $ApprovalCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\bankcarddata
-	*/
-	public $BankcardData;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-	/**
-	* @var decimal
-	*/
-	public $ReconciliationBalance;
-
-	/**
-	* @var string
-	*/
-	public $ServiceTransactionId;
-
-	/**
-	* @var string
-	*/
-	public $CaptureStatusMessage;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class CardOnFileInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeCardOnFile 
-	*/
-	public $CardOnFile;
-
-	/**
-	* @var TypeInitiatedBy 
-	*/
-	public $InitiatedBy ;
-
-	/**
-	* @var String
-	*/
-	public $OriginalTransactionId ;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class EBTAvailableBalance extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal 
-	*/
-	public $CashAvailableBalance;
-
-	/**
-	* @var decimal 
-	*/
-	public $SNAPAvailableBalance;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class InstallmentDetails extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int 
-	*/
-	public $MonthsDeferred;
-
-	/**
-	* @var InstallmentPlanType 
-	*/
-	public $InstallmentPlanType;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class FamilyInformation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TransactionState
-	*/
-	public $FamilyState;
-
-	/**
-	* @var int
-	*/
-	public $FamilySequenceNumber;
-
-	/**
-	* @var guid
-	*/
-	public $FamilyId;
-
-	/**
-	* @var decimal
-	*/
-	public $NetAmount;
-
-	/**
-	* @var int
-	*/
-	public $FamilySequenceCount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class SummaryDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactioninformation
-	*/
-	public $TransactionInformation;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\familyinformation
-	*/
-	public $FamilyInformation;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionMetaData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionclasstypepair
-	*/
-	public $TransactionClassTypePair;
-
-	/**
-	* @var TransactionState
-	*/
-	public $TransactionState;
-
-	/**
-	* @var string
-	*/
-	public $CardType;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $SequenceNumber;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionDateTime;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var string
-	*/
-	public $WorkflowId;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactioninformation
-	*/
-	public $TransactionInformation;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\familyinformation
-	*/
-	public $FamilyInformation;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionnotification
-	*/
-	public $TransactionNotifications;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\completetransaction
-	*/
-	public $CompleteTransaction;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionDetailsResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalItems;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var TransactionDetail
-	*/
-	public $TransactionDetails;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionFamiliesResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalItems;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var FamilyDetail
-	*/
-	public $FamilyDetails;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
-
-class TransactionsSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalItems;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var SummaryDetail
-	*/
-	public $TransactionDetails;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class EcommerceSecurityData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $XID;
-
-	/**
-	* @var TokenIndicator
-	*/
-	public $TokenIndicator;
-
-	/**
-	* @var string
-	*/
-	public $TokenData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class Level2Data extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ShipmentId;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var decimal
-	*/
-	public $FreightAmount;
-
-	/**
-	* @var string
-	*/
-	public $CustomerCode;
-
-	/**
-	* @var decimal
-	*/
-	public $MiscHandlingAmount;
-
-	/**
-	* @var string
-	*/
-	public $ShipFromPostalCode;
-
-	/**
-	* @var string
-	*/
-	public $OrderNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tax
-	*/
-	public $Tax;
-
-	/**
-	* @var decimal
-	*/
-	public $DutyAmount;
-
-	/**
-	* @var string
-	*/
-	public $DestinationPostal;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountAmount;
-
-	/**
-	* @var dateTime
-	*/
-	public $OrderDate;
-
-	/**
-	* @var decimal
-	*/
-	public $BaseAmount;
-
-	/**
-	* @var string
-	*/
-	public $CompanyName;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\taxexempt
-	*/
-	public $TaxExempt;
-
-	/**
-	* @var string
-	*/
-	public $DestinationCountryCode;
-
-	/**
-	* @var string
-	*/
-	public $RequesterName;
-
-	/**
-	* @var string
-	*/
-	public $CommodityCode;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class InternetTransactionData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $IpAddress;
-
-	/**
-	* @var string
-	*/
-	public $SessionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class Tax extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayofitemizedtax
-	*/
-	public $ItemizedTaxes;
-
-	/**
-	* @var decimal
-	*/
-	public $Rate;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $InvoiceNumber;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class InternationalAVSOverride extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $IgnoreAVS;
-
-	/**
-	* @var boolean
-	*/
-	public $SkipAVS;
-
-	/**
-	* @var string
-	*/
-	public $AVSRejectCodes;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class EMVTerminalData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TerminalOutputCapability
-	*/
-	public $TerminalOutputCapability;
-
-	/**
-	* @var TerminalOperator
-	*/
-	public $TerminalOperator;
-
-	/**
-	* @var boolean
-	*/
-	public $CardRetentionCapability;
-
-	/**
-	* @var PINMaxCharacters
-	*/
-	public $PINMaxCharacters;
-
-	/**
-	* @var CardholderAuthenticationCapability
-	*/
-	public $CardholderAuthenticationCapability;
-
-	/**
-	* @var CardDataOutputCapability
-	*/
-	public $CardDataOutputCapability;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class ItemizedTax extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeTaxType
-	*/
-	public $Type;
-
-	/**
-	* @var decimal
-	*/
-	public $Rate;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class InternationalAVSData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $HouseNumber;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $POBoxNumber;
-
-	/**
-	* @var string
-	*/
-	public $Street;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $Country;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class EMVDataResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TransactionStatusInformation;
-
-	/**
-	* @var string
-	*/
-	public $CashBackAmount;
-
-	/**
-	* @var string
-	*/
-	public $Cryptogram;
-
-	/**
-	* @var string
-	*/
-	public $TerminalVerifyResult;
-
-	/**
-	* @var string
-	*/
-	public $ResponseCode;
-
-	/**
-	* @var string
-	*/
-	public $TransactionType;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationName;
-
-	/**
-	* @var string
-	*/
-	public $IssuerAppData_x0020_;
-
-	/**
-	* @var string
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $IssuerAuthenticationData;
-
-	/**
-	* @var string
-	*/
-	public $CryptogramInfoData_x0020_;
-
-	/**
-	* @var string
-	*/
-	public $CardAuthenticationResultsCode;
-
-	/**
-	* @var string
-	*/
-	public $AuthorizationResponseCode;
-
-	/**
-	* @var string
-	*/
-	public $IssuerScriptTemplate2;
-
-	/**
-	* @var string
-	*/
-	public $CardholderVerificationMethod_x0020_;
-
-	/**
-	* @var string
-	*/
-	public $IssuerScriptTemplate1;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationId;
-
-	/**
-	* @var string
-	*/
-	public $DedicatedFileName;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationTransactionCount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class ManagedBillingInstallments extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var int
-	*/
-	public $Count;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class IIASData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var IIASDesignation
-	*/
-	public $IIASDesignation;
-
-	/**
-	* @var decimal
-	*/
-	public $DentalAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $VisionAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $HealthcareAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $PrescriptionAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $ClinicOtherAmount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class AVSResult extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var CardholderNameResult
-	*/
-	public $CardholderNameResult;
-
-	/**
-	* @var CountryResult
-	*/
-	public $CountryResult;
-
-	/**
-	* @var PostalCodeResult
-	*/
-	public $PostalCodeResult;
-
-	/**
-	* @var string
-	*/
-	public $ActualResult;
-
-	/**
-	* @var StateResult
-	*/
-	public $StateResult;
-
-	/**
-	* @var AddressResult
-	*/
-	public $AddressResult;
-
-	/**
-	* @var PhoneResult
-	*/
-	public $PhoneResult;
-
-	/**
-	* @var CityResult
-	*/
-	public $CityResult;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class Totals extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $NetAmount;
-
-	/**
-	* @var int
-	*/
-	public $Count;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class BankcardApplicationConfigurationData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $ApplicationAttended;
-
-	/**
-	* @var ReadCapability
-	*/
-	public $ReadCapability;
-
-	/**
-	* @var HardwareType
-	*/
-	public $HardwareType;
-
-	/**
-	* @var PINCapability
-	*/
-	public $PINCapability;
-
-	/**
-	* @var ApplicationLocation
-	*/
-	public $ApplicationLocation;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\emvterminaldata
-	*/
-	public $EMVTerminalData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class CardSecurityData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internationalavsdata
-	*/
-	public $InternationalAVSData;
-
-	/**
-	* @var string
-	*/
-	public $PIN;
-
-	/**
-	* @var CVDataProvided
-	*/
-	public $CVDataProvided;
-
-	/**
-	* @var string
-	*/
-	public $KeySerialNumber;
-
-	/**
-	* @var string
-	*/
-	public $CVData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsdata
-	*/
-	public $AVSData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internationalavsoverride
-	*/
-	public $InternationalAVSOverride;
-
-	/**
-	* @var string
-	*/
-	public $IdentificationInformation;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class TokenInformation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TokenExpirationDate;
-
-	/**
-	* @var string
-	*/
-	public $TokenAssuranceLevel;
-
-	/**
-	* @var string
-	*/
-	public $TokenRequestorId;
-
-	/**
-	* @var string
-	*/
-	public $Token;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class CardData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CardholderName;
-
-	/**
-	* @var string
-	*/
-	public $Expire;
-
-	/**
-	* @var string
-	*/
-	public $CardSequenceNumber;
-
-	/**
-	* @var string
-	*/
-	public $Track2Data;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var string
-	*/
-	public $Track1Data;
-
-	/**
-	* @var string
-	*/
-	public $ChipConditionCode;
-
-	/**
-	* @var TypeFallbackReason
-	*/
-	public $FallbackReason;
-
-	/**
-	* @var string
-	*/
-	public $PAN;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class AVSData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CardholderName;
-
-	/**
-	* @var string
-	*/
-	public $Email;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $Phone;
-
-	/**
-	* @var string
-	*/
-	public $Street;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $Country;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class TaxExempt extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TaxExemptNumber;
-
-	/**
-	* @var IsTaxExempt
-	*/
-	public $IsTaxExempt;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class ThreeDSecureInformation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $XID;
-
-	/**
-	* @var IsTaxExempt
-	*/
-	public $Status;
-	
-	/**
-	* @var string
-	*/
-	public $CAVV;
-
-	/**
-	* @var IsTaxExempt
-	*/
-	public $ECI;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class TransactionSummaryData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $NetTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $ReturnTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $CashBackTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $SaleTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $PINDebitReturnTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $PINDebitSaleTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $VoidTotals;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $EBTReturnTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
-	*/
-	public $EBTSaleTotals;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class ManagedBilling extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $StartDate;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\managedbillinginstallments
-	*/
-	public $Installments;
-
-	/**
-	* @var decimal
-	*/
-	public $DownPayment;
-
-	/**
-	* @var int
-	*/
-	public $Period;
-
-	/**
-	* @var Interval
-	*/
-	public $Interval;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class LineItemDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $UnitPrice;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var TypeUnitOfMeasure
-	*/
-	public $UnitOfMeasure;
-
-	/**
-	* @var string
-	*/
-	public $ProductCode;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $CommodityCode;
-
-	/**
-	* @var decimal
-	*/
-	public $Quantity;
-
-	/**
-	* @var boolean
-	*/
-	public $TaxIncluded;
-
-	/**
-	* @var string
-	*/
-	public $UPC;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tax
-	*/
-	public $Tax;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountAmount;
-
-	/**
-	* @var boolean
-	*/
-	public $DiscountIncluded;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class BillPayServiceData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
-	*/
-	public $CompanyAddress;
-
-	/**
-	* @var string
-	*/
-	public $CompanyName;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Geolocation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var double
-	*/
-	public $Latitude;
-
-	/**
-	* @var double
-	*/
-	public $Longitude;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Unmanaged extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $Any;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Capture extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Wallet extends \Evosnap\Cws\Model\BaseObject {
-
-	
-	
-	/**
-	* @var string
-	*/
-	public $ConsumerId;
-	
-	/**
-	* @var string
-	*/
-	public $AuthorizationCode;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\WalletIdentifier
-	*/
-	public $WalletIdentifier;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Addendum extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\unmanaged
-	*/
-	public $Unmanaged;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class SummaryTotals extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $NetAmount;
-
-	/**
-	* @var int
-	*/
-	public $Count;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class InternationalAddressInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $HouseNumber;
-
-	/**
-	* @var string
-	*/
-	public $Street2;
-
-	/**
-	* @var string
-	*/
-	public $Street1;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $POBoxNumber;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-	/**
-	* @var string
-	*/
-	public $CountryCode;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class TransactionCustomerData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
-	*/
-	public $BillingData;
-
-	/**
-	* @var string
-	*/
-	public $CustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
-	*/
-	public $ShippingData;
-
-	/**
-	* @var string
-	*/
-	public $CustomerTaxId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class TransactionReportingData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Comment;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var string
-	*/
-	public $Reference;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class SummaryData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $CreditReturnTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $NetTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $CashBackTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $DebitReturnTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $DebitTotals;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $EbtReturnTotals;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $EbtTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $CreditTotals;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
-	*/
-	public $VoidTotals;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class ServiceTransactionDateTime extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TimeZone;
-
-	/**
-	* @var string
-	*/
-	public $Time;
-
-	/**
-	* @var string
-	*/
-	public $Date;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class DriversLicense extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Number;
-
-	/**
-	* @var string
-	*/
-	public $State;
-
-	/**
-	* @var string
-	*/
-	public $Track2;
-
-	/**
-	* @var string
-	*/
-	public $Track1;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class TransactionData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeISOCurrencyCodeA3
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\geolocation
-	*/
-	public $Geolocation;
-
-	/**
-	* @var string
-	*/
-	public $CampaignId;
-
-	/**
-	* @var string
-	*/
-	public $Reference;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionDateTime;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\discountdata
-	*/
-	public $DiscountData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class AlternativeMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CustomerServiceInternet;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
-	*/
-	public $Address;
-
-	/**
-	* @var string
-	*/
-	public $MerchantId;
-
-	/**
-	* @var string
-	*/
-	public $SIC;
-
-	/**
-	* @var string
-	*/
-	public $CustomerServicePhone;
-
-	/**
-	* @var string
-	*/
-	public $Name;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class CwsReturn extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionDateTime;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Manage extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Undo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class DiscountData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $PromotionCodes;
-
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountedAmount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Street2;
-
-	/**
-	* @var string
-	*/
-	public $Street1;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-	/**
-	* @var string
-	*/
-	public $CountryCode;
-
-	/**
-	* @var string
-	*/
-	public $County;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class PINlessDebitData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\billpayservicedata
-	*/
-	public $BillPayServiceData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\payeedata
-	*/
-	public $PayeeData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Response extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var Status
-	*/
-	public $Status;
-
-	/**
-	* @var boolean
-	*/
-	public $IsAcknowledged;
-
-	/**
-	* @var TransactionState
-	*/
-	public $TransactionState;
-
-	/**
-	* @var string
-	*/
-	public $OriginatorTransactionId;
-
-	/**
-	* @var string
-	*/
-	public $Reference;
-
-	/**
-	* @var string
-	*/
-	public $StatusCode;
-
-	/**
-	* @var string
-	*/
-	public $StatusMessage;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var CaptureState
-	*/
-	public $CaptureState;
-
-	/**
-	* @var string
-	*/
-	public $TransactionCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\servicetransactiondatetime
-	*/
-	public $ServiceTransactionDateTime;
-
-	/**
-	* @var string
-	*/
-	public $HostMessageId;
-
-	/**
-	* @var string
-	*/
-	public $TransmissionNumber;
-
-	/**
-	* @var string
-	*/
-	public $ServiceTransactionId;
-	
-	/**
-	* @var Geolocation
-	*/
-	public $Geolocation;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Adjust extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var decimal
-	*/
-	public $TipAmount;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class NameInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Last;
-
-	/**
-	* @var string
-	*/
-	public $Suffix;
-
-	/**
-	* @var string
-	*/
-	public $Title;
-
-	/**
-	* @var string
-	*/
-	public $First;
-
-	/**
-	* @var string
-	*/
-	public $Middle;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Transaction extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transactioncustomerdata
-	*/
-	public $CustomerData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transactionreportingdata
-	*/
-	public $ReportingData;
-	
-	/**
-	* @var boolean
-	*/
-	public $IsOffline;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class PersonalInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $DateOfBirth;
-
-	/**
-	* @var string
-	*/
-	public $Company;
-
-	/**
-	* @var string
-	*/
-	public $MilitaryIdNumber;
-
-	/**
-	* @var string
-	*/
-	public $SocialSecurityNumber;
-
-	/**
-	* @var string
-	*/
-	public $EmployeeIdNumber;
-
-	/**
-	* @var string
-	*/
-	public $GovernmentIdNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\driverslicense
-	*/
-	public $DriversLicense;
-
-	/**
-	* @var string
-	*/
-	public $Gender;
-
-	/**
-	* @var string
-	*/
-	public $TaxId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class EMVData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TerminalVerifyResult;
-
-	/**
-	* @var string
-	*/
-	public $TransactionType;
-
-	/**
-	* @var string
-	*/
-	public $CVMResults;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationVersionNumber;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationInterchangeProfile;
-
-	/**
-	* @var string
-	*/
-	public $IssuerActionDefault;
-
-	/**
-	* @var string
-	*/
-	public $AuthorizationResponseCode;
-
-	/**
-	* @var string
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationUsageControl;
-
-	/**
-	* @var string
-	*/
-	public $FormFactorIndicator;
-
-	/**
-	* @var string
-	*/
-	public $SequenceNumber;
-
-	/**
-	* @var string
-	*/
-	public $CVMList;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationTransactionCount;
-
-	/**
-	* @var string
-	*/
-	public $TerminalCountryCode;
-
-	/**
-	* @var string
-	*/
-	public $CashBackAmount;
-
-	/**
-	* @var string
-	*/
-	public $Cryptogram;
-
-	/**
-	* @var string
-	*/
-	public $UnpredictableNumber;
-
-	/**
-	* @var string
-	*/
-	public $IssuerActionDenial;
-
-	/**
-	* @var string
-	*/
-	public $CryptogramInformationData;
-
-	/**
-	* @var string
-	*/
-	public $InterfaceDeviceSerialNumber;
-
-	/**
-	* @var string
-	*/
-	public $CustomerExclusiveData;
-
-	/**
-	* @var string
-	*/
-	public $LocalTransactionDate;
-
-	/**
-	* @var string
-	*/
-	public $CardSequenceNumber;
-
-	/**
-	* @var string
-	*/
-	public $TerminalType;
-
-	/**
-	* @var string
-	*/
-	public $IssuerApplicationData;
-
-	/**
-	* @var string
-	*/
-	public $IssuerActionOnline;
-
-	/**
-	* @var string
-	*/
-	public $AuthorizationAmount;
-
-	/**
-	* @var string
-	*/
-	public $TerminalCapability;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationId;
-
-	/**
-	* @var string
-	*/
-	public $DedicatedFileName;
-
-	/**
-	* @var string
-	*/
-	public $IssuerScriptResults;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class Resubmit extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
-	*/
-	public $Addendum;
-
-	/**
-	* @var string
-	*/
-	public $CVV;
-
-	/**
-	* @var ResubmitReason
-	*/
-	public $ResubmitReason;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-	
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var decimal
-	*/
-	public $TipAmount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class TransactionTenderData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $SecureEMVData;
-
-	/**
-	* @var string
-	*/
-	public $SecurePaymentAccountData;
-
-	/**
-	* @var string
-	*/
-	public $VendorId;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-
-	/**
-	* @var string
-	*/
-	public $SwipeStatus;
-
-	/**
-	* @var string
-	*/
-	public $EMVEncryptionKeyId;
-
-	/**
-	* @var string
-	*/
-	public $DeviceSerialNumber;
-
-	/**
-	* @var string
-	*/
-	public $SecureMACData;
-
-	/**
-	* @var string
-	*/
-	public $EncryptionKeyId;
-
-	/**
-	* @var string
-	*/
-	public $MACEncryptionKeyId;
-	
-	/**
-	* @var Wallet
-	*/
-	public $Wallet;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class CustomerInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Email;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
-	*/
-	public $Address;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\internationaladdressinfo
-	*/
-	public $InternationalAddress;
-
-	/**
-	* @var string
-	*/
-	public $BusinessName;
-
-	/**
-	* @var string
-	*/
-	public $Phone;
-
-	/**
-	* @var string
-	*/
-	public $Fax;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\nameinfo
-	*/
-	public $Name;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions;
-
-class PayeeData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CompanyName;
-
-	/**
-	* @var string
-	*/
-	public $Phone;
-
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class EncryptionMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $AgentBank;
-
-	/**
-	* @var string
-	*/
-	public $SecondaryTerminalId;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class ApplicationData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var EncryptionType
-	*/
-	public $EncryptionType;
-
-	/**
-	* @var string
-	*/
-	public $ApplicationName;
-
-	/**
-	* @var string
-	*/
-	public $VendorId;
-
-	/**
-	* @var PINCapability
-	*/
-	public $PINCapability;
-
-	/**
-	* @var ApplicationLocation
-	*/
-	public $ApplicationLocation;
-
-	/**
-	* @var string
-	*/
-	public $DeviceSerialNumber;
-
-	/**
-	* @var dateTime
-	*/
-	public $SoftwareVersionDate;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\emvterminaldata
-	*/
-	public $EMVTerminalData;
-
-	/**
-	* @var boolean
-	*/
-	public $ApplicationAttended;
-
-	/**
-	* @var ReadCapability
-	*/
-	public $ReadCapability;
-
-	/**
-	* @var string
-	*/
-	public $SoftwareVersion;
-
-	/**
-	* @var HardwareType
-	*/
-	public $HardwareType;
-
-	/**
-	* @var string
-	*/
-	public $SerialNumber;
-
-	/**
-	* @var string
-	*/
-	public $DeveloperId;
-
-	/**
-	* @var string
-	*/
-	public $PTLSSocketId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class EMVTerminalData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TerminalOutputCapability
-	*/
-	public $TerminalOutputCapability;
-
-	/**
-	* @var TerminalOperator
-	*/
-	public $TerminalOperator;
-
-	/**
-	* @var boolean
-	*/
-	public $CardRetentionCapability;
-
-	/**
-	* @var PINMaxCharacters
-	*/
-	public $PINMaxCharacters;
-
-	/**
-	* @var CardholderAuthenticationCapability
-	*/
-	public $CardholderAuthenticationCapability;
-
-	/**
-	* @var CardDataOutputCapability
-	*/
-	public $CardDataOutputCapability;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class AUEnrollment extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $AUServiceId;
-	
-	/**
-	* @var string
-	*/
-	public $AUMerchantId;
-
-	/**
-	* @var string
-	*/
-	public $AUTerminalId;
-
-	/**
-	* @var string
-	*/
-	public $AUCustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\TypeAUCardType
-	*/
-	public $AUCardType;
-
-}
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class MerchantProfileMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CustomerServiceInternet;
-	
-	/**
-	* @var string
-	*/
-	public $VersionControlValue;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\electroniccheckingmerchantdata
-	*/
-	public $ElectronicCheckingMerchantData;
-
-	/**
-	* @var TypeISOLanguageCodeA3
-	*/
-	public $Language;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\addressinfo
-	*/
-	public $Address;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\encryptionmerchantdata
-	*/
-	public $EncryptionMerchantData;
-
-	/**
-	* @var string
-	*/
-	public $Phone;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardmerchantdata
-	*/
-	public $BankcardMerchantData;
-
-	/**
-	* @var string
-	*/
-	public $MerchantId;
-
-	/**
-	* @var string
-	*/
-	public $TaxId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\storedvaluemerchantdata
-	*/
-	public $StoredValueMerchantData;
-
-	/**
-	* @var string
-	*/
-	public $CustomerServicePhone;
-
-	/**
-	* @var string
-	*/
-	public $Name;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class ElectronicCheckingMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $OriginatorId;
-
-	/**
-	* @var string
-	*/
-	public $SiteId;
-
-	/**
-	* @var string
-	*/
-	public $ProductId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class WorkflowService extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var string
-	*/
-	public $ServiceType;
-
-	/**
-	* @var int
-	*/
-	public $Ordinal;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class Operations extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $CaptureAll;
-
-	/**
-	* @var boolean
-	*/
-	public $QueryRejected;
-
-	/**
-	* @var boolean
-	*/
-	public $ManageAccountById;
-
-	/**
-	* @var boolean
-	*/
-	public $Undo;
-
-	/**
-	* @var boolean
-	*/
-	public $QueryAccount;
-
-	/**
-	* @var CloseBatch
-	*/
-	public $CloseBatch;
-
-	/**
-	* @var boolean
-	*/
-	public $Capture;
-
-	/**
-	* @var boolean
-	*/
-	public $Authorize;
-
-	/**
-	* @var boolean
-	*/
-	public $Adjust;
-
-	/**
-	* @var boolean
-	*/
-	public $AuthAndCapture;
-
-	/**
-	* @var boolean
-	*/
-	public $ManageAccount;
-
-	/**
-	* @var boolean
-	*/
-	public $Disburse;
-
-	/**
-	* @var boolean
-	*/
-	public $CaptureSelective;
-
-	/**
-	* @var boolean
-	*/
-	public $ReturnUnlinked;
-
-	/**
-	* @var boolean
-	*/
-	public $RequestKey;
-
-	/**
-	* @var boolean
-	*/
-	public $Verify;
-
-	/**
-	* @var boolean
-	*/
-	public $ReturnById;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class Tenders extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TrackDataSupportType
-	*/
-	public $TrackDataSupport;
-
-	/**
-	* @var CreditAuthorizeSupportType
-	*/
-	public $CreditAuthorizeSupport;
-
-	/**
-	* @var boolean
-	*/
-	public $PINDebitUndoTenderDataRequired;
-
-	/**
-	* @var boolean
-	*/
-	public $CredentialsRequired;
-
-	/**
-	* @var CreditReversalSupportType
-	*/
-	public $CreditReversalSupportType;
-
-	/**
-	* @var boolean
-	*/
-	public $Credit;
-
-	/**
-	* @var CreditReturnSupportType
-	*/
-	public $CreditReturnSupportType;
-
-	/**
-	* @var BatchAssignmentSupport
-	*/
-	public $BatchAssignmentSupport;
-
-	/**
-	* @var boolean
-	*/
-	public $PINlessDebit;
-
-	/**
-	* @var PINDebitReturnSupportType
-	*/
-	public $PINDebitReturnSupportType;
-
-	/**
-	* @var PinDebitUndoSupportType
-	*/
-	public $PinDebitUndoSupport;
-
-	/**
-	* @var QueryRejectedSupportType
-	*/
-	public $QueryRejectedSupport;
-
-	/**
-	* @var boolean
-	*/
-	public $PINDebit;
-
-	/**
-	* @var PartialApprovalSupportType
-	*/
-	public $PartialApprovalSupportType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class StoredValueMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $StoreId;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-
-	/**
-	* @var string
-	*/
-	public $AgentChain;
-
-	/**
-	* @var string
-	*/
-	public $SIC;
-
-	/**
-	* @var string
-	*/
-	public $ClientNumber;
-
-	/**
-	* @var IndustryType
-	*/
-	public $IndustryType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class MerchantProfile extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofilemerchantdata
-	*/
-	public $MerchantData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayoftyperestrictedoperation
-	*/
-	public $RestrictedOperations;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\servicecredentials
-	*/
-	public $ServiceCredentials;
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayoftyperulecategory
-	*/
-	public $RuleCategories;
-
-	/**
-	* @var string
-	*/
-	public $Region;
-
-	/**
-	* @var dateTime
-	*/
-	public $LastUpdated;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofiletransactiondata
-	*/
-	public $TransactionData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\hostedpayments
-	*/
-	public $HostedPayments;
-	
-	/**
-	* @var bool
-	*/
-	public $PurchasedTokenization = "false";
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class ServiceCredentials extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Username;
-
-	/**
-	* @var string
-	*/
-	public $Password;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class ElectronicCheckingService extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
-	*/
-	public $Operations;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
-	*/
-	public $Tenders;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class BankcardMerchantData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $AgentBank;
-
-	/**
-	* @var string
-	*/
-	public $SecondaryTerminalId;
-
-	/**
-	* @var string
-	*/
-	public $ReimbursementAttribute;
-
-	/**
-	* @var string
-	*/
-	public $MerchantType;
-
-	/**
-	* @var string
-	*/
-	public $SettlementAgent;
-
-	/**
-	* @var string
-	*/
-	public $ABANumber;
-
-	/**
-	* @var boolean
-	*/
-	public $Aggregator;
-
-	/**
-	* @var boolean
-	*/
-	public $PrintCustomerServicePhone;
-
-	/**
-	* @var string
-	*/
-	public $SIC;
-
-	/**
-	* @var string
-	*/
-	public $QualificationCodes;
-
-	/**
-	* @var IndustryType
-	*/
-	public $IndustryType;
-
-	/**
-	* @var string
-	*/
-	public $TimeZoneDifferential;
-
-	/**
-	* @var string
-	*/
-	public $StoreId;
-
-	/**
-	* @var string
-	*/
-	public $AgentChain;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-	
-	/**
-	* @var string
-	*/
-	public $BusinessGroup;
-	
-	/**
-	* @var string
-	*/
-	public $BusinessRegion;
-	
-	/**
-	* @var AUEnrollment
-	*/
-	public $AUEnrollments;
-
-	/**
-	* @var boolean
-	*/
-	public $IsAuSubmitter;
-
-	/**
-	* @var string
-	*/
-	public $SharingGroup;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofcardbrandidentifiers_3dsecure
-	*/
-	public $CardBrandIdentifiers_3DSecure;
-
-	/**
-	* @var string
-	*/
-	public $ClientNumber;
-
-	/**
-	* @var string
-	*/
-	public $Location;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class BankcardServiceAVSData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $CardholderName;
-
-	/**
-	* @var boolean
-	*/
-	public $StateProvince;
-
-	/**
-	* @var boolean
-	*/
-	public $Phone;
-
-	/**
-	* @var boolean
-	*/
-	public $Street;
-
-	/**
-	* @var boolean
-	*/
-	public $PostalCode;
-
-	/**
-	* @var boolean
-	*/
-	public $Country;
-
-	/**
-	* @var boolean
-	*/
-	public $City;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class Workflow extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofworkflowservice
-	*/
-	public $WorkflowServices;
-
-	/**
-	* @var string
-	*/
-	public $WorkflowId;
-
-	/**
-	* @var string
-	*/
-	public $Name;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class HostedPayments extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Code;
-
-	/**
-	* @var string
-	*/
-	public $Key;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class BankcardTransactionDataDefaults extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeISOCurrencyCodeA3
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var CustomerPresent
-	*/
-	public $CustomerPresent;
-
-	/**
-	* @var RequestAdvice
-	*/
-	public $RequestAdvice;
-
-	/**
-	* @var EntryMode
-	*/
-	public $EntryMode;
-
-	/**
-	* @var RequestACI
-	*/
-	public $RequestACI;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Street2;
-
-	/**
-	* @var string
-	*/
-	public $Street1;
-
-	/**
-	* @var String
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-	/**
-	* @var TypeISOCountryCodeA3
-	*/
-	public $CountryCode;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class BankcardService extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $AlternativeMerchantData;
-
-	/**
-	* @var string
-	*/
-	public $EncryptionKey;
-
-	/**
-	* @var long
-	*/
-	public $MaximumBatchItems;
-
-	/**
-	* @var PurchaseCardLevel
-	*/
-	public $PurchaseCardLevel;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardserviceavsdata
-	*/
-	public $AVSData;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-	/**
-	* @var dateTime
-	*/
-	public $CutoffTime;
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var boolean
-	*/
-	public $MultiplePartialCapture;
-
-	/**
-	* @var boolean
-	*/
-	public $ManagedBilling;
-	
-	/**
-	* @var boolean
-	*/
-	public $ResubmitCorrection;
-
-	/**
-	* @var boolean
-	*/
-	public $AutoBatch;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
-	*/
-	public $Operations;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
-	*/
-	public $Tenders;
-
-	/**
-	* @var long
-	*/
-	public $MaximumLineItems;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class MerchantProfileTransactionData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardtransactiondatadefaults
-	*/
-	public $BankcardTransactionDataDefaults;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class StoredValueService extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var boolean
-	*/
-	public $SecureMSRAllowed;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
-	*/
-	public $Operations;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
-	*/
-	public $Tenders;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\response
+    	*/
+    	public $Response;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class ServiceInformation extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofencryptionservice
-	*/
-	public $EncryptionServices;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofbankcardservice
-	*/
-	public $BankcardServices;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofworkflow
-	*/
-	public $Workflows;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofelectroniccheckingservice
-	*/
-	public $ElectronicCheckingServices;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofstoredvalueservice
-	*/
-	public $StoredValueServices;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class EncryptionService extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ServiceName;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
-	*/
-	public $Operations;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation;
-
-class CardBrandIdentifiers_3DSecure extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $MerchantUrl;
-
-	/**
-	* @var CardBrand3DSecureProgram
-	*/
-	public $CardBrand3DSecureProgram;
-
-	/**
-	* @var string
-	*/
-	public $MerchantNumber;
-
-	/**
-	* @var string
-	*/
-	public $MerchantBankId;
-
-}
-
-
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
-
-class MerchantQueryParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $SalesChannel;
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceReferenceId;
 
-	/**
-	* @var string
-	*/
-	public $MerchantName;
-
-	/**
-	* @var string
-	*/
-	public $Region;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
-
-class UserQueryParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $SalesChannel;
-
-	/**
-	* @var string
-	*/
-	public $FirstName;
-
-	/**
-	* @var string
-	*/
-	public $Region;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var string
-	*/
-	public $LastName;
-
-}
-
-
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
-
-class ClaimMetaData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\scopemetadata
-	*/
-	public $ClaimScope;
-
-	/**
-	* @var string
-	*/
-	public $ClaimNS;
-
-	/**
-	* @var string
-	*/
-	public $ClaimValue;
-
-	/**
-	* @var string
-	*/
-	public $ClaimDescription;
-
-	/**
-	* @var ClaimTypeEnum
-	*/
-	public $ClaimType;
-
+    }
 }
-
 
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-class PaymentApplicationQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\InvoiceResponse')){
 
-	/**
-	* @var string
-	*/
-	public $SalesChannel;
+    class InvoiceResponse extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $Region;
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
 
-}
-
-
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
-
-class SecurityQuestion extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofinvoicedetail
+    	*/
+    	public $Invoices;
 
-	/**
-	* @var string
-	*/
-	public $QuestionCode;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
 
-	/**
-	* @var string
-	*/
-	public $QuestionText;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalFound;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Order')){
 
-class ScopeMetaData extends \Evosnap\Cws\Model\BaseObject {
+    class Order extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ShipmentId;
 
-	/**
-	* @var string
-	*/
-	public $ScopeName;
-
-	/**
-	* @var int
-	*/
-	public $ScopeId;
-
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\arrayofidentitytypeenum
-	*/
-	public $AllowableIdentityTypes;
-
-}
+    	/**
+    	* @var string
+    	*/
+    	public $ShipMethod;
 
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofitem
+    	*/
+    	public $OrderItems;
 
-class MerchantInfo extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerCode;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerinfo
+    	*/
+    	public $BillingData;
 
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
+    	/**
+    	* @var string
+    	*/
+    	public $PromotionCode;
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantMetaData;
+    	/**
+    	* @var boolean
+    	*/
+    	public $Enable3D;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $ShipCode;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\tax
+    	*/
+    	public $Tax;
 
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+    	/**
+    	* @var string
+    	*/
+    	public $TaxExemptNumber;
 
-class TokenResponse extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var decimal
+    	*/
+    	public $DutyAmount;
 
-	/**
-	* @var string
-	*/
-	public $SessionToken;
+    	/**
+    	* @var decimal
+    	*/
+    	public $SubTotal;
 
-	/**
-	* @var string
-	*/
-	public $UserAccessToken;
+    	/**
+    	* @var TypeISOCurrencyCodeA3
+    	*/
+    	public $CurrencyCode;
 
-}
+    	/**
+    	* @var IsTaxExempt
+    	*/
+    	public $TaxExempt;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofitemizedtax
+    	*/
+    	public $ItemizedTaxes;
 
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+    	/**
+    	* @var decimal
+    	*/
+    	public $ShippingTotal;
 
-class SecurityQuestionResponse extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountTotal;
 
-	/**
-	* @var string
-	*/
-	public $SecurityQuestionToken;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerinfo
+    	*/
+    	public $ShippingData;
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\securityquestion
-	*/
-	public $SecurityQuestion;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $OrderTimeStamp;
 
+    }
 }
-
-
-namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
 
-class SecurityAnswer extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var string
-	*/
-	public $Answer;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Invoice')){
 
-	/**
-	* @var string
-	*/
-	public $QuestionCode;
+    class Invoice extends \Evosnap\Cws\Model\BaseObject {
 
-}
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\order
+    	*/
+    	public $Order;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\paymentdatainfo
+    	*/
+    	public $PaymentData;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
 
-class ReturnInformation extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var dateTime
-	*/
-	public $ReturnDate;
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantInvoiceId;
 
-	/**
-	* @var string
-	*/
-	public $ReturnCode;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\automationinfo
+    	*/
+    	public $AutomationInfo;
 
-	/**
-	* @var string
-	*/
-	public $ReturnReason;
+    	/**
+    	* @var string
+    	*/
+    	public $EmployeeId;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
-
-class CheckData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var CheckCountryCode
-	*/
-	public $CheckCountryCode;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var string
-	*/
-	public $RoutingNumber;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Tax')){
 
-	/**
-	* @var OwnerType
-	*/
-	public $OwnerType;
+    class Tax extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var UseType
-	*/
-	public $UseType;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Rate;
 
-	/**
-	* @var string
-	*/
-	public $CheckNumber;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class ConsumerIdentification extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $IdData;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var IdEntryMode
-	*/
-	public $IdEntryMode;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\QueryInvoiceParameters')){
 
-	/**
-	* @var IdType
-	*/
-	public $IdType;
+    class QueryInvoiceParameters extends \Evosnap\Cws\Model\BaseObject {
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreatedDateRange;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceReferenceId;
 
-class CardSecurityData extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantInvoiceId;
 
-	/**
-	* @var CVDataProvided
-	*/
-	public $CVDataProvided;
+    	/**
+    	* @var InvoiceState
+    	*/
+    	public $InvoiceState;
 
-	/**
-	* @var string
-	*/
-	public $CVData;
+    	/**
+    	* @var string
+    	*/
+    	public $SubscriptionReferenceId;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class CardData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $Expire;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var string
-	*/
-	public $Track2Data;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\QuerySubscriptionParameters')){
 
-	/**
-	* @var string
-	*/
-	public $Track1Data;
+    class QuerySubscriptionParameters extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
 
-}
-
+    	/**
+    	* @var SubscriptionState
+    	*/
+    	public $SubscriptionState;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreatedDateRange;
 
-class VirtualCardData extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantSubscriptionId;
 
-	/**
-	* @var int
-	*/
-	public $AccountNumberLength;
+    	/**
+    	* @var string
+    	*/
+    	public $SubscriptionReferenceId;
 
-	/**
-	* @var string
-	*/
-	public $BIN;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Administration;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-class Role extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\PaymentDataInfo')){
 
-	/**
-	* @var string
-	*/
-	public $RoleName;
-
-	/**
-	* @var string
-	*/
-	public $RoleDescription;
-
-	/**
-	* @var int
-	*/
-	public $ScopeId;
-
-}
+    class PaymentDataInfo extends \Evosnap\Cws\Model\BaseObject {
 
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentRoutingNumber;
 
-namespace Evosnap\Cws\V2\I0\Administration;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountExpiration;
 
-class PaymentApplicationQuery extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
 
-	/**
-	* @var TypeSort
-	*/
-	public $SortType;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountName;
 
-	/**
-	* @var TypePaymentApplicationSort
-	*/
-	public $SortField;
+    	/**
+    	* @var TypePaymentType
+    	*/
+    	public $PaymentType;
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\paymentapplicationqueryparameters
-	*/
-	public $PaymentApplicationQueryParameters;
+    	/**
+    	* @var TypeBankAccountType
+    	*/
+    	public $BankAccountType;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-namespace Evosnap\Cws\V2\I0\Administration;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\ItemizedTax')){
 
-class UserQuery extends \Evosnap\Cws\Model\BaseObject {
+    class ItemizedTax extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeSort
-	*/
-	public $SortType;
+    	/**
+    	* @var TypeTaxType
+    	*/
+    	public $Type;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Rate;
 
-	/**
-	* @var TypeUserSort
-	*/
-	public $SortField;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\userqueryparameters
-	*/
-	public $UserQueryParameters;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Administration;
-
-class MerchantQuery extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeSort
-	*/
-	public $SortType;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Item')){
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\merchantqueryparameters
-	*/
-	public $MerchantQueryParameters;
+    class Item extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeMerchantSort
-	*/
-	public $SortField;
+    	/**
+    	* @var decimal
+    	*/
+    	public $UnitPrice;
 
-}
-
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-namespace Evosnap\Cws\V2\I0\Administration;
+    	/**
+    	* @var TypeUnitOfMeasure
+    	*/
+    	public $UnitOfMeasure;
 
-class RoleClaim extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $ProductCode;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Administration\claim
-	*/
-	public $Claim;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $Name;
-
-}
+    	/**
+    	* @var string
+    	*/
+    	public $CommodityCode;
 
+    	/**
+    	* @var decimal
+    	*/
+    	public $Quantity;
 
-namespace Evosnap\Cws\V2\I0\Administration;
+    	/**
+    	* @var boolean
+    	*/
+    	public $TaxIncluded;
 
-class Claim extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\tax
+    	*/
+    	public $Tax;
 
-	/**
-	* @var string
-	*/
-	public $ClaimValue;
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountAmount;
 
-	/**
-	* @var string
-	*/
-	public $ClaimNamespace;
+    	/**
+    	* @var boolean
+    	*/
+    	public $DiscountIncluded;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Billing\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\TransactionInfo')){
 
-class BillingRequest extends \Evosnap\Cws\Model\BaseObject {
+    class TransactionInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var Status
+    	*/
+    	public $Status;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Billing\querybillingeventparameters
-	*/
-	public $QueryBillingEventParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionType;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Billing;
-
-class QueryBillingEventParameters extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantProfileIds;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionDate;
 
-	/**
-	* @var BreakdownType
-	*/
-	public $BreakdownType;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $BillingEventSourceIds;
+    	/**
+    	* @var TypeTenderType
+    	*/
+    	public $TenderType;
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $ServiceKeys;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $EventDateRange;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
 
-class MerchantTokenSummary extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var int
-	*/
-	public $TotalNumberOfTokens;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\ProcessingInformation')){
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    class ProcessingInformation extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\paymentdatainfo
+    	*/
+    	public $PaymentDataInfo;
 
-	/**
-	* @var string
-	*/
-	public $MerchantId;
+    	/**
+    	* @var TypeTransactionType
+    	*/
+    	public $TransactionType;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
-
-class AUTokenBatch extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\automationinfo
+    	*/
+    	public $AutomationInfo;
 
-	/**
-	* @var string
-	*/
-	public $AUBatchId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayoftokendata
-	*/
-	public $Tokens;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
 
-class AccountData extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var string
-	*/
-	public $AccountExpiration;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\AutomationInfo')){
 
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
+    class AutomationInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $TerminalId;
+    	/**
+    	* @var boolean
+    	*/
+    	public $ProcessPayment;
 
-	/**
-	* @var string
-	*/
-	public $MerchantReferenceId;
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmailInvoice;
 
-	/**
-	* @var string
-	*/
-	public $MerchantId;
+    	/**
+    	* @var boolean
+    	*/
+    	public $NoAutomation;
 
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
+    	/**
+    	* @var boolean
+    	*/
+    	public $CreateInvoice;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\SubscriptionResponse')){
 
-class AUUpdateBatch extends \Evosnap\Cws\Model\BaseObject {
+    class SubscriptionResponse extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var dateTime
-	*/
-	public $CreatedDate;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofsubscriptiondetail
+    	*/
+    	public $Subscriptions;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofupdatedaccountdata
-	*/
-	public $UpdatedAccounts;
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
-
-class CardTypeTokenSummary extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
 
-	/**
-	* @var int
-	*/
-	public $TotalNumberOfTokens;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalFound;
 
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
-
-class TokenData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
 
-	/**
-	* @var string
-	*/
-	public $AUBatchId;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Subscription')){
 
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
+    class Subscription extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $TerminalId;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalTrialInvoices;
 
-	/**
-	* @var string
-	*/
-	public $MerchantId;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\order
+    	*/
+    	public $Order;
 
-	/**
-	* @var string
-	*/
-	public $TokenId;
+    	/**
+    	* @var int
+    	*/
+    	public $IntervalLength;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
-
-class UpdatedAccountData extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\paymentdatainfo
+    	*/
+    	public $PaymentData;
 
-	/**
-	* @var string
-	*/
-	public $NewAccountNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-	/**
-	* @var string
-	*/
-	public $OldAccountExpiration;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $NewAccountExpiration;
+    	/**
+    	* @var boolean
+    	*/
+    	public $AutoRenew;
 
-	/**
-	* @var string
-	*/
-	public $MerchantReferenceId;
+    	/**
+    	* @var decimal
+    	*/
+    	public $TrialAmount;
 
-	/**
-	* @var TypeReasonCode
-	*/
-	public $ReasonCode;
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantSubscriptionId;
 
-	/**
-	* @var string
-	*/
-	public $OldAccountNumber;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $EndDate;
 
-}
-
+    	/**
+    	* @var dateTime
+    	*/
+    	public $StartDate;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+    	/**
+    	* @var TypeIntervalUnit
+    	*/
+    	public $IntervalUnit;
 
-class TokenSummary extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
 
-	/**
-	* @var int
-	*/
-	public $TotalNumberOfTokens;
+    	/**
+    	* @var int
+    	*/
+    	public $IntervalCount;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofcardtypetokensummary
-	*/
-	public $CardTypeSummaries;
+    	/**
+    	* @var string
+    	*/
+    	public $EmployeeId;
 
-	/**
-	* @var int
-	*/
-	public $TotalNumberOfMerchants;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofmerchanttokensummary
-	*/
-	public $MerchantSummaries;
-
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-class CustomerToken extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\TokenizeAndAuthorizeWalletPurchaseRequest')){
 
-	/**
-	* @var string
-	*/
-	public $PaymentRoutingNumber;
+    class TokenizeAndAuthorizeWalletPurchaseRequest extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
+    	/**
+    	* @var guid
+    	*/
+    	public $UserGuid;
 
-	/**
-	* @var string
-	*/
-	public $PaymentAccountNumber;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $Expiration;
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsSubscription;
 
-	/**
-	* @var TypePaymentType
-	*/
-	public $PaymentType;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $OrderTimeStamp;
 
-	/**
-	* @var TypeBankAccountType
-	*/
-	public $BankAccountType;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\carddata
+    	*/
+    	public $CardData;
 
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-class CardData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Expire;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var string
-	*/
-	public $PAN;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\TokenizeCardDataRequest')){
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class Order extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $ShipmentId;
-
-	/**
-	* @var string
-	*/
-	public $ShipMethod;
-
-	/**
-	* @var decimal
-	*/
-	public $TaxTotal;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofitem
-	*/
-	public $OrderItems;
-
-	/**
-	* @var string
-	*/
-	public $CustomerCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerinfo
-	*/
-	public $BillingData;
-
-	/**
-	* @var string
-	*/
-	public $PromotionCode;
-
-	/**
-	* @var boolean
-	*/
-	public $Enable3D;
-
-	/**
-	* @var string
-	*/
-	public $ShipCode;
-
-	/**
-	* @var string
-	*/
-	public $TaxExemptNumber;
-
-	/**
-	* @var decimal
-	*/
-	public $DutyAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $SubTotal;
-
-	/**
-	* @var TypeISOCurrencyCodeA3
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var IsTaxExempt
-	*/
-	public $TaxExempt;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofitemizedtax
-	*/
-	public $ItemizedTaxes;
-
-	/**
-	* @var decimal
-	*/
-	public $ShippingTotal;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountTotal;
-
-	/**
-	* @var decimal
-	*/
-	public $GrandTotal;
-
-	/**
-	* @var string
-	*/
-	public $InvoiceReferenceId;
-
-	/**
-	* @var decimal
-	*/
-	public $TaxRate;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerinfo
-	*/
-	public $ShippingData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class InvoiceResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofinvoicedetail
-	*/
-	public $Invoices;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var int
-	*/
-	public $TotalFound;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class Invoice extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\order
-	*/
-	public $Order;
-
-	/**
-	* @var string
-	*/
-	public $InvoiceReferenceId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\automationinfo
-	*/
-	public $AutomationInfo;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class QueryInvoiceParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantProfileIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreatedDate;
-
-	/**
-	* @var string
-	*/
-	public $InvoiceReferenceId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var InvoiceState
-	*/
-	public $InvoiceState;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class QuerySubscriptionParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var SubscriptionState
-	*/
-	public $SubscriptionState;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $MerchantProfileIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreatedDate;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var string
-	*/
-	public $SubscriptionReferenceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class Item extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $ItemTax;
-
-	/**
-	* @var TypeUnitOfMeasure
-	*/
-	public $UnitOfMeasure;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var int
-	*/
-	public $Quantity;
-
-	/**
-	* @var boolean
-	*/
-	public $TaxIncluded;
-
-	/**
-	* @var string
-	*/
-	public $UPC;
-
-	/**
-	* @var string
-	*/
-	public $ItemDescription;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $Price;
-
-	/**
-	* @var string
-	*/
-	public $CommodityCode;
-
-	/**
-	* @var string
-	*/
-	public $ItemName;
-
-	/**
-	* @var string
-	*/
-	public $SKU;
-
-	/**
-	* @var boolean
-	*/
-	public $DiscountIncluded;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class ItemizedTax extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeTaxType
-	*/
-	public $TaxType;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var decimal
-	*/
-	public $TaxRate;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class PaymentDataInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $PaymentRoutingNumber;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountExpiration;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountNumber;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountName;
-
-	/**
-	* @var TypePaymentType
-	*/
-	public $PaymentType;
-
-	/**
-	* @var TypeBankAccountType
-	*/
-	public $BankAccountType;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class TransactionInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var Status
-	*/
-	public $Status;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionDate;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-	/**
-	* @var TypeTenderType
-	*/
-	public $TenderType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class SubscriptionResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofsubscriptiondetail
-	*/
-	public $Subscriptions;
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var int
-	*/
-	public $TotalFound;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class AutomationInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $ProcessPayment;
-
-	/**
-	* @var boolean
-	*/
-	public $EmailInvoice;
-
-	/**
-	* @var boolean
-	*/
-	public $NoAutomation;
-
-	/**
-	* @var boolean
-	*/
-	public $CreateInvoice;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
-
-class Subscription extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $TotalTrialInvoices;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\order
-	*/
-	public $Order;
-
-	/**
-	* @var int
-	*/
-	public $IntervalLength;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var dateTime
-	*/
-	public $NextProcessingDate;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var boolean
-	*/
-	public $AutoRenew;
-
-	/**
-	* @var decimal
-	*/
-	public $TrialAmount;
-
-	/**
-	* @var dateTime
-	*/
-	public $EndDate;
-
-	/**
-	* @var string
-	*/
-	public $SubscriptionReferenceId;
-
-	/**
-	* @var int
-	*/
-	public $TotalInvoices;
-
-	/**
-	* @var string
-	*/
-	public $ServiceId;
-
-	/**
-	* @var dateTime
-	*/
-	public $StartDate;
-
-	/**
-	* @var TypeIntervalUnit
-	*/
-	public $IntervalUnit;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class TransactionSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftransactionsummary
-	*/
-	public $TransactionSummaries;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class MerchantDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\merchant
-	*/
-	public $Merchant;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class QueryTransactionsParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $TopCustomers;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $TransactionDateRange;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerSummary extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $LastProcessed;
-
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId;
-
-	/**
-	* @var TypeISOLanguageCodeA3
-	*/
-	public $ReceiptLanguage;
-
-	/**
-	* @var string
-	*/
-	public $TelephoneNumber;
-
-	/**
-	* @var string
-	*/
-	public $EmailAddress;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
-	*/
-	public $Name;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\arrayofcustomertoken
-	*/
-	public $Tokens;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class Merchant extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\addressinfo
-	*/
-	public $Address;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\internationaladdressinfo
-	*/
-	public $InternationalAddress;
-
-	/**
-	* @var string
-	*/
-	public $TelephoneNumber;
-
-	/**
-	* @var string
-	*/
-	public $Name;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class InternationalAddressInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $HouseNumber;
-
-	/**
-	* @var string
-	*/
-	public $Street2;
-
-	/**
-	* @var string
-	*/
-	public $Street1;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $POBoxNumber;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-	/**
-	* @var TypeISOCountryCodeA3
-	*/
-	public $CountryCode;
-
-	/**
-	* @var TypeAddressType
-	*/
-	public $AddressType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class TransactionData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $TransactionType;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $PromotionCodes;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountedAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $TransactionClass;
-
-	/**
-	* @var string
-	*/
-	public $SIC;
-
-	/**
-	* @var dateTime
-	*/
-	public $TransactionDate;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class TelephoneInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeTelephoneType
-	*/
-	public $TelephoneType;
-
-	/**
-	* @var string
-	*/
-	public $TelephoneNumber;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class QueryCustomersParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $Memberships;
-
-	/**
-	* @var TypeMaritalStatus
-	*/
-	public $MaritalStatus;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreatedDateRange;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $PostalCodes;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $BirthDateRange;
-
-	/**
-	* @var TypeGender
-	*/
-	public $Gender;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftypeinteresttype
-	*/
-	public $Interests;
-
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomersummary
-	*/
-	public $CustomerSummaries;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerDetailResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomerdetail
-	*/
-	public $CustomerDetails;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerId extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId;
-
-	/**
-	* @var string
-	*/
-	public $PAN;
-
-	/**
-	* @var string
-	*/
-	public $TelephoneNumber;
-
-	/**
-	* @var string
-	*/
-	public $EmailAddress;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerProfile extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $Memberships;
-
-	/**
-	* @var boolean
-	*/
-	public $EmailNotifications;
-
-	/**
-	* @var boolean
-	*/
-	public $IsActive;
-
-	/**
-	* @var TypeGender
-	*/
-	public $Gender;
-
-	/**
-	* @var dateTime
-	*/
-	public $DateMembershipsVerified;
-
-	/**
-	* @var string
-	*/
-	public $TelephoneNumber;
-
-	/**
-	* @var dateTime
-	*/
-	public $Birthdate;
-
-	/**
-	* @var string
-	*/
-	public $EmailAddress;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftypeinteresttype
-	*/
-	public $Interests;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
-	*/
-	public $Name;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\arrayofcarddata
-	*/
-	public $CardData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofaddressinfo
-	*/
-	public $Addresses;
-
-	/**
-	* @var string
-	*/
-	public $OAuthToken;
-
-	/**
-	* @var TypeMaritalStatus
-	*/
-	public $MaritalStatus;
-
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofinternationaladdressinfo
-	*/
-	public $InternationalAddresses;
-
-	/**
-	* @var boolean
-	*/
-	public $SMSNotifcations;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $LastProcessed;
-
-	/**
-	* @var TypeConsent
-	*/
-	public $CustomerConsent;
-
-	/**
-	* @var TypeISOLanguageCodeA3
-	*/
-	public $ReceiptLanguage;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerprofile
-	*/
-	public $CustomerProfile;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\arrayofcustomertoken
-	*/
-	public $Tokens;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Street2;
-
-	/**
-	* @var string
-	*/
-	public $HouseNumber;
-
-	/**
-	* @var string
-	*/
-	public $Street1;
-
-	/**
-	* @var string
-	*/
-	public $StateProvince;
-
-	/**
-	* @var string
-	*/
-	public $PostalCode;
-
-	/**
-	* @var string
-	*/
-	public $City;
-
-	/**
-	* @var TypeISOCountryCodeA3
-	*/
-	public $CountryCode;
-
-	/**
-	* @var TypeAddressType
-	*/
-	public $AddressType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class NameInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Last;
-
-	/**
-	* @var string
-	*/
-	public $Suffix;
-
-	/**
-	* @var string
-	*/
-	public $Title;
-
-	/**
-	* @var string
-	*/
-	public $First;
-
-	/**
-	* @var string
-	*/
-	public $Middle;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class CustomerInfo extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $Company;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\addressinfo
-	*/
-	public $Address;
-
-	/**
-	* @var string
-	*/
-	public $FirstName;
-
-	/**
-	* @var string
-	*/
-	public $LastName;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
-
-class TransactionSummary extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var decimal
-	*/
-	public $NetAmount;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var int
-	*/
-	public $TransactionCount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Fault;
-
-class CMSValidationError extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $RuleMessage;
-
-	/**
-	* @var CMSValidationError_EErrorType
-	*/
-	public $ErrorType;
-
-	/**
-	* @var string
-	*/
-	public $RuleKey;
-
-	/**
-	* @var string
-	*/
-	public $RuleLocationKey;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
-
-class CMSBaseFault extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $ErrorID;
-
-	/**
-	* @var string
-	*/
-	public $ProblemType;
-
-	/**
-	* @var string
-	*/
-	public $Operation;
-
-	/**
-	* @var string
-	*/
-	public $HelpURL;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class QueryRewardsProgramParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreationDate;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $RewardProgramNames;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class DistributionListDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\distributionlist
-	*/
-	public $DistributionList;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class Promotion extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $Memberships;
-
-	/**
-	* @var boolean
-	*/
-	public $IsTemplate;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var decimal
-	*/
-	public $Discount;
-
-	/**
-	* @var string
-	*/
-	public $PromotionCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var boolean
-	*/
-	public $IsValidWithOtherPromotions;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotionitem
-	*/
-	public $Item;
-
-	/**
-	* @var dateTime
-	*/
-	public $ExpirationDate;
-
-	/**
-	* @var TypeDiscountType
-	*/
-	public $DiscountType;
-
-	/**
-	* @var boolean
-	*/
-	public $IsOneTimeOffer;
-
-	/**
-	* @var TypeTargetType
-	*/
-	public $TargetType;
-
-	/**
-	* @var string
-	*/
-	public $DistributionListName;
-
-	/**
-	* @var boolean
-	*/
-	public $NewCustomerOnly;
-
-	/**
-	* @var TypeBirthdayPromotionType
-	*/
-	public $BirthdayPromotionType;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class PromotionItem extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeISOCurrencyCodeA3
-	*/
-	public $CurrencyCode;
-
-	/**
-	* @var string
-	*/
-	public $Description;
-
-	/**
-	* @var string
-	*/
-	public $Category;
-
-	/**
-	* @var decimal
-	*/
-	public $Price;
-
-	/**
-	* @var string
-	*/
-	public $SubCategory;
-
-	/**
-	* @var string
-	*/
-	public $SKU;
-
-	/**
-	* @var string
-	*/
-	public $SmallIconUrl;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class QueryCustomerSavingsParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $TransactionDateRange;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class RewardsProgramResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofrewardsprogramdetail
-	*/
-	public $RewardsPrograms;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class CustomerSavingsResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofcustomersavings
-	*/
-	public $CustomerSavings;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class QueryPromotionsParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var boolean
-	*/
-	public $IncludeInactive;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $SKUs;
-
-	/**
-	* @var boolean
-	*/
-	public $QueryTemplates;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $ExpirationDateRange;
-
-	/**
-	* @var string
-	*/
-	public $PromotionCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreatedDateRange;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
-	*/
-	public $CustomerName;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class PromotionDetail extends \Evosnap\Cws\Model\BaseObject {
+    class TokenizeCardDataRequest extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId_x0020_;
+    	/**
+    	* @var guid
+    	*/
+    	public $UserGuid;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\carddata
+    	*/
+    	public $CardData;
 
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
-	*/
-	public $Promotion;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class QueryDistributionListParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $DistributionListName;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class CampaignResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofcampaigndetail
-	*/
-	public $Campaigns;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class PromotionResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofmerchantdetail
-	*/
-	public $Merchants;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofpromotiondetail
-	*/
-	public $Promotions;
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomersummary
-	*/
-	public $Customers;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class CustomerSavings extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $CustomerReferenceId;
-
-	/**
-	* @var string
-	*/
-	public $MerchantName;
-
-	/**
-	* @var decimal
-	*/
-	public $DiscountedAmount;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class QueryCampaignParameters extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $CampaignIds;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $CreatedDateRange;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
-	*/
-	public $SentDateRange;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $CampaignNames;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class RewardsProgram extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $StartDate;
-
-	/**
-	* @var decimal
-	*/
-	public $MinimumPurchaseAmount;
-
-	/**
-	* @var int
-	*/
-	public $RequiredPurchaseCount;
-
-	/**
-	* @var boolean
-	*/
-	public $MultiplePurchasesBasedOnAmount;
-
-	/**
-	* @var string
-	*/
-	public $RewardsProgramName;
-
-	/**
-	* @var dateTime
-	*/
-	public $EndDate;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class CampaignTestData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TelephoneNumbers;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $EmailAddresses;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class CampaignDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var dateTime
-	*/
-	public $DateSent;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var string
-	*/
-	public $CampaignName;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var dateTime
-	*/
-	public $DateCreated;
-
-	/**
-	* @var string
-	*/
-	public $CampaignReferenceId;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class RewardsProgramDetail extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\rewardsprogram
-	*/
-	public $RewardsProgram;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class DistributionList extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomerid
-	*/
-	public $CustomerIds;
-
-	/**
-	* @var string
-	*/
-	public $DistributionListName;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
-
-class DistributionListResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofdistributionlistdetail
-	*/
-	public $DistribuionLists;
-
-	/**
-	* @var int
-	*/
-	public $PageNumber;
-
-	/**
-	* @var int
-	*/
-	public $TotalPages;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class SubmitRewardsProgram extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\rewardsprogram
-	*/
-	public $RewardsProgram;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
-	*/
-	public $Promotion;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class QueryCustomerTransactionSummary extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class QueryCampaigns extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querycampaignparameters
-	*/
-	public $QueryCampaignParameters;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-class QuerySubscription extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\Wallet')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    class Wallet extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var guid
+    	*/
+    	public $UserGuid;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsLocked;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\querysubscriptionparameters
-	*/
-	public $QuerySubscriptionParameters;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\arrayofwalletaccount
+    	*/
+    	public $Accounts;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
 
-class SubmitInvoicePayment extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\transactioninfo
-	*/
-	public $TransactionInfo;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\WalletAccount')){
 
-	/**
-	* @var InvoiceState
-	*/
-	public $InvoiceState;
+    class WalletAccount extends \Evosnap\Cws\Model\BaseObject {
 
-}
-
+    	/**
+    	* @var string
+    	*/
+    	public $LastFourMaskedPan;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
 
-class QueryInvoice extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $FirstSixMaskedPan;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $Expiration;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var string
+    	*/
+    	public $TokenId;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var TypeTenderType
+    	*/
+    	public $TenderType;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\queryinvoiceparameters
-	*/
-	public $QueryInvoiceParameters;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-class DeleteCustomerProfile extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\CustomerToken')){
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    class CustomerToken extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentRoutingNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class SubmitInvoice extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\paymentdatainfo
-	*/
-	public $PaymentData;
+    	/**
+    	* @var string
+    	*/
+    	public $Expiration;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\invoice
-	*/
-	public $Invoice;
+    	/**
+    	* @var TypePaymentType
+    	*/
+    	public $PaymentType;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var TypeBankAccountType
+    	*/
+    	public $BankAccountType;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
 
-class QueryRewardsProgram extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\AuthorizeWalletPurchaseRequest')){
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    class AuthorizeWalletPurchaseRequest extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var guid
+    	*/
+    	public $UserGuid;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\queryrewardsprogramparameters
-	*/
-	public $QueryRewardsProgramParameters;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class QueryCustomersSummary extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsSubscription;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\querycustomersparameters
-	*/
-	public $QueryCustomersParameters;
+    	/**
+    	* @var guid
+    	*/
+    	public $TokenId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $OrderTimeStamp;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Wallet\CardData')){
 
-class QueryCustomersDetail extends \Evosnap\Cws\Model\BaseObject {
+    class CardData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\querycustomersparameters
-	*/
-	public $QueryCustomersParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var string
+    	*/
+    	public $PAN;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class SubmitDistributionList extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\BillPayServiceData')){
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    class BillPayServiceData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
+    	*/
+    	public $CompanyAddress;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\distributionlist
-	*/
-	public $DistributionList;
+    	/**
+    	* @var string
+    	*/
+    	public $CompanyName;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Geolocation')){
 
-class DeleteDistributionList extends \Evosnap\Cws\Model\BaseObject {
+    class Geolocation extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var double
+    	*/
+    	public $Latitude;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var double
+    	*/
+    	public $Longitude;
 
-	/**
-	* @var string
-	*/
-	public $DistributionListName;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class SendCampaign extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $CampaignId;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Unmanaged')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\campaigntestdata
-	*/
-	public $CampaignTestData;
+    class Unmanaged extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeDistribution
-	*/
-	public $DistributionType;
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $Any;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Activation')){
 
-class SubmitCampaign extends \Evosnap\Cws\Model\BaseObject {
+    class Activation extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $PromotionCodes;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var string
-	*/
-	public $Content;
-
-	/**
-	* @var string
-	*/
-	public $CampaignName;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class QueryDistributionList extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Capture')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    class Capture extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querydistributionlistparameters
-	*/
-	public $QueryDistributionListParameters;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class SubmitCustomerProfile extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeConsent
-	*/
-	public $ConsentType;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Addendum')){
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    class Addendum extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerprofile
-	*/
-	public $CustomerProfile;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\unmanaged
+    	*/
+    	public $Unmanaged;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\InternationalAddressInfo')){
 
-class SubmitPromotion extends \Evosnap\Cws\Model\BaseObject {
+    class InternationalAddressInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var string
+    	*/
+    	public $HouseNumber;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $Street2;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
-	*/
-	public $Promotion;
+    	/**
+    	* @var string
+    	*/
+    	public $Street1;
 
-}
-
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $POBoxNumber;
 
-class QueryPromotions extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $City;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var string
+    	*/
+    	public $CountryCode;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $Street3;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querypromotionsparameters
-	*/
-	public $QueryPromotionsParameters;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class QueryCustomerSavings extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\SummaryTotals')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    class SummaryTotals extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var decimal
+    	*/
+    	public $NetAmount;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var int
+    	*/
+    	public $Count;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querycustomersavingsparameters
-	*/
-	public $QueryCustomerSavingsParameters;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
-
-class SubmitSubscription extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\paymentdatainfo
-	*/
-	public $PaymentData;
-
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\subscription
-	*/
-	public $Subscription;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-}
-
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\TransactionCustomerData')){
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Fault;
+    class TransactionCustomerData extends \Evosnap\Cws\Model\BaseObject {
 
-class TMSValidationError extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var boolean
+    	*/
+    	public $AddressMatch;
 
-	/**
-	* @var string
-	*/
-	public $RuleMessage;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
+    	*/
+    	public $BillingData;
 
-	/**
-	* @var TMSValidationError_EErrorType
-	*/
-	public $ErrorType;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerId;
 
-	/**
-	* @var string
-	*/
-	public $RuleKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
+    	*/
+    	public $ShippingData;
 
-	/**
-	* @var string
-	*/
-	public $RuleLocationKey;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerTaxId;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
 
-class TMSBaseFault extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var int
-	*/
-	public $ErrorID;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\TransactionReportingData')){
 
-	/**
-	* @var string
-	*/
-	public $ProblemType;
+    class TransactionReportingData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $Operation;
+    	/**
+    	* @var string
+    	*/
+    	public $Comment;
 
-	/**
-	* @var string
-	*/
-	public $HelpURL;
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-}
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+    	/**
+    	* @var string
+    	*/
+    	public $Reference;
 
-class TMSCaptureInProgressExceptionFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\SummaryData')){
 
-class QueryTransactionsSummary extends \Evosnap\Cws\Model\BaseObject {
+    class SummaryData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $CreditReturnTotals;
 
-	/**
-	* @var boolean
-	*/
-	public $IncludeRelated;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $EbtReturnTotals;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $NetTotals;
 
-}
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $CashBackTotals;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $DebitReturnTotals;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $EbtTotals;
 
-class QueryBatch extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $DebitTotals;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $CreditTotals;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querybatchparameters
-	*/
-	public $QueryBatchParameters;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarytotals
+    	*/
+    	public $VoidTotals;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\ServiceTransactionDateTime')){
 
-class QueryTransactionsDetail extends \Evosnap\Cws\Model\BaseObject {
+    class ServiceTransactionDateTime extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
+    	/**
+    	* @var string
+    	*/
+    	public $TimeZone;
 
-	/**
-	* @var TransactionDetailFormat
-	*/
-	public $TransactionDetailFormat;
+    	/**
+    	* @var string
+    	*/
+    	public $Time;
 
-	/**
-	* @var boolean
-	*/
-	public $IncludeRelated;
+    	/**
+    	* @var string
+    	*/
+    	public $Date;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
-
-class QueryTransactionsFamilies extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
-	*/
-	public $PagingParameters;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
-	*/
-	public $QueryTransactionsParameters;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\DriversLicense')){
 
-class ValidationError extends \Evosnap\Cws\Model\BaseObject {
+    class DriversLicense extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $RuleMessage;
+    	/**
+    	* @var string
+    	*/
+    	public $Number;
 
-	/**
-	* @var string
-	*/
-	public $RuleKey;
+    	/**
+    	* @var string
+    	*/
+    	public $State;
 
-	/**
-	* @var string
-	*/
-	public $RuleLocationKey;
+    	/**
+    	* @var string
+    	*/
+    	public $Track2;
 
-	/**
-	* @var string
-	*/
-	public $TransactionId;
+    	/**
+    	* @var string
+    	*/
+    	public $Track1;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\TransactionData')){
 
-class ErrorResponse extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var int
-	*/
-	public $ErrorId;
-
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $Messages;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Rest\arrayofvalidationerror
-	*/
-	public $ValidationErrors;
-
-	/**
-	* @var string
-	*/
-	public $Operation;
-
-	/**
-	* @var string
-	*/
-	public $HelpUrl;
-
-	/**
-	* @var string
-	*/
-	public $Reason;
-
-}
+    class TransactionData extends \Evosnap\Cws\Model\BaseObject {
 
+    	/**
+    	* @var TypeISOCurrencyCodeA3
+    	*/
+    	public $CurrencyCode;
 
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\geolocation
+    	*/
+    	public $Geolocation;
 
-class CWSBaseFault extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $CampaignId;
 
-	/**
-	* @var int
-	*/
-	public $ErrorID;
+    	/**
+    	* @var string
+    	*/
+    	public $Reference;
 
-	/**
-	* @var string
-	*/
-	public $ProblemType;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $Operation;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionDateTime;
 
-	/**
-	* @var string
-	*/
-	public $HelpURL;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\discountdata
+    	*/
+    	public $DiscountData;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\AlternativeMerchantData')){
 
-class CWSValidationErrorFault extends \Evosnap\Cws\Model\BaseObject {
+    class AlternativeMerchantData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $RuleMessage;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerServiceInternet;
 
-	/**
-	* @var CWSValidationErrorFault_EErrorType
-	*/
-	public $ErrorType;
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-	/**
-	* @var string
-	*/
-	public $RuleKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
+    	*/
+    	public $Address;
 
-	/**
-	* @var string
-	*/
-	public $RuleLocationKey;
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantId;
 
-	/**
-	* @var string
-	*/
-	public $TransactionId;
+    	/**
+    	* @var string
+    	*/
+    	public $SIC;
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
-
-class MerchantProfileId extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $id;
-
-	/**
-	* @var string
-	*/
-	public $href;
-
-}
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerServicePhone;
 
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
-
-class EmailTemplate extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $PrimaryColor;
-
-	/**
-	* @var string
-	*/
-	public $SecondaryColor;
-	
-	/**
-	* @var string
-	*/
-	public $FromEmail;
-
-	/**
-	* @var string
-	*/
-	public $TwitterLink;
-	
-	/**
-	* @var string
-	*/
-	public $FacebookLink;
-
-	/**
-	* @var string
-	*/
-	public $ReturnPolicy;
-	
-	/**
-	* @var string
-	*/
-	public $Greeting;
-
-	/**
-	* @var string
-	*/
-	public $Closing;
-	
-	/**
-	* @var TypeEmailFont
-	*/
-	public $Font;
-
-	/**
-	* @var TypeISOLanguageCodeA3 
-	*/
-	public $Language;
+    	/**
+    	* @var string
+    	*/
+    	public $Name;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\CwsReturn')){
 
-class UserInfo extends \Evosnap\Cws\Model\BaseObject {
+    class CwsReturn extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $SecurityQuestionToken;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var string
-	*/
-	public $Email;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionDateTime;
 
-	/**
-	* @var string
-	*/
-	public $UserName;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\arrayofsecurityanswer
-	*/
-	public $SecurityAnswers;
-
-	/**
-	* @var string
-	*/
-	public $Password;
-
-	/**
-	* @var string
-	*/
-	public $SecurityAnswer;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class ApplicationProfileId extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Wallet')){
 
-	/**
-	* @var string
-	*/
-	public $id;
+    class Wallet extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $href;
+    	/**
+    	* @var string
+    	*/
+    	public $AuthorizationCode;
 
-}
-
+    	/**
+    	* @var string
+    	*/
+    	public $ConsumerId;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
-
-class BankcardInterchangeData extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var RequestCommercialCard
-	*/
-	public $RequestCommercialCard;
-
-	/**
-	* @var ExistingDebt
-	*/
-	public $ExistingDebt;
-
-	/**
-	* @var int
-	*/
-	public $CurrentInstallmentNumber;
-
-	/**
-	* @var BillPayment
-	*/
-	public $BillPayment;
-
-	/**
-	* @var RequestAdvice
-	*/
-	public $RequestAdvice;
-
-	/**
-	* @var int
-	*/
-	public $TotalNumberOfInstallments;
-
-	/**
-	* @var RequestACI
-	*/
-	public $RequestACI;
-	
-	/**
-	* @var InstallmentDetails
-	*/
-	public $InstallmentDetails;
+    	/**
+    	* @var WalletIdentifier
+    	*/
+    	public $WalletIdentifier;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class ComponentKeys extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\pincomponentkey
-	*/
-	public $PINComponentKey;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Manage')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\genericcomponentkey
-	*/
-	public $GenericComponentKey;
+    class Manage extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\maccomponentkey
-	*/
-	public $MACComponentKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\emvcomponentkey
-	*/
-	public $EMVComponentKey;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var string
-	*/
-	public $RegionId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\fieldcomponentkey
-	*/
-	public $FieldComponentKey;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class InitialEncryptionKeys extends \Evosnap\Cws\Model\BaseObject {
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\macinitialkey
-	*/
-	public $MACInitialKey;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Undo')){
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\pininitialkey
-	*/
-	public $PINInitialKey;
+    class Undo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\genericinitialkey
-	*/
-	public $GenericInitialKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\fieldinitialkey
-	*/
-	public $FieldInitialKey;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\emvinitialkey
-	*/
-	public $EMVInitialKey;
-
-	/**
-	* @var string
-	*/
-	public $RegionId;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\DiscountData')){
 
-class GenericComponentKey extends \Evosnap\Cws\Model\BaseObject {
+    class DiscountData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $PromotionCodes;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
 
-	/**
-	* @var string
-	*/
-	public $KeyCheckValue;
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountedAmount;
 
-	/**
-	* @var string
-	*/
-	public $CombinedKeyCheckValue;
-
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class GenericInitialKey extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\AddressInfo')){
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $Street2;
 
-}
-
+    	/**
+    	* @var string
+    	*/
+    	public $Street1;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
 
-class EncryptionTenderData extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
 
-	/**
-	* @var string
-	*/
-	public $VendorId;
+    	/**
+    	* @var string
+    	*/
+    	public $City;
 
-	/**
-	* @var EntryMode
-	*/
-	public $EntryMode;
+    	/**
+    	* @var string
+    	*/
+    	public $CountryCode;
 
-	/**
-	* @var string
-	*/
-	public $RegionId;
+    	/**
+    	* @var string
+    	*/
+    	public $County;
 
-	/**
-	* @var string
-	*/
-	public $DeviceSerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $Street3;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\PINlessDebitData')){
 
-class MACInitialKey extends \Evosnap\Cws\Model\BaseObject {
+    class PINlessDebitData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\billpayservicedata
+    	*/
+    	public $BillPayServiceData;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\payeedata
+    	*/
+    	public $PayeeData;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
-
-class PINComponentKey extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $KeyValue;
-
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
-
-	/**
-	* @var string
-	*/
-	public $KeyCheckValue;
 
-	/**
-	* @var string
-	*/
-	public $CombinedKeyCheckValue;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-}
-
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Response')){
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+    class Response extends \Evosnap\Cws\Model\BaseObject {
 
-class PINInitialKey extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var Status
+    	*/
+    	public $Status;
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsAcknowledged;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var TransactionState
+    	*/
+    	public $TransactionState;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $OriginatorTransactionId;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\geolocation
+    	*/
+    	public $Geolocation;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalAccessToken;
 
-class MACComponentKey extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $Reference;
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var string
+    	*/
+    	public $StatusCode;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $StatusMessage;
 
-	/**
-	* @var string
-	*/
-	public $KeyCheckValue;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
-	/**
-	* @var string
-	*/
-	public $CombinedKeyCheckValue;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-}
+    	/**
+    	* @var CaptureState
+    	*/
+    	public $CaptureState;
 
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionCode;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\servicetransactiondatetime
+    	*/
+    	public $ServiceTransactionDateTime;
 
-class FieldInitialKey extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $HostMessageId;
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var string
+    	*/
+    	public $TransmissionNumber;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceTransactionId;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Adjust')){
 
-class EMVComponentKey extends \Evosnap\Cws\Model\BaseObject {
+    class Adjust extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $KeyCheckValue;
+    	/**
+    	* @var decimal
+    	*/
+    	public $TipAmount;
 
-	/**
-	* @var string
-	*/
-	public $CombinedKeyCheckValue;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
-
-class EMVInitialKey extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var string
-	*/
-	public $KeyValue;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-}
-
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\NameInfo')){
 
-namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+    class NameInfo extends \Evosnap\Cws\Model\BaseObject {
 
-class FieldComponentKey extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $Last;
 
-	/**
-	* @var string
-	*/
-	public $KeyValue;
+    	/**
+    	* @var string
+    	*/
+    	public $Suffix;
 
-	/**
-	* @var string
-	*/
-	public $InitialKeySerialNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $Title;
 
-	/**
-	* @var string
-	*/
-	public $KeyCheckValue;
+    	/**
+    	* @var string
+    	*/
+    	public $First;
 
-	/**
-	* @var string
-	*/
-	public $CombinedKeyCheckValue;
+    	/**
+    	* @var string
+    	*/
+    	public $Middle;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Transaction')){
 
-class CWSValidationErrorFault extends \Evosnap\Cws\Model\BaseObject {
+    class Transaction extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $RuleMessage;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
-	/**
-	* @var CWSValidationErrorFault_EErrorType
-	*/
-	public $ErrorType;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transactioncustomerdata
+    	*/
+    	public $CustomerData;
 
-	/**
-	* @var string
-	*/
-	public $RuleKey;
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsOffline;
 
-	/**
-	* @var string
-	*/
-	public $RuleLocationKey;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transactionreportingdata
+    	*/
+    	public $ReportingData;
 
-	/**
-	* @var string
-	*/
-	public $TransactionId;
-
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
-
-class CWSBaseFault extends \Evosnap\Cws\Model\BaseObject {
-
-	/**
-	* @var TransactionState
-	*/
-	public $TransactionState;
-
-	/**
-	* @var int
-	*/
-	public $ErrorID;
 
-	/**
-	* @var string
-	*/
-	public $BatchId;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var string
-	*/
-	public $ProblemType;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\PersonalInfo')){
 
-	/**
-	* @var string
-	*/
-	public $Operation;
+    class PersonalInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $HelpURL;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $DateOfBirth;
 
-	/**
-	* @var string
-	*/
-	public $TransactionId;
+    	/**
+    	* @var string
+    	*/
+    	public $Company;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $MilitaryIdNumber;
 
+    	/**
+    	* @var string
+    	*/
+    	public $SocialSecurityNumber;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $EmployeeIdNumber;
 
-class SignOn extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $GovernmentIdNumber;
 
-	/**
-	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\merchantinfo
-	*/
-	public $MerchantInfo;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\driverslicense
+    	*/
+    	public $DriversLicense;
 
-	/**
-	* @var string
-	*/
-	public $FederatedIdentityToken;
+    	/**
+    	* @var string
+    	*/
+    	public $Gender;
 
-	/**
-	* @var string
-	*/
-	public $Domain;
+    	/**
+    	* @var string
+    	*/
+    	public $TaxId;
 
+    }
 }
-
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class TransactionRequest extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\EMVData')){
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    class EMVData extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transactiontenderdata
-	*/
-	public $TransactionTenderData;
-
-}
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalVerifyResult;
 
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionType;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $CVMResults;
 
-class ChangeTransaction extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationVersionNumber;
 
-	/**
-	* @var string
-	*/
-	public $ApplicationProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationInterchangeProfile;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerActionDefault;
 
+    	/**
+    	* @var string
+    	*/
+    	public $AuthorizationResponseCode;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $CurrencyCode;
 
-class CaptureTransactions extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationUsageControl;
 
-	/**
-	* @var string
-	*/
-	public $ApplicationProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $FormFactorIndicator;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $SequenceNumber;
 
+    	/**
+    	* @var string
+    	*/
+    	public $CVMList;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationTransactionCount;
 
-class FederatedSignOn extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalCountryCode;
 
-	/**
-	* @var string
-	*/
-	public $ExternalDomainToken;
+    	/**
+    	* @var string
+    	*/
+    	public $CashBackAmount;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $Cryptogram;
 
+    	/**
+    	* @var string
+    	*/
+    	public $UnpredictableNumber;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerActionDenial;
 
-class DelegatedSignOn extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $CryptogramInformationData;
 
-	/**
-	* @var string
-	*/
-	public $OnBehalfOfServiceKey;
+    	/**
+    	* @var string
+    	*/
+    	public $InterfaceDeviceSerialNumber;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerExclusiveData;
 
+    	/**
+    	* @var string
+    	*/
+    	public $LocalTransactionDate;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $CardSequenceNumber;
 
-class ReceiptRequest extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalType;
 
-	/**
-	* @var string
-	*/
-	public $Email;
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerApplicationData;
 
-	/**
-	* @var string
-	*/
-	public $TransactionId;
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerActionOnline;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $AuthorizationAmount;
 
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalCapability;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationId;
 
-class SubmitTransactionWithProfile extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $DedicatedFileName;
 
-	/**
-	* @var string
-	*/
-	public $ApplicationProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerScriptResults;
 
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class Authentication extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $AuthnRequest;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-	/**
-	* @var string
-	*/
-	public $Username;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Resubmit')){
 
-	/**
-	* @var string
-	*/
-	public $Password;
+    class Resubmit extends \Evosnap\Cws\Model\BaseObject {
 
-}
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
 
+    	/**
+    	* @var string
+    	*/
+    	public $CVV;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+    	/**
+    	* @var ResubmitReason
+    	*/
+    	public $ResubmitReason;
 
-class SubmitTransaction extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
+    	/**
+    	* @var decimal
+    	*/
+    	public $TipAmount;
 
-	/**
-	* @var string
-	*/
-	public $ApplicationProfileId;
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
 
+    }
 }
-
 
-namespace Evosnap\Identity\I1\I0;
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-class BaseFault extends \Evosnap\Cws\Model\BaseObject {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\CustomerInfo')){
 
-	/**
-	* @var int
-	*/
-	public $ErrorID;
+    class CustomerInfo extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var string
-	*/
-	public $ProblemType;
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
 
-	/**
-	* @var string
-	*/
-	public $Operation;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addressinfo
+    	*/
+    	public $Address;
 
-	/**
-	* @var string
-	*/
-	public $HelpURL;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\internationaladdressinfo
+    	*/
+    	public $InternationalAddress;
 
-}
+    	/**
+    	* @var string
+    	*/
+    	public $BusinessName;
 
+    	/**
+    	* @var string
+    	*/
+    	public $WorkPhone;
 
-namespace Evosnap\Ipc\General\Wcf\Contracts\Common\External;
+    	/**
+    	* @var string
+    	*/
+    	public $Phone;
 
-class PingResponse extends \Evosnap\Cws\Model\BaseObject {
+    	/**
+    	* @var string
+    	*/
+    	public $Fax;
 
-	/**
-	* @var boolean
-	*/
-	public $IsSuccess;
+    	/**
+    	* @var string
+    	*/
+    	public $MobilePhone;
 
-	/**
-	* @var string
-	*/
-	public $Message;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\nameinfo
+    	*/
+    	public $Name;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\TransactionTenderData')){
 
-class ElectronicCheckingTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
+    class TransactionTenderData extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'ElectronicCheckingTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $SecureEMVData;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\checkdata
-	*/
-	public $CheckData;
+    	/**
+    	* @var string
+    	*/
+    	public $SecurePaymentAccountData;
 
-}
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\wallet
+    	*/
+    	public $Wallet;
 
+    	/**
+    	* @var string
+    	*/
+    	public $VendorId;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountDataToken;
 
-class StoredValueTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
+    	/**
+    	* @var string
+    	*/
+    	public $SwipeStatus;
 
-	public function __construct($type = 'StoredValueTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $EMVEncryptionKeyId;
 
-	/**
-	* @var string
-	*/
-	public $CardholderId;
+    	/**
+    	* @var string
+    	*/
+    	public $DeviceSerialNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\cardsecuritydata
-	*/
-	public $CardSecurityData;
+    	/**
+    	* @var string
+    	*/
+    	public $SecureMACData;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\arrayofconsumeridentification
-	*/
-	public $ConsumerIdentifications;
+    	/**
+    	* @var string
+    	*/
+    	public $EncryptionKeyId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\carddata
-	*/
-	public $CardData;
+    	/**
+    	* @var string
+    	*/
+    	public $MACEncryptionKeyId;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class BankcardTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
-
-	public function __construct($type = 'BankcardTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\ecommercesecuritydata
-	*/
-	public $EcommerceSecurityData;
-
-	/**
-	* @var DeviceTypeIndicator
-	*/
-	public $DeviceTypeIndicator;
-
-	/**
-	* @var TypeCardholderId
-	*/
-	public $CardholderIdType;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\cardsecuritydata1
-	*/
-	public $CardSecurityData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tokeninformation
-	*/
-	public $TokenInformation;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\carddata1
-	*/
-	public $CardData;
-
-	/**
-	* @var TenderType
-	*/
-	public $TenderType;
-	
-	/**
-	* @var string
-	*/
-	public $VoucherApprovalCode;
-	
-	/**
-	* @var string
-	*/
-	public $VoucherNumber;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\PayeeData')){
 
-}
+    class PayeeData extends \Evosnap\Cws\Model\BaseObject {
 
+    	/**
+    	* @var string
+    	*/
+    	public $CompanyName;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+    	/**
+    	* @var string
+    	*/
+    	public $Phone;
 
-class BankcardPayoutTenderData extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
 
-	public function __construct($type = 'BankcardPayoutTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-	
-	/**
-	* @var SenderTenderData
-	*/
-	public $SenderData;
+    }
 }
 
 namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
 
-class SenderTenderData extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\EcommerceSecurityData')){
 
-	public function __construct($type = 'SenderTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-	
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
-	
-	/**
-	* @var string
-	*/
-	public $Id;
+    class EcommerceSecurityData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AuthenticationValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $XID;
+
+    	/**
+    	* @var TokenIndicator
+    	*/
+    	public $TokenIndicator;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ECI;
+
+    }
 }
-
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
-
-class ElectronicCheckingTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
-
-	public function __construct($type = 'ElectronicCheckingTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var boolean
-	*/
-	public $IsRecurring;
-
-	/**
-	* @var string
-	*/
-	public $PayeeId;
-
-	/**
-	* @var TransactionType
-	*/
-	public $TransactionType;
-
-	/**
-	* @var ServiceType
-	*/
-	public $ServiceType;
-
-	/**
-	* @var string
-	*/
-	public $PayeeEmail;
-
-	/**
-	* @var SECCode
-	*/
-	public $SECCode;
-
-	/**
-	* @var dateTime
-	*/
-	public $EffectiveDate;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class StoredValueTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
-
-	public function __construct($type = 'StoredValueTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var string
-	*/
-	public $CardRestrictionValue;
-
-	/**
-	* @var boolean
-	*/
-	public $Unload;
-
-	/**
-	* @var boolean
-	*/
-	public $IsCashOut;
-
-	/**
-	* @var TransactionCode
-	*/
-	public $TransactionCode;
-
-	/**
-	* @var EntryMode
-	*/
-	public $EntryMode;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-
-	/**
-	* @var string
-	*/
-	public $OrderNumber;
-
-	/**
-	* @var decimal
-	*/
-	public $TipAmount;
-
-	/**
-	* @var OperationType
-	*/
-	public $OperationType;
-
-	/**
-	* @var string
-	*/
-	public $EmployeeId;
-
-	/**
-	* @var CardStatus
-	*/
-	public $CardStatus;
-	
-	/**
-	* @var PartialApprovalSupportType
-	*/
-	public $PartialApprovalCapable;
-
-}
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
 
-class BankcardTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Level2Data')){
 
-	public function __construct($type = 'BankcardTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    class Level2Data extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var boolean
-	*/
-	public $Is3DSecure;
+    	/**
+    	* @var string
+    	*/
+    	public $ShipmentId;
 
-	/**
-	* @var GoodsType
-	*/
-	public $GoodsType;
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
 
-	/**
-	* @var CustomerPresent
-	*/
-	public $CustomerPresent;
+    	/**
+    	* @var decimal
+    	*/
+    	public $FreightAmount;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internettransactiondata
-	*/
-	public $InternetTransactionData;
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerCode;
 
-	/**
-	* @var EntryMode
-	*/
-	public $EntryMode;
+    	/**
+    	* @var decimal
+    	*/
+    	public $MiscHandlingAmount;
 
-	/**
-	* @var string
-	*/
-	public $OrderNumber;
+    	/**
+    	* @var string
+    	*/
+    	public $ShipFromPostalCode;
 
-	/**
-	* @var string
-	*/
-	public $BatchAssignment;
+    	/**
+    	* @var string
+    	*/
+    	public $OrderNumber;
 
-	/**
-	* @var TransactionCode1
-	*/
-	public $TransactionCode;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tax
+    	*/
+    	public $Tax;
 
-	/**
-	* @var string
-	*/
-	public $TerminalId;
+    	/**
+    	* @var decimal
+    	*/
+    	public $DutyAmount;
 
-	/**
-	* @var boolean
-	*/
-	public $IsQuasiCash;
+    	/**
+    	* @var string
+    	*/
+    	public $DestinationPostal;
 
-	/**
-	* @var string
-	*/
-	public $InvoiceNumber;
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountAmount;
 
-	/**
-	* @var decimal
-	*/
-	public $TipAmount;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $OrderDate;
 
-	/**
-	* @var string
-	*/
-	public $EmployeeId;
-	
-	/**
-	* @var string
-	*/
-	public $ContractNumber;
-	
-	/**
-	* @var string
-	*/
-	public $ProductIndicator;
-	
-	/**
-	* @var TypeEBTType
-	*/
-	public $EBTType;
-	
-	/**
-	* @var CardOnFileInfo
-	*/
-	public $CardOnFileInfo;
-	
-	/**
-	* @var boolean
-	*/
-	public $IsQuickPaymentService;
+    	/**
+    	* @var decimal
+    	*/
+    	public $BaseAmount;
 
-	/**
-	* @var boolean
-	*/
-	public $CardPresence;
+    	/**
+    	* @var string
+    	*/
+    	public $CompanyName;
 
-	/**
-	* @var decimal
-	*/
-	public $FeeAmount;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\taxexempt
+    	*/
+    	public $TaxExempt;
 
-	/**
-	* @var decimal
-	*/
-	public $CashBackAmount;
+    	/**
+    	* @var string
+    	*/
+    	public $DestinationCountryCode;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\alternativemerchantdata
-	*/
-	public $AlternativeMerchantData;
+    	/**
+    	* @var string
+    	*/
+    	public $RequesterName;
 
-	/**
-	* @var string
-	*/
-	public $ScoreThreshold;
+    	/**
+    	* @var string
+    	*/
+    	public $CommodityCode;
 
-	/**
-	* @var boolean
-	*/
-	public $SignatureCaptured;
-
-	/**
-	* @var boolean
-	*/
-	public $IsPartialShipment;
-
-	/**
-	* @var AccountType
-	*/
-	public $AccountType;
-
-	/**
-	* @var string
-	*/
-	public $ApprovalCode;
-
-	/**
-	* @var TypeCardholderAuthenticationEntity
-	*/
-	public $CardholderAuthenticationEntity;
-
-	/**
-	* @var PartialApprovalSupportType1
-	*/
-	public $PartialApprovalCapable;
-
-	/**
-	* @var string
-	*/
-	public $LaneId;
-	
-	
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Tax')){
+
+    class Tax extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayofitemizedtax
+    	*/
+    	public $ItemizedTaxes;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Rate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\EMVTerminalData')){
+
+    class EMVTerminalData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TerminalOutputCapability
+    	*/
+    	public $TerminalOutputCapability;
+
+    	/**
+    	* @var TerminalOperator
+    	*/
+    	public $TerminalOperator;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CardRetentionCapability;
+
+    	/**
+    	* @var PINMaxCharacters
+    	*/
+    	public $PINMaxCharacters;
+
+    	/**
+    	* @var CardholderAuthenticationCapability
+    	*/
+    	public $CardholderAuthenticationCapability;
+
+    	/**
+    	* @var CardDataOutputCapability
+    	*/
+    	public $CardDataOutputCapability;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\InternationalAVSOverride')){
+
+    class InternationalAVSOverride extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IgnoreAVS;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $SkipAVS;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AVSRejectCodes;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\InstallmentDetails')){
+
+    class InstallmentDetails extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $MonthsDeferred;
+
+    	/**
+    	* @var InstallmentPlanType
+    	*/
+    	public $InstallmentPlanType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ItemizedTaxes')){
+
+    class ItemizedTaxes extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayofitemizedtax
+    	*/
+    	public $ItemizedTax;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ThreeDSData')){
+
+    class ThreeDSData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $BroadcastInfo;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PriorTransactionId;
+
+    	/**
+    	* @var TypeTransactionType
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var TypeAuthenticationIndicator
+    	*/
+    	public $AuthenticationIndicator;
+
+    	/**
+    	* @var TypeRequestorAuthMethod
+    	*/
+    	public $RequestorAuthMethod;
+
+    	/**
+    	* @var TypeRequestorChallengeIndicator
+    	*/
+    	public $RequestorChallengeIndicator;
+
+    	/**
+    	* @var TypeChallengeCancellationIndicator
+    	*/
+    	public $ChallengeCancellationIndicator;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServerTransactionId;
+
+    	/**
+    	* @var int
+    	*/
+    	public $InteractionCounter;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsTokenizedTransaction;
+
+    	/**
+    	* @var TypeMethodCompletionIndicator
+    	*/
+    	public $MethodCompletionIndicator;
+
+    	/**
+    	* @var TypeWhiteListStatus
+    	*/
+    	public $WhiteListStatus;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\sdkinfo
+    	*/
+    	public $SDKInfo;
+
+    	/**
+    	* @var TypeChallengeWindowSize
+    	*/
+    	public $ChallengeWindowSize;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\SDKInfo')){
+
+    class SDKInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AppId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PublicKey;
+
+    	/**
+    	* @var TypeUserInterface
+    	*/
+    	public $UIType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaxTimeout;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReferenceNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EncryptedData;
+
+    	/**
+    	* @var TypeInterface
+    	*/
+    	public $Interface;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\EMVDataResponse')){
+
+    class EMVDataResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionStatusInformation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CashBackAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Cryptogram;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalVerifyResult;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ResponseCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardholderVerificationMethod;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerAuthenticationData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerAppData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardAuthenticationResultsCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AuthorizationResponseCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerScriptTemplate2;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IssuerScriptTemplate1;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CryptogramInfoData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DedicatedFileName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationTransactionCount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\AVSResult')){
+
+    class AVSResult extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var CardholderNameResult
+    	*/
+    	public $CardholderNameResult;
+
+    	/**
+    	* @var CountryResult
+    	*/
+    	public $CountryResult;
+
+    	/**
+    	* @var PostalCodeResult
+    	*/
+    	public $PostalCodeResult;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ActualResult;
+
+    	/**
+    	* @var StateResult
+    	*/
+    	public $StateResult;
+
+    	/**
+    	* @var AddressResult
+    	*/
+    	public $AddressResult;
+
+    	/**
+    	* @var PhoneResult
+    	*/
+    	public $PhoneResult;
+
+    	/**
+    	* @var CityResult
+    	*/
+    	public $CityResult;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ThreeDSMerchantData')){
+
+    class ThreeDSMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantPassword;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantUrl;
+
+    	/**
+    	* @var TypeThreeDSWorkflow
+    	*/
+    	public $ThreeDSWorkflow;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantBankId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MethodNotificationUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Name;
+
+    	/**
+    	* @var string
+    	*/
+    	public $NotificationUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Country;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantCategoryCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcquirerBIN;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\CardOnFileInfo')){
+
+    class CardOnFileInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeCardOnFile
+    	*/
+    	public $CardOnFile;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginalTransactionId;
+
+    	/**
+    	* @var TypeInitiatedBy
+    	*/
+    	public $InitiatedBy;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\CardData')){
+
+    class CardData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardholderName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardSequenceNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Track2Data;
+
+    	/**
+    	* @var TypeStrongCardholderAuthSupport
+    	*/
+    	public $StrongCardholderAuthSupport;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Track1Data;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ChipConditionCode;
+
+    	/**
+    	* @var TypeFallbackReason
+    	*/
+    	public $FallbackReason;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PAN;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\LineItemDetail')){
+
+    class LineItemDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $UnitPrice;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
+
+    	/**
+    	* @var TypeUnitOfMeasure
+    	*/
+    	public $UnitOfMeasure;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProductCode;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CommodityCode;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Quantity;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $TaxIncluded;
+
+    	/**
+    	* @var string
+    	*/
+    	public $UPC;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tax
+    	*/
+    	public $Tax;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountAmount;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $DiscountIncluded;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ThreeDSecureInformation')){
+
+    class ThreeDSecureInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CAVV;
+
+    	/**
+    	* @var TypeResultsStatus
+    	*/
+    	public $ResultsStatus;
+
+    	/**
+    	* @var TypeAuthenticationMethod
+    	*/
+    	public $AuthenticationMethod;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DSTransactionId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ACSOperatorId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ChallengeRequest;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorDetail;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardholderInformationText;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ACSTransactionId;
+
+    	/**
+    	* @var TypeACSRenderingInterface
+    	*/
+    	public $ACSRenderingInterface;
+
+    	/**
+    	* @var TypeAuthenticationType
+    	*/
+    	public $AuthenticationType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Status;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorDescription;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ACSSignedContent;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsChallengeMandated;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StatusReason;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ECI;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StatusReasonCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ACSPublicKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $XID;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Value;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DSReferenceNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorCode;
+
+    	/**
+    	* @var TypeACSRenderingUITemplate
+    	*/
+    	public $ACSRenderingUITemplate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ACSReferenceNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\InternetTransactionData')){
+
+    class InternetTransactionData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserScreenWidth;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserTimeZone;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserUserAgent;
+
+    	/**
+    	* @var TypeJavaEnabled
+    	*/
+    	public $BrowserJavaEnabled;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserLanguage;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserScreenColorDepth;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserScreenHeight;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IpAddress;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BrowserAcceptHeader;
+
+    	/**
+    	* @var TypeJavaScriptEnabled
+    	*/
+    	public $BrowserJavaScriptEnabled;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SessionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\RecurringDetails')){
+
+    class RecurringDetails extends \Evosnap\Cws\Model\BaseObject {
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ItemizedTax')){
+
+    class ItemizedTax extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeTaxType
+    	*/
+    	public $Type;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Rate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\InternationalAVSData')){
+
+    class InternationalAVSData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $HouseNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var string
+    	*/
+    	public $POBoxNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Country;
+
+    	/**
+    	* @var string
+    	*/
+    	public $City;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\AccountInfo')){
+
+    class AccountInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeShipAddressUsageIndicator
+    	*/
+    	public $ShipAddressUsageIndicator;
+
+    	/**
+    	* @var TypeAccountAgeIndicator
+    	*/
+    	public $AccountChangeIndicator;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ShipAddressUsageDate;
+
+    	/**
+    	* @var int
+    	*/
+    	public $AccountPurchaseCount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $AccountYearTransactions;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $AccountPasswordChangeDate;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $PaymentAccountAge;
+
+    	/**
+    	* @var TypeSuspiciousAccountActivity
+    	*/
+    	public $SuspiciousAccountActivity;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $AccountChangeDate;
+
+    	/**
+    	* @var TypeAccountAgeIndicator
+    	*/
+    	public $AccountAgeIndicator;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $AccountCreatedDate;
+
+    	/**
+    	* @var TypeAccountAgeIndicator
+    	*/
+    	public $PaymentAccountAgeIndicator;
+
+    	/**
+    	* @var TypeShipNameIndicator
+    	*/
+    	public $ShipNameIndicator;
+
+    	/**
+    	* @var int
+    	*/
+    	public $AccountDayTransactions;
+
+    	/**
+    	* @var TypeAccountAgeIndicator
+    	*/
+    	public $AccountPasswordChangeIndicator;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ManagedBillingInstallments')){
+
+    class ManagedBillingInstallments extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $Count;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\IIASData')){
+
+    class IIASData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var IIASDesignation
+    	*/
+    	public $IIASDesignation;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DentalAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $VisionAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $HealthcareAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $PrescriptionAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $ClinicOtherAmount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardApplicationConfigurationData')){
+
+    class BankcardApplicationConfigurationData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ApplicationAttended;
+
+    	/**
+    	* @var ReadCapability
+    	*/
+    	public $ReadCapability;
+
+    	/**
+    	* @var HardwareType
+    	*/
+    	public $HardwareType;
+
+    	/**
+    	* @var PINCapability
+    	*/
+    	public $PINCapability;
+
+    	/**
+    	* @var ApplicationLocation
+    	*/
+    	public $ApplicationLocation;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\emvterminaldata
+    	*/
+    	public $EMVTerminalData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Totals')){
+
+    class Totals extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NetAmount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $Count;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\CardSecurityData')){
+
+    class CardSecurityData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internationalavsdata
+    	*/
+    	public $InternationalAVSData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PIN;
+
+    	/**
+    	* @var CVDataProvided
+    	*/
+    	public $CVDataProvided;
+
+    	/**
+    	* @var string
+    	*/
+    	public $KeySerialNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CVData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsdata
+    	*/
+    	public $AVSData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internationalavsoverride
+    	*/
+    	public $InternationalAVSOverride;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IdentificationInformation;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\TokenInformation')){
+
+    class TokenInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenExpirationDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenAssuranceLevel;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenRequestorId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Token;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\EBTAvailableBalance')){
+
+    class EBTAvailableBalance extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CashAvailableBalance;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $SNAPAvailableBalance;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\AVSData')){
+
+    class AVSData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardholderName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Phone;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Country;
+
+    	/**
+    	* @var string
+    	*/
+    	public $City;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\TaxExempt')){
+
+    class TaxExempt extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $TaxExemptNumber;
+
+    	/**
+    	* @var IsTaxExempt
+    	*/
+    	public $IsTaxExempt;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\TransactionSummaryData')){
+
+    class TransactionSummaryData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $NetTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $ReturnTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $CashBackTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $EBTReturnTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $SaleTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $PINDebitReturnTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $PINDebitSaleTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $EBTSaleTotals;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\totals
+    	*/
+    	public $VoidTotals;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\CardRangeQueryParameters')){
+
+    class CardRangeQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SerialNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ManagedBilling')){
+
+    class ManagedBilling extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $StartDate;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\managedbillinginstallments
+    	*/
+    	public $Installments;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DownPayment;
+
+    	/**
+    	* @var int
+    	*/
+    	public $Period;
+
+    	/**
+    	* @var Interval
+    	*/
+    	public $Interval;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class EncryptionTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\ComponentKeys')){
 
-	public function __construct($type = 'EncryptionTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
-	    parent::__construct($type);
-	}
+    class ComponentKeys extends \Evosnap\Cws\Model\BaseObject {
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\pincomponentkey
+    	*/
+    	public $PINComponentKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\genericcomponentkey
+    	*/
+    	public $GenericComponentKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\maccomponentkey
+    	*/
+    	public $MACComponentKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\emvcomponentkey
+    	*/
+    	public $EMVComponentKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RegionId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\fieldcomponentkey
+    	*/
+    	public $FieldComponentKey;
+
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
-
-class ElectronicCheckingCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'ElectronicCheckingCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
-	*/
-	public $SummaryData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
-
-class ElectronicCheckingTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'ElectronicCheckingTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var string
-	*/
-	public $ModifiedRoutingNumber;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\returninformation
-	*/
-	public $ReturnInformation;
-
-	/**
-	* @var boolean
-	*/
-	public $ACHCapable;
-
-	/**
-	* @var dateTime
-	*/
-	public $SubmitDate;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-
-	/**
-	* @var string
-	*/
-	public $ModifiedAccountNumber;
-
-	/**
-	* @var string
-	*/
-	public $ApprovalCode;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class StoredValueCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'StoredValueCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
-	*/
-	public $SummaryData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class StoredValueTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'StoredValueTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var decimal
-	*/
-	public $CashBackAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var CVResult
-	*/
-	public $CVResult;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-
-	/**
-	* @var decimal
-	*/
-	public $LockAmount;
-
-	/**
-	* @var CardStatus
-	*/
-	public $CardStatus;
-
-	/**
-	* @var string
-	*/
-	public $OrderId;
-
-	/**
-	* @var string
-	*/
-	public $CVData;
-
-	/**
-	* @var string
-	*/
-	public $ApprovalCode;
-
-	/**
-	* @var string
-	*/
-	public $AccountNumber;
-
-	/**
-	* @var string
-	*/
-	public $CardRestrictionValue;
-
-	/**
-	* @var decimal
-	*/
-	public $NewBalance;
-
-	/**
-	* @var string
-	*/
-	public $Expire;
-
-	/**
-	* @var decimal
-	*/
-	public $PreviousBalance;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var decimal
-	*/
-	public $FeeAmount;
-	
-	/**
-	* @var String
-	*/
-	public $ExchangeRate;
-
-	/**
-	* @var string
-	*/
-	public $DetailedErrorMessage;
-
-	/**
-	* @var boolean
-	*/
-	public $IsPartialApproval;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class BankcardTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'BankcardTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var PrepaidCard
-	*/
-	public $PrepaidCard;
-
-	/**
-	* @var CVResult
-	*/
-	public $CVResult;
-
-	/**
-	* @var string
-	*/
-	public $MerchantId;
-
-	/**
-	* @var string
-	*/
-	public $AuthorizationServerUrl;
-
-	/**
-	* @var string
-	*/
-	public $ForcePostCode;
-
-	/**
-	* @var string
-	*/
-	public $ErrorType;
-
-	/**
-	* @var decimal
-	*/
-	public $BatchAmount;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var boolean
-	*/
-	public $ProcessedAs3D;
-
-	/**
-	* @var TypeLevel3Added
-	*/
-	public $Level3Added;
-
-	/**
-	* @var decimal
-	*/
-	public $FeeAmount;
-
-	/**
-	* @var decimal
-	*/
-	public $CashBackAmount;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\emvdataresponse
-	*/
-	public $EMVDataResponse;
-
-	/**
-	* @var string
-	*/
-	public $LastPANDigits;
-
-	/**
-	* @var string
-	*/
-	public $MessageAuthenticationCode;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsresult
-	*/
-	public $AVSResult;
-
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tokeninformation
-	*/
-	public $TokenInformation;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAuthorizationRequest;
-
-	/**
-	* @var string
-	*/
-	public $OrderId;
-
-	/**
-	* @var string
-	*/
-	public $ApprovalCode;
-
-	/**
-	* @var string
-	*/
-	public $CardLevel;
-
-	/**
-	* @var string
-	*/
-	public $Expire;
-
-	/**
-	* @var string
-	*/
-	public $DowngradeCode;
-
-	/**
-	* @var dateTime
-	*/
-	public $SettlementDate;
-
-	/**
-	* @var string
-	*/
-	public $RetrievalReferenceNumber;
-
-	/**
-	* @var Resubmit
-	*/
-	public $Resubmit;
-
-	/**
-	* @var decimal
-	*/
-	public $FinalBalance;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofinitialencryptionkeys
-	*/
-	public $InitialEncryptionKeys;
-	
-	/**
-	* @var boolean
-	*/
-	public $IsPartialApproval;
-	
-	/**
-	* @var String
-	*/
-	public $BankResponseCode;
-	
-	/**
-	* @var EBTAvailableBalance 
-	*/
-	public $EBTAvailableBalance;
-	
-	/**
-	* @var IndustryType1 
-	*/
-	public $IndustryType;
-	
-	/**
-	* @var ThreeDSecureInformation 
-	*/
-	public $ThreeDSecureInformation;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class BankcardCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
-
-	public function __construct($type = 'BankcardCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\transactionsummarydata
-	*/
-	public $TransactionSummaryData;
-
-	/**
-	* @var string
-	*/
-	public $ErrorType;
-
-	/**
-	* @var PrepaidCard
-	*/
-	public $PrepaidCard;
-
-	/**
-	* @var string
-	*/
-	public $BatchId;
-
-	/**
-	* @var IndustryType
-	*/
-	public $IndustryType;
-	
-	/**
-	* @var Decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var TypeCardType
-	*/
-	public $CardType;
-
-	/**
-	* @var String
-	*/
-	public $ApprovalCode;
-
-	/**
-	* @var string
-	*/
-	public $MaskedPAN;
-
-	/**
-	* @var string
-	*/
-	public $PaymentAccountDataToken;
-	
-	/**
-	* @var string
-	*/
-	public $RetrievalReferenceNumber;
-
-	/**
-	* @var resubmit
-	*/
-	public $Resubmit;
-
-	/**
-	* @var string
-	*/
-	public $OrderId;
-
-	/**
-	* @var decimal
-	*/
-	public $CashBackAmount;
-	
-	/**
-	* @var string
-	*/
-	public $Expire;
-
-	/**
-	* @var TypeLevel3Added
-	*/
-	public $Level3Added;
-
-	/**
-	* @var boolean
-	*/
-	public $ProcessedAs3D;
-
-	/**
-	* @var EMVDataResponse
-	*/
-	public $EMVDataResponse;
-
-	/**
-	* @var string
-	*/
-	public $LastPANDigits;
-	
-	/**
-	* @var string
-	*/
-	public $MerchantId;
-
-	/**
-	* @var string
-	*/
-	public $TerminalId;
-
-	/**
-	* @var string
-	*/
-	public $BankResponseCode;
-	
-
-}
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class EncryptionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\GenericComponentKey')){
 
-	public function __construct($type = 'EncryptionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
-	    parent::__construct($type);
-	}
+    class GenericComponentKey extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofcomponentkeys
-	*/
-	public $ComponentKeys;
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var string
-	*/
-	public $MessageAuthenticationCode;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofinitialencryptionkeys
-	*/
-	public $InitialEncryptionKeys;
+    	/**
+    	* @var string
+    	*/
+    	public $KeyCheckValue;
 
+    	/**
+    	* @var string
+    	*/
+    	public $CombinedKeyCheckValue;
+
+    }
 }
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
-
-class ElectronicCheckingTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
-
-	public function __construct($type = 'ElectronicCheckingTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\electroniccheckingtenderdata
-	*/
-	public $TenderData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\electroniccheckingtransactiondata
-	*/
-	public $TransactionData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
-
-class StoredValueTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
-
-	public function __construct($type = 'StoredValueTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\storedvaluetenderdata
-	*/
-	public $TenderData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\storedvaluetransactiondata
-	*/
-	public $TransactionData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
-
-class BankcardTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
-
-	public function __construct($type = 'BankcardTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardapplicationconfigurationdata
-	*/
-	public $ApplicationConfigurationData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
-	*/
-	public $TenderData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtransactiondata
-	*/
-	public $TransactionData;
-
-}
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class EncryptionTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\InitialEncryptionKeys')){
 
-	public function __construct($type = 'EncryptionTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
-	    parent::__construct($type);
-	}
+    class InitialEncryptionKeys extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\encryptiontenderdata
-	*/
-	public $TenderData;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\macinitialkey
+    	*/
+    	public $MACInitialKey;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\encryptiontransactiondata
-	*/
-	public $TransactionData;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\pininitialkey
+    	*/
+    	public $PINInitialKey;
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\genericinitialkey
+    	*/
+    	public $GenericInitialKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\fieldinitialkey
+    	*/
+    	public $FieldInitialKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\emvinitialkey
+    	*/
+    	public $EMVInitialKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RegionId;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EncryptionTenderData')){
 
-class ElectronicCheckingCustomerData extends \Evosnap\Cws\V2\I0\Transactions\TransactionCustomerData {
+    class EncryptionTenderData extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'ElectronicCheckingCustomerData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $VendorId;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\personalinfo
-	*/
-	public $AdditionalBillingData;
+    	/**
+    	* @var EntryMode
+    	*/
+    	public $EntryMode;
 
+    	/**
+    	* @var string
+    	*/
+    	public $RegionId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DeviceSerialNumber;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\GenericInitialKey')){
 
-class StoredValueCapture extends \Evosnap\Cws\V2\I0\Transactions\Capture {
+    class GenericInitialKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'StoredValueCapture, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var decimal
-	*/
-	public $Amount;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\PINComponentKey')){
 
-class BankcardCapture extends \Evosnap\Cws\V2\I0\Transactions\Capture {
+    class PINComponentKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'BankcardCapture, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var ChargeType
-	*/
-	public $ChargeType;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
-	/**
-	* @var decimal
-	*/
-	public $Amount;
+    	/**
+    	* @var string
+    	*/
+    	public $KeyCheckValue;
 
-	/**
-	* @var TransactionCode
-	*/
-	public $TransactionCode;
+    	/**
+    	* @var string
+    	*/
+    	public $CombinedKeyCheckValue;
 
-	/**
-	* @var dateTime
-	*/
-	public $ShipDate;
-
-	/**
-	* @var decimal
-	*/
-	public $TipAmount;
-
-	/**
-	* @var string
-	*/
-	public $ProductIndicator;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\MACInitialKey')){
 
-class StoredValueManage extends \Evosnap\Cws\V2\I0\Transactions\Manage {
+    class MACInitialKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'StoredValueManage, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var boolean
-	*/
-	public $IsCashOut;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
-	/**
-	* @var decimal
-	*/
-	public $Amount;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\carddata
-	*/
-	public $SourceCardData;
-
-	/**
-	* @var OperationType
-	*/
-	public $OperationType;
-
-	/**
-	* @var CardStatus
-	*/
-	public $CardStatus;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\MACComponentKey')){
 
-class StoredValueBalanceTransferTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+    class MACComponentKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'StoredValueBalanceTransferTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\SourceTenderData
-	*/
-	public $SourceData;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
+    	/**
+    	* @var string
+    	*/
+    	public $KeyCheckValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CombinedKeyCheckValue;
+
+    }
 }
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-class SourceTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\PINInitialKey')){
 
-	public function __construct($type = 'SourceTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    class PINInitialKey extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EMVComponentKey')){
 
-class StoredValueActivateTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+    class EMVComponentKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'StoredValueActivateTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\virtualcarddata
-	*/
-	public $VirtualCardData;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
+    	/**
+    	* @var string
+    	*/
+    	public $KeyCheckValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CombinedKeyCheckValue;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\FieldInitialKey')){
 
-class StoredValueReturn extends \Evosnap\Cws\V2\I0\Transactions\CwsReturn {
+    class FieldInitialKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'StoredValueReturn, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var decimal
-	*/
-	public $Amount;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
-	/**
-	* @var TransactionCode
-	*/
-	public $TransactionCode;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EMVInitialKey')){
 
-class BankcardReturn extends \Evosnap\Cws\V2\I0\Transactions\CwsReturn {
+    class EMVInitialKey extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'BankcardReturn, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
 
-	/**
-	* @var decimal
-	*/
-	public $Amount;
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
-	*/
-	public $TenderData;
-
-	/**
-	* @var TransactionCode
-	*/
-	public $TransactionCode;
-
-	/**
-	* @var decimal
-	*/
-	public $FeeAmount;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\FieldComponentKey')){
+
+    class FieldComponentKey extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $KeyValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InitialKeySerialNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $KeyCheckValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CombinedKeyCheckValue;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\System;
+
+if(!class_exists('\Datacontract\I2004\I07\System\Attribute')){
+
+    class Attribute extends \Evosnap\Cws\Model\BaseObject {
+
+    }
+}
+
+namespace Datacontract\I2004\I07\System;
+
+if(!class_exists('\Datacontract\I2004\I07\System\MarshalByRefObject')){
+
+    class MarshalByRefObject extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \W3\I2001\Xmlschema\anytype
+    	*/
+    	public $__identity;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Dataservices;
 
-class DataServicesUnavailableFault extends \Evosnap\Cws\V2\I0\Dataservices\DSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\PagingParameters')){
 
-	public function __construct($type = 'DataServicesUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/DataServices') {
-	    parent::__construct($type);
-	}
+    class PagingParameters extends \Evosnap\Cws\Model\BaseObject {
 
+    	/**
+    	* @var int
+    	*/
+    	public $PageSize;
+
+    	/**
+    	* @var int
+    	*/
+    	public $Page;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\DateRange')){
 
-class InvoiceDetail extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Invoice {
+    class DateRange extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'InvoiceDetail, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Subscriptions') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var dateTime
+    	*/
+    	public $StartDateTime;
 
-	/**
-	* @var dateTime
-	*/
-	public $LastUpdatedDate;
+    	/**
+    	* @var dateTime
+    	*/
+    	public $EndDateTime;
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayoftransactioninfo
-	*/
-	public $Transactions;
-
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var dateTime
-	*/
-	public $CreatedDate;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var int
-	*/
-	public $TransactionAttempts;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var dateTime
-	*/
-	public $DateLastAttempted;
-
-	/**
-	* @var InvoiceState
-	*/
-	public $InvoiceState;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\TransactionSummaryResponse')){
 
-class SubscriptionDetail extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Subscription {
+    class TransactionSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'SubscriptionDetail, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Subscriptions') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
 
-	/**
-	* @var dateTime
-	*/
-	public $LastUpdatedDate;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftransactionsummary
+    	*/
+    	public $TransactionSummaries;
 
-	/**
-	* @var TypeScope
-	*/
-	public $Scope;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
 
-	/**
-	* @var SubscriptionState
-	*/
-	public $SubscriptionState;
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
 
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
-	/**
-	* @var int
-	*/
-	public $InvoiceCount;
-
-	/**
-	* @var dateTime
-	*/
-	public $CreatedDate;
-
-	/**
-	* @var string
-	*/
-	public $ServiceKey;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
-	*/
-	public $CustomerId;
-
-	/**
-	* @var int
-	*/
-	public $TrialInvoiceCount;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\MerchantDetail')){
 
-class CMSUnavailableFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
+    class MerchantDetail extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'CMSUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\merchant
+    	*/
+    	public $Merchant;
 
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\UniqueConstraint')){
 
-class CMSTransactionFailedFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
+    class UniqueConstraint extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'CMSTransactionFailedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var boolean
+    	*/
+    	public $MerchantReferenceId;
 
+    	/**
+    	* @var boolean
+    	*/
+    	public $TelephoneNumber;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmailAddress;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerSummary')){
 
-class CMSUnknownServiceKeyFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
+    class CustomerSummary extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'CMSUnknownServiceKeyFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastProcessed;
 
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var TypeISOLanguageCodeA3
+    	*/
+    	public $ReceiptLanguage;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TelephoneNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantCustomerId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EmailAddress;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
+    	*/
+    	public $Name;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\Merchant')){
+
+    class Merchant extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\addressinfo
+    	*/
+    	public $Address;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\internationaladdressinfo
+    	*/
+    	public $InternationalAddress;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TelephoneNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Name;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\InternationalAddressInfo')){
+
+    class InternationalAddressInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $HouseNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street2;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street1;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var string
+    	*/
+    	public $POBoxNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $City;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CountryCode;
+
+    	/**
+    	* @var TypeAddressType
+    	*/
+    	public $AddressType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street3;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\TransactionData')){
+
+    class TransactionData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var guid
+    	*/
+    	public $InvoiceReferencIed;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $PromotionCodes;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountedAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionClass;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TxnCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SIC;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\TelephoneInfo')){
+
+    class TelephoneInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeTelephoneType
+    	*/
+    	public $TelephoneType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TelephoneNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\QueryCustomersParameters')){
+
+    class QueryCustomersParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $Memberships;
+
+    	/**
+    	* @var TypeMaritalStatus
+    	*/
+    	public $MaritalStatus;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $LimitToCustomersWithoutTransactions;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreatedDateRange;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $PostalCodes;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $BirthDateRange;
+
+    	/**
+    	* @var TypeGender
+    	*/
+    	public $Gender;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
+    	*/
+    	public $CustomerId;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $CustomerReferenceIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftypeinteresttype
+    	*/
+    	public $Interests;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerSummaryResponse')){
+
+    class CustomerSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomersummary
+    	*/
+    	public $CustomerSummaries;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerDetailResponse')){
+
+    class CustomerDetailResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomerdetail
+    	*/
+    	public $CustomerDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerProfile')){
+
+    class CustomerProfile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $Memberships;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\arrayofpaymentdatainfo
+    	*/
+    	public $PaymentData;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmailNotifications;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsActive;
+
+    	/**
+    	* @var TypeGender
+    	*/
+    	public $Gender;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $DateMembershipsVerified;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TelephoneNumber;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $Birthdate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EmailAddress;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayoftypeinteresttype
+    	*/
+    	public $Interests;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
+    	*/
+    	public $Name;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofaddressinfo
+    	*/
+    	public $Addresses;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OAuthToken;
+
+    	/**
+    	* @var TypeMaritalStatus
+    	*/
+    	public $MaritalStatus;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofinternationaladdressinfo
+    	*/
+    	public $InternationalAddresses;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $SMSNotifcations;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantCustomerId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerId')){
+
+    class CustomerId extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TelephoneNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantCustomerId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EmailAddress;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerDetail')){
+
+    class CustomerDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastProcessed;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var TypeConsent
+    	*/
+    	public $CustomerConsent;
+
+    	/**
+    	* @var TypeISOLanguageCodeA3
+    	*/
+    	public $ReceiptLanguage;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerprofile
+    	*/
+    	public $CustomerProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\AddressInfo')){
+
+    class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street2;
+
+    	/**
+    	* @var string
+    	*/
+    	public $HouseNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street1;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $City;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CountryCode;
+
+    	/**
+    	* @var TypeAddressType
+    	*/
+    	public $AddressType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street3;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\NameInfo')){
+
+    class NameInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Last;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Suffix;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Title;
+
+    	/**
+    	* @var string
+    	*/
+    	public $First;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Middle;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\CustomerInfo')){
+
+    class CustomerInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Company;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\addressinfo
+    	*/
+    	public $Address;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FirstName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastName;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\TransactionSummary')){
+
+    class TransactionSummary extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NetAmount;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerid
+    	*/
+    	public $CustomerId;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TransactionCount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitRewardsProgram')){
+
+    class SubmitRewardsProgram extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\rewardsprogram
+    	*/
+    	public $RewardsProgram;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
+    	*/
+    	public $Promotion;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryCampaigns')){
+
+    class QueryCampaigns extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querycampaignparameters
+    	*/
+    	public $QueryCampaignParameters;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QuerySubscription')){
+
+    class QuerySubscription extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\querysubscriptionparameters
+    	*/
+    	public $QuerySubscriptionParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitInvoicePayment')){
+
+    class SubmitInvoicePayment extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\transactioninfo
+    	*/
+    	public $TransactionInfo;
+
+    	/**
+    	* @var InvoiceState
+    	*/
+    	public $InvoiceState;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryInvoice')){
+
+    class QueryInvoice extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\queryinvoiceparameters
+    	*/
+    	public $QueryInvoiceParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitInvoice')){
+
+    class SubmitInvoice extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\invoice
+    	*/
+    	public $Invoice;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryRewardsProgram')){
+
+    class QueryRewardsProgram extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\queryrewardsprogramparameters
+    	*/
+    	public $QueryRewardsProgramParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryCustomersSummary')){
+
+    class QueryCustomersSummary extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\querycustomersparameters
+    	*/
+    	public $QueryCustomersParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\ProcessInvoice')){
+
+    class ProcessInvoice extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\processinginformation
+    	*/
+    	public $ProcessingInformation;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryCustomersDetail')){
+
+    class QueryCustomersDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\querycustomersparameters
+    	*/
+    	public $QueryCustomersParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitDistributionList')){
+
+    class SubmitDistributionList extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\distributionlist
+    	*/
+    	public $DistributionList;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryCustomerTransactions')){
+
+    class QueryCustomerTransactions extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Businessintelligence\querycustomertransactionsparameters
+    	*/
+    	public $QueryParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\DeleteDistributionList')){
+
+    class DeleteDistributionList extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DistributionListName;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SendCampaign')){
+
+    class SendCampaign extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CampaignId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\campaigntestdata
+    	*/
+    	public $CampaignTestData;
+
+    	/**
+    	* @var TypeDistribution
+    	*/
+    	public $DistributionType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitCampaign')){
+
+    class SubmitCampaign extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $PromotionCodes;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Content;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CampaignName;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryDistributionList')){
+
+    class QueryDistributionList extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querydistributionlistparameters
+    	*/
+    	public $QueryDistributionListParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitCustomerProfile')){
+
+    class SubmitCustomerProfile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeConsent
+    	*/
+    	public $ConsentType;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\uniqueconstraint
+    	*/
+    	public $UniqueConstraint;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\customerprofile
+    	*/
+    	public $CustomerProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitSubscriptionState')){
+
+    class SubmitSubscriptionState extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var SubscriptionState
+    	*/
+    	public $SubscriptionState;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitPromotion')){
+
+    class SubmitPromotion extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
+    	*/
+    	public $Promotion;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryPromotions')){
+
+    class QueryPromotions extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querypromotionsparameters
+    	*/
+    	public $QueryPromotionsParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitInvoiceState')){
+
+    class SubmitInvoiceState extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var InvoiceState
+    	*/
+    	public $InvoiceState;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitCustomerProfiles')){
+
+    class SubmitCustomerProfiles extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeConsent
+    	*/
+    	public $ConsentType;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomerprofile
+    	*/
+    	public $CustomerProfiles;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\uniqueconstraint
+    	*/
+    	public $UniqueConstraint;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\QueryCustomerSavings')){
+
+    class QueryCustomerSavings extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\querycustomersavingsparameters
+    	*/
+    	public $QueryCustomerSavingsParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Rest\SubmitSubscription')){
+
+    class SubmitSubscription extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\subscription
+    	*/
+    	public $Subscription;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Businessintelligence;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Businessintelligence\QueryCustomerTransactionsParameters')){
+
+    class QueryCustomerTransactionsParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceReferenceId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $TransactionDateRange;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\DistributionListDetail')){
+
+    class DistributionListDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\distributionlist
+    	*/
+    	public $DistributionList;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\QueryRewardsProgramParameters')){
+
+    class QueryRewardsProgramParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreationDate;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $RewardProgramNames;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\PromotionItem')){
+
+    class PromotionItem extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeISOCurrencyCodeA3
+    	*/
+    	public $CurrencyCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Category;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Price;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SubCategory;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SKU;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SmallIconUrl;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\Promotion')){
+
+    class Promotion extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $Memberships;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsTemplate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Discount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PromotionCode;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsValidWithOtherPromotions;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotionitem
+    	*/
+    	public $Item;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ExpirationDate;
+
+    	/**
+    	* @var TypeDiscountType
+    	*/
+    	public $DiscountType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsOneTimeOffer;
+
+    	/**
+    	* @var TypeTargetType
+    	*/
+    	public $TargetType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DistributionListName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $NewCustomerOnly;
+
+    	/**
+    	* @var TypeBirthdayPromotionType
+    	*/
+    	public $BirthdayPromotionType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\QueryCustomerSavingsParameters')){
+
+    class QueryCustomerSavingsParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $TransactionDateRange;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\RewardsProgramResponse')){
+
+    class RewardsProgramResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofrewardsprogramdetail
+    	*/
+    	public $RewardsPrograms;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\CustomerSavingsResponse')){
+
+    class CustomerSavingsResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofcustomersavings
+    	*/
+    	public $CustomerSavings;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\QueryPromotionsParameters')){
+
+    class QueryPromotionsParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IncludeInactive;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $SKUs;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $QueryTemplates;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $ExpirationDateRange;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PromotionCode;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreatedDateRange;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\nameinfo
+    	*/
+    	public $CustomerName;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\PromotionDetail')){
+
+    class PromotionDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId_x0020_;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\promotion
+    	*/
+    	public $Promotion;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\QueryDistributionListParameters')){
+
+    class QueryDistributionListParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $DistributionListName;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\CampaignResponse')){
+
+    class CampaignResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofcampaigndetail
+    	*/
+    	public $Campaigns;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\PromotionResponse')){
+
+    class PromotionResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofmerchantdetail
+    	*/
+    	public $Merchants;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofpromotiondetail
+    	*/
+    	public $Promotions;
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Customermanagement\arrayofcustomersummary
+    	*/
+    	public $Customers;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\CustomerSavings')){
+
+    class CustomerSavings extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantName;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DiscountedAmount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\QueryCampaignParameters')){
+
+    class QueryCampaignParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $CampaignIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CreatedDateRange;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $SentDateRange;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $CampaignNames;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\RewardsProgram')){
+
+    class RewardsProgram extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $StartDate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $MinimumPurchaseAmount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $RequiredPurchaseCount;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePurchasesBasedOnAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RewardsProgramName;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $EndDate;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\FrequentBuyerInfo')){
+
+    class FrequentBuyerInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $FrequentBuyerSICs;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FrequentBuyerAmount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $FrequentBuyerPeriod;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\CampaignTestData')){
+
+    class CampaignTestData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TelephoneNumbers;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $EmailAddresses;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\CampaignDetail')){
+
+    class CampaignDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $DateSent;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CampaignName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $DateCreated;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CampaignReferenceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\RewardsProgramDetail')){
+
+    class RewardsProgramDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\rewardsprogram
+    	*/
+    	public $RewardsProgram;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\DistributionList')){
+
+    class DistributionList extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $DistributionListName;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $CustomerReferenceIds;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\DistributionListResponse')){
+
+    class DistributionListResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Promotions\arrayofdistributionlistdetail
+    	*/
+    	public $DistribuionLists;
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionDetailsResponse')){
+
+    class TransactionDetailsResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactiondetail
+    	*/
+    	public $TransactionDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\RecurringDetailsQueryParameters')){
+
+    class RecurringDetailsQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $MerchantProfileIds;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\FamilyDetail')){
+
+    class FamilyDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerId;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CapturedAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $LastAuthorizedAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CurrencyCode;
+
+    	/**
+    	* @var TransactionState
+    	*/
+    	public $FamilyState;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $CaptureDateTime;
+
+    	/**
+    	* @var guid
+    	*/
+    	public $FamilyId;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NetAmount;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TransactionIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionmetadata
+    	*/
+    	public $TransactionMetaData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\StoredValueData')){
+
+    class StoredValueData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardRestrictionValue;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NewBalance;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $PreviousBalance;
+
+    	/**
+    	* @var CVResult
+    	*/
+    	public $CVResult;
+
+    	/**
+    	* @var CardStatus
+    	*/
+    	public $CardStatus;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\CWSTransaction')){
+
+    class CWSTransaction extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\response
+    	*/
+    	public $Response;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionmetadata
+    	*/
+    	public $MetaData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\applicationdata
+    	*/
+    	public $ApplicationData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofilemerchantdata
+    	*/
+    	public $MerchantProfileMerchantData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionsParameters')){
+
+    class QueryTransactionsParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var BooleanParameter
+    	*/
+    	public $IsAcknowledged;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ServiceIds;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ApprovalCodes;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $BatchIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofreconciliationstate
+    	*/
+    	public $ReconciliationStates;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $OrderNumbers;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionclasstypepair
+    	*/
+    	public $TransactionClassTypePairs;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapturestate
+    	*/
+    	public $CaptureStates;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $TransactionDateRange;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofdecimal
+    	*/
+    	public $Amounts;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $MerchantProfileIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoftypecardtype
+    	*/
+    	public $CardTypes;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TransactionIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayoftransactionstate
+    	*/
+    	public $TransactionStates;
+
+    	/**
+    	* @var QueryType
+    	*/
+    	public $QueryType;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ServiceKeys;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CaptureDateRange;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\CompleteTransaction')){
+
+    class CompleteTransaction extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SerializedTransaction;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\cwstransaction
+    	*/
+    	public $CWSTransaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\QueryBatchParameters')){
+
+    class QueryBatchParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $BatchIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $BatchDateRange;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $MerchantProfileIds;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TransactionIds;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ServiceKeys;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\BatchDetailsResponse')){
+
+    class BatchDetailsResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofbatchdetaildata
+    	*/
+    	public $TransactionDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\ElectronicCheckData')){
+
+    class ElectronicCheckData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedAccountNumber;
+
+    	/**
+    	* @var TransactionType
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CheckNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\RecurringDetailsDetail')){
+
+    class RecurringDetailsDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginalTransactionId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastPaymentProcessed;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\BatchDetailData')){
+
+    class BatchDetailData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var CaptureState
+    	*/
+    	public $CaptureState;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Description;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $BatchCaptureDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
+    	*/
+    	public $SummaryData;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TransactionIds;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionInformation')){
+
+    class TransactionInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var BooleanParameter
+    	*/
+    	public $IsAcknowledged;
+
+    	/**
+    	* @var TransactionState
+    	*/
+    	public $TransactionState;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\storedvaluedata
+    	*/
+    	public $StoredValueData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\electroniccheckdata
+    	*/
+    	public $ElectronicCheckData;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CapturedAmount;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ProcessedAs3DSecure;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CurrencyCode;
+
+    	/**
+    	* @var CaptureState
+    	*/
+    	public $CaptureState;
+
+    	/**
+    	* @var ReconciliationState
+    	*/
+    	public $ReconciliationState;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePartialCaptureFinal;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionStatusCode;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $CaptureDateTime;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePartialCapture;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TipAmount;
+
+    	/**
+    	* @var Status
+    	*/
+    	public $Status;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionclasstypepair
+    	*/
+    	public $TransactionClassTypePair;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginatorTransactionId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionTimestamp;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Reference;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginalAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\bankcarddata
+    	*/
+    	public $BankcardData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $ReconciliationBalance;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionStatusMessage;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceTransactionId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CaptureStatusMessage;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\FamilyInformation')){
+
+    class FamilyInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TransactionState
+    	*/
+    	public $FamilyState;
+
+    	/**
+    	* @var int
+    	*/
+    	public $FamilySequenceNumber;
+
+    	/**
+    	* @var guid
+    	*/
+    	public $FamilyId;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NetAmount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $FamilySequenceCount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\SummaryDetail')){
+
+    class SummaryDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactioninformation
+    	*/
+    	public $TransactionInformation;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\familyinformation
+    	*/
+    	public $FamilyInformation;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\RecurringDetailsResponse')){
+
+    class RecurringDetailsResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofrecurringdetailsdetail
+    	*/
+    	public $RecurringDetails;
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionMetaData')){
+
+    class TransactionMetaData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactionclasstypepair
+    	*/
+    	public $TransactionClassTypePair;
+
+    	/**
+    	* @var TransactionState
+    	*/
+    	public $TransactionState;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SequenceNumber;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $TransactionDateTime;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var string
+    	*/
+    	public $WorkflowId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionDetail')){
+
+    class TransactionDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\transactioninformation
+    	*/
+    	public $TransactionInformation;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\familyinformation
+    	*/
+    	public $FamilyInformation;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionnotification
+    	*/
+    	public $TransactionNotifications;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\completetransaction
+    	*/
+    	public $CompleteTransaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionClassTypePair')){
+
+    class TransactionClassTypePair extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionClass;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionNotification')){
+
+    class TransactionNotification extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $NotificationDate;
+
+    	/**
+    	* @var ReconciliationState
+    	*/
+    	public $ReconciliationState;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $ReconciliationBalance;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SerializedNotification;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\QueryRejectedParameters')){
+
+    class QueryRejectedParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\addendum
+    	*/
+    	public $Addendum;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionFamiliesResponse')){
+
+    class TransactionFamiliesResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoffamilydetail
+    	*/
+    	public $FamilyDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\RejectedSummary')){
+
+    class RejectedSummary extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $DebitTransactionTotal;
+
+    	/**
+    	* @var int
+    	*/
+    	public $CreditTransactionCount;
+
+    	/**
+    	* @var int
+    	*/
+    	public $DebitTransactionCount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CreditTransactionTotal;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Constants')){
+
+    class Constants extends \Evosnap\Cws\Model\BaseObject {
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionFamiliesParameters')){
+
+    class QueryTransactionFamiliesParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var BooleanParameter
+    	*/
+    	public $IsAcknowledged;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ServiceIds;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ApprovalCodes;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $BatchIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactionclasstypepair
+    	*/
+    	public $TransactionClassTypePairs;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapturestate
+    	*/
+    	public $CaptureStates;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $TransactionDateRange;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofdecimal
+    	*/
+    	public $Amounts;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $MerchantProfileIds;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoftypecardtype
+    	*/
+    	public $CardTypes;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayoftransactionstate
+    	*/
+    	public $TransactionStates;
+
+    	/**
+    	* @var QueryType
+    	*/
+    	public $QueryType;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $ServiceKeys;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $CaptureDateRange;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\BankcardData')){
+
+    class BankcardData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\threedsecureinformation
+    	*/
+    	public $ThreeDSecureInformation;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsresult
+    	*/
+    	public $AVSResult;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var CVResult
+    	*/
+    	public $CVResult;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\TransactionsSummaryResponse')){
+
+    class TransactionsSummaryResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $PageNumber;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalPages;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofsummarydetail
+    	*/
+    	public $TransactionDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\QueryResponse')){
+
+    class QueryResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $StatusCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StatusMessage;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\EncryptionMerchantData')){
+
+    class EncryptionMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AgentBank;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SecondaryTerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\EMVTerminalData')){
+
+    class EMVTerminalData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TerminalOutputCapability
+    	*/
+    	public $TerminalOutputCapability;
+
+    	/**
+    	* @var TerminalOperator
+    	*/
+    	public $TerminalOperator;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CardRetentionCapability;
+
+    	/**
+    	* @var PINMaxCharacters
+    	*/
+    	public $PINMaxCharacters;
+
+    	/**
+    	* @var CardholderAuthenticationCapability
+    	*/
+    	public $CardholderAuthenticationCapability;
+
+    	/**
+    	* @var CardDataOutputCapability
+    	*/
+    	public $CardDataOutputCapability;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfiles')){
+
+    class MerchantProfiles extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofmerchantprofile
+    	*/
+    	public $MerchantProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\WorkflowService')){
+
+    class WorkflowService extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceType;
+
+    	/**
+    	* @var int
+    	*/
+    	public $Ordinal;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Operations')){
+
+    class Operations extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CaptureAll;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $QueryRejected;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ManageAccountById;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Undo;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $QueryAccount;
+
+    	/**
+    	* @var CloseBatch
+    	*/
+    	public $CloseBatch;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Capture;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Authorize;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Adjust;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $AuthAndCapture;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ManageAccount;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Disburse;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CaptureSelective;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ReturnUnlinked;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $RequestKey;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Verify;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ReturnById;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\AUEnrollment')){
+
+    class AUEnrollment extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AUCustomerId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AUTerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AUMerchantId;
+
+    	/**
+    	* @var TypeAUCardType
+    	*/
+    	public $AUCardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AUServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\ElectronicCheckingService')){
+
+    class ElectronicCheckingService extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
+    	*/
+    	public $Operations;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
+    	*/
+    	public $Tenders;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\BankcardMerchantData')){
+
+    class BankcardMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AgentBank;
+
+    	/**
+    	* @var TypeThreeDSWorkflow
+    	*/
+    	public $ThreeDSWorkflow;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ABANumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BusinessRegion;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsAuSubmitter;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TimeZoneDifferential;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StoreId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AgentChain;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SharingGroup;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SecondaryTerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BusinessGroup;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReimbursementAttribute;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SettlementAgent;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Aggregator;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PrintCustomerServicePhone;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SIC;
+
+    	/**
+    	* @var string
+    	*/
+    	public $QualificationCodes;
+
+    	/**
+    	* @var IndustryType
+    	*/
+    	public $IndustryType;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofauenrollment
+    	*/
+    	public $AUEnrollments;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcquirerBIN;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofcardbrandidentifiers_3dsecure
+    	*/
+    	public $CardBrandIdentifiers_3DSecure;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ClientNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Location;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\BankcardServiceAVSData')){
+
+    class BankcardServiceAVSData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CardholderName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Phone;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Street;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Country;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $City;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Workflow')){
+
+    class Workflow extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofworkflowservice
+    	*/
+    	public $WorkflowServices;
+
+    	/**
+    	* @var string
+    	*/
+    	public $WorkflowId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Name;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\HostedPayments')){
+
+    class HostedPayments extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Code;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Key;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\BankcardTransactionDataDefaults')){
+
+    class BankcardTransactionDataDefaults extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeISOCurrencyCodeA3
+    	*/
+    	public $CurrencyCode;
+
+    	/**
+    	* @var CustomerPresent
+    	*/
+    	public $CustomerPresent;
+
+    	/**
+    	* @var RequestAdvice
+    	*/
+    	public $RequestAdvice;
+
+    	/**
+    	* @var EntryMode
+    	*/
+    	public $EntryMode;
+
+    	/**
+    	* @var RequestACI
+    	*/
+    	public $RequestACI;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\SingleCardResponse')){
+
+    class SingleCardResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\methoddata
+    	*/
+    	public $MethodData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\singlecardrange
+    	*/
+    	public $CardRange;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfileTransactionData')){
+
+    class MerchantProfileTransactionData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardtransactiondatadefaults
+    	*/
+    	public $BankcardTransactionDataDefaults;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\StoredValueService')){
+
+    class StoredValueService extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $SecureMSRAllowed;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
+    	*/
+    	public $Operations;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
+    	*/
+    	public $Tenders;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\ServiceInformation')){
+
+    class ServiceInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofencryptionservice
+    	*/
+    	public $EncryptionServices;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofbankcardservice
+    	*/
+    	public $BankcardServices;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofworkflow
+    	*/
+    	public $Workflows;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofelectroniccheckingservice
+    	*/
+    	public $ElectronicCheckingServices;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofstoredvalueservice
+    	*/
+    	public $StoredValueServices;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\EmailTemplate')){
+
+    class EmailTemplate extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Greeting;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TwitterLink;
+
+    	/**
+    	* @var TypeISOLanguageCodeA3
+    	*/
+    	public $Language;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PrimaryColor;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReturnPolicy;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SecondaryColor;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FacebookLink;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Closing;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FromEmail;
+
+    	/**
+    	* @var TypeEmailFont
+    	*/
+    	public $Font;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\CardBrandIdentifiers_3DSecure')){
+
+    class CardBrandIdentifiers_3DSecure extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $NotificationUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantPassword;
+
+    	/**
+    	* @var CardBrand3DSecureProgram
+    	*/
+    	public $CardBrand3DSecureProgram;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantBankId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantCategoryCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MethodNotificationUrl;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\BankcardServices')){
+
+    class BankcardServices extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofbankcardservice
+    	*/
+    	public $BankcardService;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofelectroniccheckingservice
+    	*/
+    	public $ElectronicCheckingService;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\ApplicationData')){
+
+    class ApplicationData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var EncryptionType
+    	*/
+    	public $EncryptionType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $VendorId;
+
+    	/**
+    	* @var PINCapability
+    	*/
+    	public $PINCapability;
+
+    	/**
+    	* @var ApplicationLocation
+    	*/
+    	public $ApplicationLocation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DeviceSerialNumber;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $SoftwareVersionDate;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\emvterminaldata
+    	*/
+    	public $EMVTerminalData;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ApplicationAttended;
+
+    	/**
+    	* @var ReadCapability
+    	*/
+    	public $ReadCapability;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SoftwareVersion;
+
+    	/**
+    	* @var HardwareType
+    	*/
+    	public $HardwareType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SerialNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DeveloperId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PTLSSocketId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfileMerchantData')){
+
+    class MerchantProfileMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\addressinfo
+    	*/
+    	public $Address;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\encryptionmerchantdata
+    	*/
+    	public $EncryptionMerchantData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardmerchantdata
+    	*/
+    	public $BankcardMerchantData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TaxId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Name;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerServiceInternet;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\electroniccheckingmerchantdata
+    	*/
+    	public $ElectronicCheckingMerchantData;
+
+    	/**
+    	* @var TypeISOLanguageCodeA3
+    	*/
+    	public $Language;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Phone;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\storedvaluemerchantdata
+    	*/
+    	public $StoredValueMerchantData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerServicePhone;
+
+    	/**
+    	* @var string
+    	*/
+    	public $VersionControlValue;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\ElectronicCheckingMerchantData')){
+
+    class ElectronicCheckingMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginatorId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SiteId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProductId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\StoredValueMerchantData')){
+
+    class StoredValueMerchantData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $StoreId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AgentChain;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SIC;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ClientNumber;
+
+    	/**
+    	* @var IndustryType
+    	*/
+    	public $IndustryType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Tenders')){
+
+    class Tenders extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TrackDataSupportType
+    	*/
+    	public $TrackDataSupport;
+
+    	/**
+    	* @var CreditAuthorizeSupportType
+    	*/
+    	public $CreditAuthorizeSupport;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PINDebitUndoTenderDataRequired;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CredentialsRequired;
+
+    	/**
+    	* @var CreditReversalSupportType
+    	*/
+    	public $CreditReversalSupportType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Credit;
+
+    	/**
+    	* @var CreditReturnSupportType
+    	*/
+    	public $CreditReturnSupportType;
+
+    	/**
+    	* @var BatchAssignmentSupport
+    	*/
+    	public $BatchAssignmentSupport;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PINlessDebit;
+
+    	/**
+    	* @var PINDebitReturnSupportType
+    	*/
+    	public $PINDebitReturnSupportType;
+
+    	/**
+    	* @var PinDebitUndoSupportType
+    	*/
+    	public $PinDebitUndoSupport;
+
+    	/**
+    	* @var QueryRejectedSupportType
+    	*/
+    	public $QueryRejectedSupport;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PINDebit;
+
+    	/**
+    	* @var PartialApprovalSupportType
+    	*/
+    	public $PartialApprovalSupportType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfile')){
+
+    class MerchantProfile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayoftyperestrictedoperation
+    	*/
+    	public $RestrictedOperations;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\servicecredentials
+    	*/
+    	public $ServiceCredentials;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PurchasedTokenization;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayoftyperulecategory
+    	*/
+    	public $RuleCategories;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\hostedpayments
+    	*/
+    	public $HostedPayments;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $MerchantCreatedDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofilemerchantdata
+    	*/
+    	public $MerchantData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Region;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastUpdated;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofiletransactiondata
+    	*/
+    	public $TransactionData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\ServiceCredentials')){
+
+    class ServiceCredentials extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Username;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Password;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\SubmitEmailTemplate')){
+
+    class SubmitEmailTemplate extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\emailtemplate
+    	*/
+    	public $EmailTemplate;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\SingleCardRange')){
+
+    class SingleCardRange extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcsEndProtocolVersion;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ThreeDsMethodUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcsStartProtocolVersion;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\AddressInfo')){
+
+    class AddressInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street2;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Street1;
+
+    	/**
+    	* @var string
+    	*/
+    	public $StateProvince;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PostalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $City;
+
+    	/**
+    	* @var TypeISOCountryCodeA3
+    	*/
+    	public $CountryCode;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\BankcardService')){
+
+    class BankcardService extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $AlternativeMerchantData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EncryptionKey;
+
+    	/**
+    	* @var long
+    	*/
+    	public $MaximumBatchItems;
+
+    	/**
+    	* @var PurchaseCardLevel
+    	*/
+    	public $PurchaseCardLevel;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\bankcardserviceavsdata
+    	*/
+    	public $AVSData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $CutoffTime;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePartialCapture;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ResubmitCorrection;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ManagedBilling;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $AutoBatch;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
+    	*/
+    	public $Operations;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\tenders
+    	*/
+    	public $Tenders;
+
+    	/**
+    	* @var long
+    	*/
+    	public $MaximumLineItems;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\CardRangeResponse')){
+
+    class CardRangeResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SerialNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofcardrange
+    	*/
+    	public $CardRanges;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\EncryptionService')){
+
+    class EncryptionService extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceName;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\operations
+    	*/
+    	public $Operations;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\MethodData')){
+
+    class MethodData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ThreeDsMethodData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcsUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServerTransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\AUEnrolledMerchant')){
+
+    class AUEnrolledMerchant extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\arrayofauenrollment
+    	*/
+    	public $AUEnrollments;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\CardRange')){
+
+    class CardRange extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $RangeEnd;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcsEndProtocolVersion;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ThreeDsMethodUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RangeAction;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AcsStartProtocolVersion;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RangeStart;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\UserMetaData')){
+
+    class UserMetaData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastPasswordResetDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $AssignedRoles;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FirstName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsSystemLocked;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $UserMustChangePassword;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastLoginDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $UserCredentialGuid;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $SystemLockedTimeStamp;
+
+    	/**
+    	* @var int
+    	*/
+    	public $LockCount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Username;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastName;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsAdminLocked;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Password;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ReturnInformation')){
+
+    class ReturnInformation extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ReturnDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReturnCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReturnReason;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\CheckData')){
+
+    class CheckData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var CheckCountryCode
+    	*/
+    	public $CheckCountryCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RoutingNumber;
+
+    	/**
+    	* @var OwnerType
+    	*/
+    	public $OwnerType;
+
+    	/**
+    	* @var UseType
+    	*/
+    	public $UseType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CheckNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\ConsumerIdentification')){
+
+    class ConsumerIdentification extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $IdData;
+
+    	/**
+    	* @var IdEntryMode
+    	*/
+    	public $IdEntryMode;
+
+    	/**
+    	* @var IdType
+    	*/
+    	public $IdType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\CardSecurityData')){
+
+    class CardSecurityData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var CVDataProvided
+    	*/
+    	public $CVDataProvided;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CVData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\CardData')){
+
+    class CardData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Track2Data;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Track1Data;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\VirtualCardData')){
+
+    class VirtualCardData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $AccountNumberLength;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BIN;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardInterchangeData')){
+
+    class BankcardInterchangeData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var RequestCommercialCard
+    	*/
+    	public $RequestCommercialCard;
+
+    	/**
+    	* @var ExistingDebt
+    	*/
+    	public $ExistingDebt;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginalTransactionId;
+
+    	/**
+    	* @var int
+    	*/
+    	public $CurrentInstallmentNumber;
+
+    	/**
+    	* @var BillPayment
+    	*/
+    	public $BillPayment;
+
+    	/**
+    	* @var RequestAdvice
+    	*/
+    	public $RequestAdvice;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalNumberOfInstallments;
+
+    	/**
+    	* @var RequestACI
+    	*/
+    	public $RequestACI;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\installmentdetails
+    	*/
+    	public $InstallmentDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\SignOn')){
+
+    class SignOn extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\merchantinfo
+    	*/
+    	public $MerchantInfo;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FederatedIdentityToken;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Domain;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\SubmitLogo')){
+
+    class SubmitLogo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var TypeFileType
+    	*/
+    	public $FileType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Logo;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\TransactionRequest')){
+
+    class TransactionRequest extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transactiontenderdata
+    	*/
+    	public $TransactionTenderData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction')){
+
+    class ChangeTransaction extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\FederatedSignOn')){
+
+    class FederatedSignOn extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ExternalDomainToken;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions')){
+
+    class CaptureTransactions extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\DelegatedSignOn')){
+
+    class DelegatedSignOn extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $OnBehalfOfServiceKey;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ReceiptRequest')){
+
+    class ReceiptRequest extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\RecurringDetailsRequest')){
+
+    class RecurringDetailsRequest extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OriginalTransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile')){
+
+    class SubmitTransactionWithProfile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\Authentication')){
+
+    class Authentication extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AuthnRequest;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Username;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Password;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction')){
+
+    class SubmitTransaction extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\MerchantInfo')){
+
+    class MerchantInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $FriendlyName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofkeyvalueofstringstring
+    	*/
+    	public $MerchantMetaData;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\MerchantQueryParameters')){
+
+    class MerchantQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SalesChannel;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Region;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\UserInfo')){
+
+    class UserInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Role;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Username;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FirstName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Region;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastName;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\UserQueryParameters')){
+
+    class UserQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SalesChannel;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Merchant;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Username;
+
+    	/**
+    	* @var string
+    	*/
+    	public $FirstName;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Region;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $Roles;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastName;
+
+    	/**
+    	* @var LockState
+    	*/
+    	public $LockState;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\PaymentApplicationQueryParameters')){
+
+    class PaymentApplicationQueryParameters extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SalesChannel;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Region;
+
+    }
+}
+
+namespace Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts;
+
+if(!class_exists('\Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\SecurityAnswer')){
+
+    class SecurityAnswer extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $Answer;
+
+    	/**
+    	* @var string
+    	*/
+    	public $QuestionCode;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSValidationErrorFault')){
+
+    class CWSValidationErrorFault extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleMessage;
+
+    	/**
+    	* @var CWSValidationErrorFault_EErrorType
+    	*/
+    	public $ErrorType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleLocationKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault')){
+
+    class CWSBaseFault extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $ErrorID;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProblemType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Operation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $HelpURL;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault')){
+
+    class TMSBaseFault extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var int
+    	*/
+    	public $ErrorID;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProblemType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Operation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $HelpURL;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Fault;
 
-class CMSValidationResultFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Fault\CMSValidationError')){
 
-	public function __construct($type = 'CMSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Fault') {
-	    parent::__construct($type);
-	}
+    class CMSValidationError extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Fault\arrayofcmsvalidationerror
-	*/
-	public $Errors;
+    	/**
+    	* @var string
+    	*/
+    	public $RuleMessage;
 
+    	/**
+    	* @var CMSValidationError_EErrorType
+    	*/
+    	public $ErrorType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleLocationKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionId;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault')){
 
-class TMSUnknownServiceKeyFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+    class CMSBaseFault extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'TMSUnknownServiceKeyFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var int
+    	*/
+    	public $ErrorID;
 
+    	/**
+    	* @var string
+    	*/
+    	public $ProblemType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Operation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $HelpURL;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TransactionID;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\CardTypeSummary')){
 
-class TMSUnavailableFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+    class CardTypeSummary extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'TMSUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
 
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AUUploadRequest')){
 
-class TMSTransactionFailedFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+    class AUUploadRequest extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'TMSTransactionFailedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var \Datacontract\I2004\I07\System\Io\stream
+    	*/
+    	public $Contents;
 
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SessionToken;
+
+    	/**
+    	* @var TypeFileFormat
+    	*/
+    	public $FileFormat;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AUServiceId;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
 
-namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\MerchantSummary')){
 
-class TMSOperationNotSupportedFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+    class MerchantSummary extends \Evosnap\Cws\Model\BaseObject {
 
-	public function __construct($type = 'TMSOperationNotSupportedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
-	    parent::__construct($type);
-	}
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
 
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AccountDataResponseFile')){
+
+    class AccountDataResponseFile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\summary
+    	*/
+    	public $Summary;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofupdatedaccountdata
+    	*/
+    	public $UpdatedData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\DownloadResponse')){
+
+    class DownloadResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Datacontract\I2004\I07\System\Io\stream
+    	*/
+    	public $Contents;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ExpectedProcessingDate;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\UpdatedAccountData')){
+
+    class UpdatedAccountData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $NewAccountNumber;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardBrandResponseFile;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OldAccountExpiration;
+
+    	/**
+    	* @var string
+    	*/
+    	public $NewAccountExpiration;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantReferenceId;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PreviouslySentFlag;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorMessage;
+
+    	/**
+    	* @var TypeReasonCode
+    	*/
+    	public $ReasonCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OldAccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AUDownloadRequest')){
+
+    class AUDownloadRequest extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $RequestId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SessionToken;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AccountDataRequestFile')){
+
+    class AccountDataRequestFile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\summary
+    	*/
+    	public $Summary;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofaccountdata
+    	*/
+    	public $Data;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\UpdatedTokenData')){
+
+    class UpdatedTokenData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardBrandResponseFile;
+
+    	/**
+    	* @var string
+    	*/
+    	public $NewMaskedAccountNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OldMaskedAccountNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OldAccountExpiration;
+
+    	/**
+    	* @var string
+    	*/
+    	public $NewAccountExpiration;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantReferenceId;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $PreviouslySentFlag;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorMessage;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenId;
+
+    	/**
+    	* @var TypeReasonCode
+    	*/
+    	public $ReasonCode;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\UploadResponse')){
+
+    class UploadResponse extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $RequestId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ExpectedProcessingDate;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\TokenDataResponseFile')){
+
+    class TokenDataResponseFile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\summary
+    	*/
+    	public $Summary;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofupdatedtokendata
+    	*/
+    	public $UpdatedData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AccountData')){
+
+    class AccountData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountExpiration;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AUBatch')){
+
+    class AUBatch extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $RequestId;
+
+    	/**
+    	* @var TypeBatchState
+    	*/
+    	public $BatchState;
+
+    	/**
+    	* @var TypeBatchType
+    	*/
+    	public $BatchType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\Summary')){
+
+    class Summary extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofcardtypesummary
+    	*/
+    	public $CardTypeSummaries;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayofmerchantsummary
+    	*/
+    	public $MerchantSummaries;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\TokenData')){
+
+    class TokenData extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TokenId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\AUSubmittedRequest')){
+
+    class AUSubmittedRequest extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var TypeRequestState
+    	*/
+    	public $RequestState;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RequestId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerId;
+
+    	/**
+    	* @var TypeFileFormat
+    	*/
+    	public $FileFormat;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TotalItems;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Servicekey;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ExpectedProcessingDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\TokenDataRequestFile')){
+
+    class TokenDataRequestFile extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\summary
+    	*/
+    	public $Summary;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Accountmanagement\arrayoftokendata
+    	*/
+    	public $Data;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Fault;
 
-class TMSValidationResultFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Fault\TMSValidationError')){
 
-	public function __construct($type = 'TMSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Fault') {
-	    parent::__construct($type);
-	}
+    class TMSValidationError extends \Evosnap\Cws\Model\BaseObject {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\Fault\arrayoftmsvalidationerror
-	*/
-	public $Errors;
+    	/**
+    	* @var string
+    	*/
+    	public $RuleMessage;
 
+    	/**
+    	* @var TMSValidationError_EErrorType
+    	*/
+    	public $ErrorType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RuleLocationKey;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsSummary')){
+
+    class QueryTransactionsSummary extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IncludeRelated;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
+    	*/
+    	public $QueryTransactionsParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryRecurringDetails')){
+
+    class QueryRecurringDetails extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\recurringdetailsqueryparameters
+    	*/
+    	public $RecurringDetailsQueryParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryBatch')){
+
+    class QueryBatch extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querybatchparameters
+    	*/
+    	public $QueryBatchParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsDetail')){
+
+    class QueryTransactionsDetail extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var TransactionDetailFormat
+    	*/
+    	public $TransactionDetailFormat;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IncludeRelated;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
+    	*/
+    	public $QueryTransactionsParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Rest\QueryTransactionsFamilies')){
+
+    class QueryTransactionsFamilies extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\pagingparameters
+    	*/
+    	public $PagingParameters;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\querytransactionsparameters
+    	*/
+    	public $QueryTransactionsParameters;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Rest\MerchantProfileId')){
+
+    class MerchantProfileId extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $id;
+
+    	/**
+    	* @var string
+    	*/
+    	public $href;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Rest\UserInfo')){
+
+    class UserInfo extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $SecurityQuestionToken;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Email;
+
+    	/**
+    	* @var string
+    	*/
+    	public $UserName;
+
+    	/**
+    	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\arrayofsecurityanswer
+    	*/
+    	public $SecurityAnswers;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Password;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SecurityAnswer;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Rest\ApplicationProfileId')){
+
+    class ApplicationProfileId extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var string
+    	*/
+    	public $id;
+
+    	/**
+    	* @var string
+    	*/
+    	public $href;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Rest\NewUser')){
+
+    class NewUser extends \Evosnap\Cws\Model\BaseObject {
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmailPassword;
+
+    	/**
+    	* @var \Datacontract\I2004\I07\Evosnap\General\Security\Sts\Trust\Ext\Datacontracts\userinfo
+    	*/
+    	public $UserInfo;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
 
-class Resubmit3DSecure extends \Evosnap\Cws\V2\I0\Transactions\Resubmit {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ResubmitOrderUpdate')){
 
-	public function __construct($type = 'Resubmit3DSecure, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    class ResubmitOrderUpdate extends \Evosnap\Cws\V2\I0\Transactions\Resubmit {
 
-	/**
-	* @var string
-	*/
-	public $PaymentAuthorizationResponse;
+    	public function __construct($type = 'ResubmitOrderUpdate, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
+    	*/
+    	public $Level2Data;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
+    	*/
+    	public $LineItemDetails;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProductIndicator;
+
+    }
 }
 
 namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
 
-class ResubmitOrderUpdate extends \Evosnap\Cws\V2\I0\Transactions\Resubmit {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\ResubmitStrongAuthentication')){
 
-	public function __construct($type = 'ResubmitOrderUpdate, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    class ResubmitStrongAuthentication extends \Evosnap\Cws\V2\I0\Transactions\Resubmit {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
-	*/
-	public $Level2Data;
-	
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
-	*/
-	public $LineItemDetails;
-	
-	/**
-	* @var string
-	*/
-	public $ProductIndicator;
+    	public function __construct($type = 'ResubmitStrongAuthentication, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
 
+    	/**
+    	* @var string
+    	*/
+    	public $PIN;
+
+    	/**
+    	* @var string
+    	*/
+    	public $KeySerialNumber;
+
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
 
-class BankcardUndo extends \Evosnap\Cws\V2\I0\Transactions\Undo {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Resubmit3DSecure')){
 
-	public function __construct($type = 'BankcardUndo, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
-	    parent::__construct($type);
-	}
+    class Resubmit3DSecure extends \Evosnap\Cws\V2\I0\Transactions\Resubmit {
 
-	/**
-	* @var Reason
-	*/
-	public $UndoReason;
+    	public function __construct($type = 'Resubmit3DSecure, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
-	*/
-	public $TenderData;
+    	/**
+    	* @var boolean
+    	*/
+    	public $ProcessAsNon3DSecure;
 
-	/**
-	* @var boolean
-	*/
-	public $ForceVoid;
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAuthorizationResponse;
 
-	/**
-	* @var TransactionCode
-	*/
-	public $TransactionCode;
+    	/**
+    	* @var string
+    	*/
+    	public $ChallengeResponse;
 
-	/**
-	* @var PINDebitUndoReason
-	*/
-	public $PINDebitReason;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransaction')){
+
+    class BankcardTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
+
+    	public function __construct($type = 'BankcardTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardapplicationconfigurationdata
+    	*/
+    	public $ApplicationConfigurationData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtransactiondata
+    	*/
+    	public $TransactionData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EncryptionTransaction')){
+
+    class EncryptionTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
+
+    	public function __construct($type = 'EncryptionTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\encryptiontenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\encryptiontransactiondata
+    	*/
+    	public $TransactionData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingTransaction')){
+
+    class ElectronicCheckingTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
+
+    	public function __construct($type = 'ElectronicCheckingTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\electroniccheckingtenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\electroniccheckingtransactiondata
+    	*/
+    	public $TransactionData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTransaction')){
+
+    class StoredValueTransaction extends \Evosnap\Cws\V2\I0\Transactions\Transaction {
+
+    	public function __construct($type = 'StoredValueTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\storedvaluetenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\storedvaluetransactiondata
+    	*/
+    	public $TransactionData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionResponse')){
+
+    class BankcardTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'BankcardTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\threedsecureinformation
+    	*/
+    	public $ThreeDSecureInformation;
+
+    	/**
+    	* @var PrepaidCard
+    	*/
+    	public $PrepaidCard;
+
+    	/**
+    	* @var CVResult
+    	*/
+    	public $CVResult;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AuthorizationServerUrl;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BankResponseCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ForcePostCode;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsPartialApproval;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorType;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $BatchAmount;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ProcessedAs3D;
+
+    	/**
+    	* @var TypeLevel3Added
+    	*/
+    	public $Level3Added;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FeeAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CashBackAmount;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\emvdataresponse
+    	*/
+    	public $EMVDataResponse;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastPANDigits;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MessageAuthenticationCode;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofinitialencryptionkeys
+    	*/
+    	public $InitialEncryptionKeys;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\avsresult
+    	*/
+    	public $AVSResult;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountDataToken;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tokeninformation
+    	*/
+    	public $TokenInformation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAuthorizationRequest;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\ebtavailablebalance
+    	*/
+    	public $EBTAvailableBalance;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    	/**
+    	* @var IndustryType
+    	*/
+    	public $IndustryType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardLevel;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DowngradeCode;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $SettlementDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RetrievalReferenceNumber;
+
+    	/**
+    	* @var Resubmit
+    	*/
+    	public $Resubmit;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SystemTraceAuditNumber;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FinalBalance;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MACTransmissionNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCaptureResponse')){
+
+    class BankcardCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'BankcardCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CashBackAmount;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\emvdataresponse
+    	*/
+    	public $EMVDataResponse;
+
+    	/**
+    	* @var PrepaidCard
+    	*/
+    	public $PrepaidCard;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountDataToken;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    	/**
+    	* @var IndustryType
+    	*/
+    	public $IndustryType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LastPanDigits;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BankResponseCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\transactionsummarydata
+    	*/
+    	public $TransactionSummaryData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ErrorType;
+
+    	/**
+    	* @var TypeCardType
+    	*/
+    	public $CardType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $RetrievalReferenceNumber;
+
+    	/**
+    	* @var Resubmit
+    	*/
+    	public $Resubmit;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MaskedPAN;
+
+    	/**
+    	* @var TypeLevel3Added
+    	*/
+    	public $Level3Added;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ProcessedAs3D;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EncryptionResponse')){
+
+    class EncryptionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'EncryptionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofcomponentkeys
+    	*/
+    	public $ComponentKeys;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MessageAuthenticationCode;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Encryption\arrayofinitialencryptionkeys
+    	*/
+    	public $InitialEncryptionKeys;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingCaptureResponse')){
+
+    class ElectronicCheckingCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'ElectronicCheckingCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
+    	*/
+    	public $SummaryData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingTransactionResponse')){
+
+    class ElectronicCheckingTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'ElectronicCheckingTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $ModifiedRoutingNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\returninformation
+    	*/
+    	public $ReturnInformation;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ACHCapable;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $SubmitDate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountDataToken;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ModifiedAccountNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueCaptureResponse')){
+
+    class StoredValueCaptureResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'StoredValueCaptureResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\summarydata
+    	*/
+    	public $SummaryData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTransactionResponse')){
+
+    class StoredValueTransactionResponse extends \Evosnap\Cws\V2\I0\Transactions\Response {
+
+    	public function __construct($type = 'StoredValueTransactionResponse, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CashBackAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ExchangeRate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var CVResult
+    	*/
+    	public $CVResult;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PaymentAccountDataToken;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $LockAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $DetailedErrorMessage;
+
+    	/**
+    	* @var CardStatus
+    	*/
+    	public $CardStatus;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CVData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardRestrictionValue;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $NewBalance;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Expire;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsPartialApproval;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $PreviousBalance;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FeeAmount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCapture')){
+
+    class BankcardCapture extends \Evosnap\Cws\V2\I0\Transactions\Capture {
+
+    	public function __construct($type = 'BankcardCapture, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var ChargeType
+    	*/
+    	public $ChargeType;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $ShipDate;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $TipAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProductIndicator;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueCapture')){
+
+    class StoredValueCapture extends \Evosnap\Cws\V2\I0\Transactions\Capture {
+
+    	public function __construct($type = 'StoredValueCapture, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardReturn')){
+
+    class BankcardReturn extends \Evosnap\Cws\V2\I0\Transactions\CwsReturn {
+
+    	public function __construct($type = 'BankcardReturn, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FeeAmount;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueReturn')){
+
+    class StoredValueReturn extends \Evosnap\Cws\V2\I0\Transactions\CwsReturn {
+
+    	public function __construct($type = 'StoredValueReturn, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardUndo')){
+
+    class BankcardUndo extends \Evosnap\Cws\V2\I0\Transactions\Undo {
+
+    	public function __construct($type = 'BankcardUndo, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var Reason
+    	*/
+    	public $UndoReason;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\bankcardtenderdata
+    	*/
+    	public $TenderData;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ForceVoid;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    	/**
+    	* @var PINDebitUndoReason
+    	*/
+    	public $PINDebitReason;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData')){
+
+    class BankcardTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
+
+    	public function __construct($type = 'BankcardTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\ecommercesecuritydata
+    	*/
+    	public $EcommerceSecurityData;
+
+    	/**
+    	* @var DeviceTypeIndicator
+    	*/
+    	public $DeviceTypeIndicator;
+
+    	/**
+    	* @var TypeCardholderId
+    	*/
+    	public $CardholderIdType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $VoucherNumber;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\cardsecuritydata
+    	*/
+    	public $CardSecurityData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\tokeninformation
+    	*/
+    	public $TokenInformation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $VoucherApprovalCode;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\carddata
+    	*/
+    	public $CardData;
+
+    	/**
+    	* @var TenderType
+    	*/
+    	public $TenderType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingTenderData')){
+
+    class ElectronicCheckingTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
+
+    	public function __construct($type = 'ElectronicCheckingTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Electronicchecking\checkdata
+    	*/
+    	public $CheckData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData')){
+
+    class StoredValueTenderData extends \Evosnap\Cws\V2\I0\Transactions\TransactionTenderData {
+
+    	public function __construct($type = 'StoredValueTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardholderId;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\cardsecuritydata
+    	*/
+    	public $CardSecurityData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\arrayofconsumeridentification
+    	*/
+    	public $ConsumerIdentifications;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\carddata
+    	*/
+    	public $CardData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionData')){
+
+    class BankcardTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+
+    	public function __construct($type = 'BankcardTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Is3DSecure;
+
+    	/**
+    	* @var GoodsType
+    	*/
+    	public $GoodsType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ContractNumber;
+
+    	/**
+    	* @var CustomerPresent
+    	*/
+    	public $CustomerPresent;
+
+    	/**
+    	* @var TypeEBTType
+    	*/
+    	public $EBTType;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\internettransactiondata
+    	*/
+    	public $InternetTransactionData;
+
+    	/**
+    	* @var EntryMode
+    	*/
+    	public $EntryMode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ProductIndicator;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsQuickPaymentService;
+
+    	/**
+    	* @var string
+    	*/
+    	public $BatchAssignment;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\threedsdata
+    	*/
+    	public $ThreeDSData;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsQuasiCash;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceNumber;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $TipAmount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EmployeeId;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $CardPresence;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\accountinfo
+    	*/
+    	public $AccountInfo;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $FeeAmount;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $CashBackAmount;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\alternativemerchantdata
+    	*/
+    	public $AlternativeMerchantData;
+
+    	/**
+    	* @var TypeThreeRIIndicator
+    	*/
+    	public $ThreeRIIndicator;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ScoreThreshold;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\threedsmerchantdata
+    	*/
+    	public $ThreeDSMerchantData;
+
+    	/**
+    	* @var TypeAmountTypeIndicator
+    	*/
+    	public $AmountTypeIndicator;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $SignatureCaptured;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\cardonfileinfo
+    	*/
+    	public $CardOnFileInfo;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsPartialShipment;
+
+    	/**
+    	* @var AccountType
+    	*/
+    	public $AccountType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApprovalCode;
+
+    	/**
+    	* @var TypeCardholderAuthenticationEntity
+    	*/
+    	public $CardholderAuthenticationEntity;
+
+    	/**
+    	* @var PartialApprovalSupportType
+    	*/
+    	public $PartialApprovalCapable;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SystemTraceAuditNumber;
+
+    	/**
+    	* @var string
+    	*/
+    	public $LaneId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Encryption;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Encryption\EncryptionTransactionData')){
+
+    class EncryptionTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+
+    	public function __construct($type = 'EncryptionTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Encryption') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingTransactionData')){
+
+    class ElectronicCheckingTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+
+    	public function __construct($type = 'ElectronicCheckingTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsRecurring;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PayeeId;
+
+    	/**
+    	* @var TransactionType
+    	*/
+    	public $TransactionType;
+
+    	/**
+    	* @var ServiceType
+    	*/
+    	public $ServiceType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PayeeEmail;
+
+    	/**
+    	* @var SECCode
+    	*/
+    	public $SECCode;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $EffectiveDate;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTransactionData')){
+
+    class StoredValueTransactionData extends \Evosnap\Cws\V2\I0\Transactions\TransactionData {
+
+    	public function __construct($type = 'StoredValueTransactionData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $CardRestrictionValue;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $Unload;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsCashOut;
+
+    	/**
+    	* @var PartialApprovalSupportType
+    	*/
+    	public $PartialApprovalCapable;
+
+    	/**
+    	* @var TransactionCode
+    	*/
+    	public $TransactionCode;
+
+    	/**
+    	* @var EntryMode
+    	*/
+    	public $EntryMode;
+
+    	/**
+    	* @var string
+    	*/
+    	public $TerminalId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $OrderNumber;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $TipAmount;
+
+    	/**
+    	* @var OperationType
+    	*/
+    	public $OperationType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $EmployeeId;
+
+    	/**
+    	* @var CardStatus
+    	*/
+    	public $CardStatus;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\InvoiceDetail')){
+
+    class InvoiceDetail extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Invoice {
+
+    	public function __construct($type = 'InvoiceDetail, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Subscriptions') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastUpdatedDate;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $CreatedDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $InvoiceReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TransactionAttempts;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $DateLastAttempted;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    	/**
+    	* @var InvoiceState
+    	*/
+    	public $InvoiceState;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SubscriptionReferenceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\SubscriptionDetail')){
+
+    class SubscriptionDetail extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Subscriptions\Subscription {
+
+    	public function __construct($type = 'SubscriptionDetail, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Subscriptions') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $LastUpdatedDate;
+
+    	/**
+    	* @var TypeScope
+    	*/
+    	public $Scope;
+
+    	/**
+    	* @var SubscriptionState
+    	*/
+    	public $SubscriptionState;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $NextProcessingDate;
+
+    	/**
+    	* @var int
+    	*/
+    	public $InvoiceCount;
+
+    	/**
+    	* @var dateTime
+    	*/
+    	public $CreatedDate;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceKey;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ApplicationProfileId;
+
+    	/**
+    	* @var int
+    	*/
+    	public $TrialInvoiceCount;
+
+    	/**
+    	* @var string
+    	*/
+    	public $SubscriptionReferenceId;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\PaymentAttribute')){
+
+    class PaymentAttribute extends \Datacontract\I2004\I07\System\Attribute {
+
+    	public function __construct($type = 'PaymentAttribute, http://schemas.evosnap.com/CWS/v2.0/Transactions') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsArray;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsNestedArray;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CWSType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ParentPtlsArray;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Annotation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IndustryType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CwsXPath;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Field;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ParentCwsArray;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CheckType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmitDefaultValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PTLSType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsDecimal;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Serviceinformation;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\PaymentAttribute')){
+
+    class PaymentAttribute extends \Datacontract\I2004\I07\System\Attribute {
+
+    	public function __construct($type = 'PaymentAttribute, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $CwsXPath;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Field;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsArray;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CheckType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $EmitDefaultValue;
+
+    	/**
+    	* @var string
+    	*/
+    	public $PTLSType;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsDecimal;
+
+    	/**
+    	* @var string
+    	*/
+    	public $CWSType;
+
+    	/**
+    	* @var string
+    	*/
+    	public $Annotation;
+
+    	/**
+    	* @var string
+    	*/
+    	public $IndustryType;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\SenderTenderData')){
+
+    class SenderTenderData extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+
+    	public function __construct($type = 'SenderTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $Id;
+
+    	/**
+    	* @var string
+    	*/
+    	public $AccountNumber;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardPayoutTenderData')){
+
+    class BankcardPayoutTenderData extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+
+    	public function __construct($type = 'BankcardPayoutTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\sendertenderdata
+    	*/
+    	public $SenderData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardTenderDataPro')){
+
+    class BankcardTenderDataPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+
+    	public function __construct($type = 'BankcardTenderDataPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\emvdata
+    	*/
+    	public $EMVData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Electronicchecking;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Electronicchecking\ElectronicCheckingCustomerData')){
+
+    class ElectronicCheckingCustomerData extends \Evosnap\Cws\V2\I0\Transactions\TransactionCustomerData {
+
+    	public function __construct($type = 'ElectronicCheckingCustomerData, http://schemas.evosnap.com/CWS/v2.0/Transactions/ElectronicChecking') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\personalinfo
+    	*/
+    	public $AdditionalBillingData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueManage')){
+
+    class StoredValueManage extends \Evosnap\Cws\V2\I0\Transactions\Manage {
+
+    	public function __construct($type = 'StoredValueManage, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $IsCashOut;
+
+    	/**
+    	* @var decimal
+    	*/
+    	public $Amount;
+
+    	/**
+    	* @var OperationType
+    	*/
+    	public $OperationType;
+
+    	/**
+    	* @var CardStatus
+    	*/
+    	public $CardStatus;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueBalanceTransferTenderData')){
+
+    class StoredValueBalanceTransferTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+
+    	public function __construct($type = 'StoredValueBalanceTransferTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\sourcetenderdata
+    	*/
+    	public $SourceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\SourceTenderData')){
+
+    class SourceTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+
+    	public function __construct($type = 'SourceTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Storedvalue;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueActivateTenderData')){
+
+    class StoredValueActivateTenderData extends \Evosnap\Cws\V2\I0\Transactions\Storedvalue\StoredValueTenderData {
+
+    	public function __construct($type = 'StoredValueActivateTenderData, http://schemas.evosnap.com/CWS/v2.0/Transactions/StoredValue') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Storedvalue\virtualcarddata
+    	*/
+    	public $VirtualCardData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardCapturePro')){
+
+    class BankcardCapturePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCapture {
+
+    	public function __construct($type = 'BankcardCapturePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
+    	*/
+    	public $Level2Data;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePartialCaptureFinal;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $MultiplePartialCapture;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
+    	*/
+    	public $LineItemDetails;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
+    	*/
+    	public $ShippingData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardReturnPro')){
+
+    class BankcardReturnPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardReturn {
+
+    	public function __construct($type = 'BankcardReturnPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
+    	*/
+    	public $LineItemDetails;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardCaptureResponsePro')){
+
+    class BankcardCaptureResponsePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCaptureResponse {
+
+    	public function __construct($type = 'BankcardCaptureResponsePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardTransactionResponsePro')){
+
+    class BankcardTransactionResponsePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionResponse {
+
+    	public function __construct($type = 'BankcardTransactionResponsePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var string
+    	*/
+    	public $ReturnedACI;
+
+    	/**
+    	* @var CommercialCardResponse
+    	*/
+    	public $CommercialCardResponse;
+
+    	/**
+    	* @var AdviceResponse
+    	*/
+    	public $AdviceResponse;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardTransactionDataPro')){
+
+    class BankcardTransactionDataPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionData {
+
+    	public function __construct($type = 'BankcardTransactionDataPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
+    	*/
+    	public $Level2Data;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\iiasdata
+    	*/
+    	public $IIASData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
+    	*/
+    	public $LineItemDetails;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\managedbilling
+    	*/
+    	public $ManagedBilling;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\pinlessdebitdata
+    	*/
+    	public $PINlessDebitData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\BankcardTransactionPro')){
+
+    class BankcardTransactionPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransaction {
+
+    	public function __construct($type = 'BankcardTransactionPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\bankcardinterchangedata
+    	*/
+    	public $InterchangeData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAllWithProfile')){
+
+    class CaptureAllWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+
+    	public function __construct($type = 'CaptureAllWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $BatchIds;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ForceClose;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
+    	*/
+    	public $DifferenceData;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
+    	*/
+    	public $MerchantProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureSelective')){
+
+    class CaptureSelective extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+
+    	public function __construct($type = 'CaptureSelective, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
+    	*/
+    	public $DifferenceData;
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $TransactionIds;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAll')){
+
+    class CaptureAll extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+
+    	public function __construct($type = 'CaptureAll, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
+    	*/
+    	public $BatchIds;
+
+    	/**
+    	* @var boolean
+    	*/
+    	public $ForceClose;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
+    	*/
+    	public $DifferenceData;
+
+    	/**
+    	* @var string
+    	*/
+    	public $MerchantProfileId;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\Acknowledge')){
+
+    class Acknowledge extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+
+    	public function __construct($type = 'Acknowledge, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ManageAccountById')){
+
+    class ManageAccountById extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+
+    	public function __construct($type = 'ManageAccountById, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\manage
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\Undo')){
+
+    class Undo extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+
+    	public function __construct($type = 'Undo, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\undo
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\Adjust')){
+
+    class Adjust extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+
+    	public function __construct($type = 'Adjust, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\adjust
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\Capture')){
+
+    class Capture extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+
+    	public function __construct($type = 'Capture, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\capture
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\DisburseWithProfile')){
+
+    class DisburseWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
+
+    	public function __construct($type = 'DisburseWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
+    	*/
+    	public $MerchantProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransactionWithProfile')){
+
+    class AuthorizeTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
+
+    	public function __construct($type = 'AuthorizeTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
+    	*/
+    	public $MerchantProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ReturnByIdWithProfile')){
+
+    class ReturnByIdWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
+
+    	public function __construct($type = 'ReturnByIdWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\cwsreturn
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ResubmitTransactionWithProfile')){
+
+    class ResubmitTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
+
+    	public function __construct($type = 'ResubmitTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ManageAccountWithProfile')){
+
+    class ManageAccountWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
+
+    	public function __construct($type = 'ManageAccountWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
+    	*/
+    	public $MerchantProfile;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ResubmitTransaction')){
+
+    class ResubmitTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'ResubmitTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\resubmit
+    	*/
+    	public $Transaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\DisburseTransaction')){
+
+    class DisburseTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'DisburseTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ReturnById')){
+
+    class ReturnById extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'ReturnById, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\cwsreturn
+    	*/
+    	public $DifferenceData;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction')){
+
+    class AuthorizeTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'AuthorizeTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ManageAccount')){
+
+    class ManageAccount extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'ManageAccount, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Transactions\Rest;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\KeyTransaction')){
+
+    class KeyTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
+
+    	public function __construct($type = 'KeyTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
+    	*/
+    	public $Transaction;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-class CWSValidationResultFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSCommerceSafeOnlyFault')){
 
-	public function __construct($type = 'CWSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
-	    parent::__construct($type);
-	}
+    class CWSCommerceSafeOnlyFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\Faults\arrayofcwsvalidationerrorfault
-	*/
-	public $Errors;
+    	public function __construct($type = 'CWSCommerceSafeOnlyFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-class CWSFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSSocketConfigurationFailedFault')){
 
-	public function __construct($type = 'CWSFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
-	    parent::__construct($type);
-	}
+    class CWSSocketConfigurationFailedFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
+    	public function __construct($type = 'CWSSocketConfigurationFailedFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
+
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-class CWSServiceInformationUnavailableFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSAdminTxnFailedFault')){
 
-	public function __construct($type = 'CWSServiceInformationUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
-	    parent::__construct($type);
-	}
+    class CWSAdminTxnFailedFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
+    	public function __construct($type = 'CWSAdminTxnFailedFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSPasswordChangeFailedFault')){
 
-class BankcardCapturePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCapture {
+    class CWSPasswordChangeFailedFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardCapturePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSPasswordChangeFailedFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
-	*/
-	public $Level2Data;
-
-	/**
-	* @var boolean
-	*/
-	public $MultiplePartialCapture;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
-	*/
-	public $LineItemDetails;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\customerinfo
-	*/
-	public $ShippingData;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSValidationResultFault')){
 
-class BankcardReturnPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardReturn {
+    class CWSValidationResultFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardReturnPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
-	*/
-	public $LineItemDetails;
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Serviceinformation\Faults\arrayofcwsvalidationerrorfault
+    	*/
+    	public $Errors;
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSProductionTestMismatchFault')){
 
-class BankcardCaptureResponsePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardCaptureResponse {
+    class CWSProductionTestMismatchFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardCaptureResponsePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSProductionTestMismatchFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSSignOnServiceUnavailableFault')){
 
-class BankcardTransactionResponsePro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionResponse {
+    class CWSSignOnServiceUnavailableFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardTransactionResponsePro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSSignOnServiceUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var string
-	*/
-	public $ReturnedACI;
-
-	/**
-	* @var CommercialCardResponse
-	*/
-	public $CommercialCardResponse;
-
-	/**
-	* @var AdviceResponse
-	*/
-	public $AdviceResponse;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSServiceInformationUnavailableFault')){
 
-class BankcardTenderDataPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTenderData {
+    class CWSServiceInformationUnavailableFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardTenderDataPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSServiceInformationUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\emvdata
-	*/
-	public $EMVData;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSTransactionServiceUnavailableFault')){
 
-class BankcardTransactionDataPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransactionData {
+    class CWSTransactionServiceUnavailableFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardTransactionDataPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSTransactionServiceUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\level2data
-	*/
-	public $Level2Data;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\iiasdata
-	*/
-	public $IIASData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\arrayoflineitemdetail
-	*/
-	public $LineItemDetails;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\managedbilling
-	*/
-	public $ManagedBilling;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\pinlessdebitdata
-	*/
-	public $PINlessDebitData;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSInvalidOperationFault')){
 
-class BankcardTransactionPro extends \Evosnap\Cws\V2\I0\Transactions\Bankcard\BankcardTransaction {
+    class CWSInvalidOperationFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'BankcardTransactionPro, http://schemas.evosnap.com/CWS/v2.0/Transactions/Bankcard/Pro') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSInvalidOperationFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Bankcard\Pro\bankcardinterchangedata
-	*/
-	public $InterchangeData;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSFault')){
 
-class CWSConnectionFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CWSFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'CWSConnectionFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Serviceinformation\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSPasswordResetFailedFault')){
 
-class CWSOperationNotSupportedFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CWSPasswordResetFailedFault extends \Evosnap\Cws\V2\I0\Serviceinformation\Faults\CWSBaseFault {
 
-	public function __construct($type = 'CWSOperationNotSupportedFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CWSPasswordResetFailedFault, http://schemas.evosnap.com/CWS/v2.0/ServiceInformation/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSUnknownServiceKeyFault')){
 
-class CWSValidationResultFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSUnknownServiceKeyFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSUnknownServiceKeyFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\Faults\arrayofcwsvalidationerrorfault
-	*/
-	public $Errors;
-
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSUnavailableFault')){
 
-class CWSTransactionAlreadySettledFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSUnavailableFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSTransactionAlreadySettledFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSTransactionFailedFault')){
 
-class CWSTransactionServiceUnavailableFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSTransactionFailedFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSTransactionServiceUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSTransactionFailedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSOperationNotSupportedFault')){
 
-class CWSTransactionFailedFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSOperationNotSupportedFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSTransactionFailedFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSOperationNotSupportedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSCustomerAlreadyExistsFault')){
 
-class CWSExtendedDataNotSupportedFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSCustomerAlreadyExistsFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSExtendedDataNotSupportedFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSCustomerAlreadyExistsFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    	/**
+    	* @var string
+    	*/
+    	public $CustomerReferenceId;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Cms\Fault;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Cms\Fault\CMSValidationResultFault')){
 
-class CWSInvalidOperationFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class CMSValidationResultFault extends \Evosnap\Cws\V2\I0\Dataservices\Cms\Faults\CMSBaseFault {
 
-	public function __construct($type = 'CWSInvalidOperationFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'CMSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/CMS/Fault') {
+    	    parent::__construct($type);
+    	}
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Cms\Fault\arrayofcmsvalidationerror
+    	*/
+    	public $Errors;
+
+    }
 }
 
+namespace Datacontract\I2004\I07\System\Io;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Datacontract\I2004\I07\System\Io\Stream')){
 
-class CWSInvalidServiceInformationFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class Stream extends \Datacontract\I2004\I07\System\MarshalByRefObject {
 
-	public function __construct($type = 'CWSInvalidServiceInformationFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'Stream, http://schemas.datacontract.org/2004/07/System.IO') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Fault;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Fault\TMSValidationResultFault')){
 
-class CWSInvalidMessageFormatFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class TMSValidationResultFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
 
-	public function __construct($type = 'CWSInvalidMessageFormatFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'TMSValidationResultFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Fault') {
+    	    parent::__construct($type);
+    	}
 
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\Fault\arrayoftmsvalidationerror
+    	*/
+    	public $Errors;
+
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSUnknownServiceKeyFault')){
 
-class CWSFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class TMSUnknownServiceKeyFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
 
-	public function __construct($type = 'CWSFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'TMSUnknownServiceKeyFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
 
-namespace Evosnap\Cws\V2\I0\Transactions\Faults;
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSCaptureInProgressExceptionFault')){
 
-class CWSDeserializationFault extends \Evosnap\Cws\V2\I0\Transactions\Faults\CWSBaseFault {
+    class TMSCaptureInProgressExceptionFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
 
-	public function __construct($type = 'CWSDeserializationFault, http://schemas.evosnap.com/CWS/v2.0/Transactions/Faults') {
-	    parent::__construct($type);
-	}
+    	public function __construct($type = 'TMSCaptureInProgressExceptionFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
 
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSUnavailableFault')){
+
+    class TMSUnavailableFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+
+    	public function __construct($type = 'TMSUnavailableFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSTransactionFailedFault')){
+
+    class TMSTransactionFailedFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+
+    	public function __construct($type = 'TMSTransactionFailedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms\Faults;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSOperationNotSupportedFault')){
+
+    class TMSOperationNotSupportedFault extends \Evosnap\Cws\V2\I0\Dataservices\Tms\Faults\TMSBaseFault {
+
+    	public function __construct($type = 'TMSOperationNotSupportedFault, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS/Faults') {
+    	    parent::__construct($type);
+    	}
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\ElectronicCheckingRejectedSummaryResponse')){
+
+    class ElectronicCheckingRejectedSummaryResponse extends \Evosnap\Cws\V2\I0\Dataservices\Tms\QueryResponse {
+
+    	public function __construct($type = 'ElectronicCheckingRejectedSummaryResponse, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayofsummarydetail
+    	*/
+    	public $Transactions;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\rejectedsummary
+    	*/
+    	public $Summary;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\ElectronicCheckingRejectedDetailResponse')){
+
+    class ElectronicCheckingRejectedDetailResponse extends \Evosnap\Cws\V2\I0\Dataservices\Tms\QueryResponse {
+
+    	public function __construct($type = 'ElectronicCheckingRejectedDetailResponse, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\arrayoftransactiondetail
+    	*/
+    	public $Transactions;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\Tms\rejectedsummary
+    	*/
+    	public $Summary;
+
+    }
+}
+
+namespace Evosnap\Cws\V2\I0\Dataservices\Tms;
+
+if(!class_exists('\Evosnap\Cws\V2\I0\Dataservices\Tms\ElectronicCheckQueryRejectedParameters')){
+
+    class ElectronicCheckQueryRejectedParameters extends \Evosnap\Cws\V2\I0\Dataservices\Tms\QueryRejectedParameters {
+
+    	public function __construct($type = 'ElectronicCheckQueryRejectedParameters, http://schemas.evosnap.com/CWS/v2.0/DataServices/TMS') {
+    	    parent::__construct($type);
+    	}
+
+    	/**
+    	* @var TypeDateType
+    	*/
+    	public $QueryDateType;
+
+    	/**
+    	* @var \Evosnap\Cws\V2\I0\Dataservices\daterange
+    	*/
+    	public $QueryDateRange;
+
+    	/**
+    	* @var string
+    	*/
+    	public $ServiceId;
+
+    }
+}
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class CaptureAllWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAllAsync')){
 
-	public function __construct($type = 'CaptureAllWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class CaptureAllAsync extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAll {
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $BatchIds;
+    	public function __construct($type = 'CaptureAllAsync, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var boolean
-	*/
-	public $ForceClose;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
-	*/
-	public $DifferenceData;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
-	*/
-	public $MerchantProfile;
-
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class CaptureSelective extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ReturnTransactionWithProfile')){
 
-	public function __construct($type = 'CaptureSelective, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class ReturnTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransactionWithProfile {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
-	*/
-	public $DifferenceData;
+    	public function __construct($type = 'ReturnTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $TransactionIds;
-
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class CaptureAll extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureTransactions {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeAndCaptureTransactionWithProfile')){
 
-	public function __construct($type = 'CaptureAll, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class AuthorizeAndCaptureTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransactionWithProfile {
 
-	/**
-	* @var \Microsoft\I2003\I10\Serialization\Arrays\arrayofstring
-	*/
-	public $BatchIds;
+    	public function __construct($type = 'AuthorizeAndCaptureTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
-	/**
-	* @var boolean
-	*/
-	public $ForceClose;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\arrayofcapture
-	*/
-	public $DifferenceData;
-
-	/**
-	* @var string
-	*/
-	public $MerchantProfileId;
-
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class Acknowledge extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAllAsyncWithProfile')){
 
-	public function __construct($type = 'Acknowledge, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class CaptureAllAsyncWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAllWithProfile {
 
+    	public function __construct($type = 'CaptureAllAsyncWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
+
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class ManageAccountById extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\ReturnTransaction')){
 
-	public function __construct($type = 'ManageAccountById, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class ReturnTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\manage
-	*/
-	public $DifferenceData;
+    	public function __construct($type = 'ReturnTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class Undo extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeAndCaptureTransaction')){
 
-	public function __construct($type = 'Undo, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class AuthorizeAndCaptureTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\undo
-	*/
-	public $DifferenceData;
+    	public function __construct($type = 'AuthorizeAndCaptureTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
+    }
 }
-
 
 namespace Evosnap\Cws\V2\I0\Transactions\Rest;
 
-class Adjust extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
+if(!class_exists('\Evosnap\Cws\V2\I0\Transactions\Rest\CaptureSelectiveAsync')){
 
-	public function __construct($type = 'Adjust, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
+    class CaptureSelectiveAsync extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureSelective {
 
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\adjust
-	*/
-	public $DifferenceData;
+    	public function __construct($type = 'CaptureSelectiveAsync, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
+    	    parent::__construct($type);
+    	}
 
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class Capture extends \Evosnap\Cws\V2\I0\Transactions\Rest\ChangeTransaction {
-
-	public function __construct($type = 'Capture, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\capture
-	*/
-	public $DifferenceData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class DisburseWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
-
-	public function __construct($type = 'DisburseWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
-	*/
-	public $MerchantProfile;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class AuthorizeTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
-
-	public function __construct($type = 'AuthorizeTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
-	*/
-	public $MerchantProfile;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ReturnByIdWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
-
-	public function __construct($type = 'ReturnByIdWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\cwsreturn
-	*/
-	public $DifferenceData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ResubmitTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
-
-	public function __construct($type = 'ResubmitTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ManageAccountWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransactionWithProfile {
-
-	public function __construct($type = 'ManageAccountWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Serviceinformation\merchantprofile
-	*/
-	public $MerchantProfile;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ResubmitTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'ResubmitTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\resubmit
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class DisburseTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'DisburseTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ReturnById extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'ReturnById, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\cwsreturn
-	*/
-	public $DifferenceData;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class AuthorizeTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'AuthorizeTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ManageAccount extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'ManageAccount, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class KeyTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\SubmitTransaction {
-
-	public function __construct($type = 'KeyTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var \Evosnap\Cws\V2\I0\Transactions\transaction
-	*/
-	public $Transaction;
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class PasswordExpiredFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'PasswordExpiredFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class ExpiredTokenFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'ExpiredTokenFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class InvalidTokenFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'InvalidTokenFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class InvalidEmailFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'InvalidEmailFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class AuthenticationFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'AuthenticationFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class SecurityQuestionNotFoundFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'SecurityQuestionNotFoundFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class OneTimePasswordFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'OneTimePasswordFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class LockedByAdminFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'LockedByAdminFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class ArgumentNullFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'ArgumentNullFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class BadAttemptThresholdExceededFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'BadAttemptThresholdExceededFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class SendEmailFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'SendEmailFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class PasswordInvalidFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'PasswordInvalidFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class UserNotFoundFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'UserNotFoundFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class SystemFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'SystemFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Identity\I1\I0;
-
-class STSUnavailableFault extends \Evosnap\Identity\I1\I0\BaseFault {
-
-	public function __construct($type = 'STSUnavailableFault, http://schemas.evosnap.com/Identity/1.0/') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Administration;
-
-class ClaimOverride extends \Evosnap\Cws\V2\I0\Administration\Claim {
-
-	public function __construct($type = 'ClaimOverride, http://schemas.evosnap.com/CWS/v2.0/Administration') {
-	    parent::__construct($type);
-	}
-
-	/**
-	* @var OverrideTypeEnum
-	*/
-	public $OverrideTypeEnum;
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class CaptureAllAsync extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAll {
-
-	public function __construct($type = 'CaptureAllAsync, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ReturnTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransactionWithProfile {
-
-	public function __construct($type = 'ReturnTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class AuthorizeAndCaptureTransactionWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransactionWithProfile {
-
-	public function __construct($type = 'AuthorizeAndCaptureTransactionWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class CaptureAllAsyncWithProfile extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureAllWithProfile {
-
-	public function __construct($type = 'CaptureAllAsyncWithProfile, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class ReturnTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction {
-
-	public function __construct($type = 'ReturnTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class AuthorizeAndCaptureTransaction extends \Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction {
-
-	public function __construct($type = 'AuthorizeAndCaptureTransaction, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
-}
-
-
-namespace Evosnap\Cws\V2\I0\Transactions\Rest;
-
-class CaptureSelectiveAsync extends \Evosnap\Cws\V2\I0\Transactions\Rest\CaptureSelective {
-
-	public function __construct($type = 'CaptureSelectiveAsync, http://schemas.evosnap.com/CWS/v2.0/Transactions/Rest') {
-	    parent::__construct($type);
-	}
-
+    }
 }
 

@@ -27,6 +27,7 @@
  */
 namespace Evosnap\Cws\Service;
 
+use Evosnap\Cws\Model\Rest\CwsClientConfig;
 use Evosnap\Cws\Util\HttpConnections;
 
 /**

@@ -28,7 +28,7 @@
  */
 namespace Evosnap\Cws\Util;
 
-use Evosnap\Ews\Exception\CwsServiceException;
+use Evosnap\Cws\Exception\CwsServiceException;
 use Evosnap\Cws\Exception\CwsCommunicationException;
 
 /**
@@ -183,7 +183,7 @@ final class HttpConnections
         
         if (floor((int) $info['http_code'] / HttpConnections::HTTP_OK_CODE) != 1) {
             $serviceException = new CwsServiceException();
-            if ($response_body[0] == "{" || $response_body[0] == "\"" || $response_body[0] == "[") {
+            if ( !empty($response_body) && ($response_body[0] == "{" || $response_body[0] == "\"" || $response_body[0] == "[") ){
                 $data = json_decode($response_body);
             }
             
@@ -250,7 +250,7 @@ final class HttpConnections
             }
             
             $result = $this->executeRequest($cc);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             throw new CwsCommunicationException($e);
         } finally {
             curl_close($cc);

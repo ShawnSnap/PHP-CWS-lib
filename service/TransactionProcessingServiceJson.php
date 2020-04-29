@@ -27,6 +27,13 @@
  */
 namespace Evosnap\Cws\Service;
 
+use Evosnap\Cws\Exception\CwsCommunicationException;
+use Evosnap\Cws\Exception\CwsServiceException;
+use Evosnap\Cws\Model\Rest\CwsClientConfig;
+use Evosnap\Cws\V2\I0\Transactions\CwsReturn;
+use Evosnap\Cws\V2\I0\Transactions\Response;
+use Evosnap\Cws\V2\I0\Transactions\Resubmit;
+use Evosnap\Cws\V2\I0\Transactions\Transaction;
 use Evosnap\Cws\V2\I0\Transactions\Rest\Undo;
 use Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeAndCaptureTransaction;
 use Evosnap\Cws\V2\I0\Transactions\Rest\Adjust;
@@ -38,6 +45,8 @@ use Evosnap\Cws\V2\I0\Transactions\Rest\ReturnById;
 use Evosnap\Cws\V2\I0\Transactions\Rest\ReturnTransaction;
 use Evosnap\Cws\V2\I0\Transactions\Rest\AuthorizeTransaction;
 use Evosnap\Cws\V2\I0\Transactions\Rest\ManageAccount;
+use Evosnap\Cws\V2\I0\Transactions\Rest\ReceiptRequest;
+
 /**
  * Transaction Processing Service JSON implementation.
  *
@@ -263,7 +272,7 @@ class TransactionProcessingServiceJsonImpl extends BaseHttpService
      */
     public function resubmit($sessionToken, $resubmit, $applicationProfileId, $merchantProfileId, $workflowId)
     {
-        $requestUrl = $this->getUrl('/' . workflowId);
+        $requestUrl = $this->getUrl('/' . $workflowId);
         
         $resubmitTransaction = new ResubmitTransaction();
         $resubmitTransaction->ApplicationProfileId = $applicationProfileId;
@@ -349,7 +358,7 @@ class TransactionProcessingServiceJsonImpl extends BaseHttpService
      *
      * @param string $sessionToken
      *            the session token.
-     * @param Return $differenceData
+     * @param CwsReturn $differenceData
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -406,5 +415,63 @@ class TransactionProcessingServiceJsonImpl extends BaseHttpService
         $body = json_encode($returnTransaction);
         $result = $this->getHttpConnections()->sendPostRequest($requestUrl, $sessionToken, $body);
         return json_decode($result);
+    }
+
+    /**
+     * Authorize a transaction.
+     *
+     * @param string $sessionToken
+     *            the session token.
+     * @param Transaction $transaction
+     *            the transaction to execute.
+     * @param string $applicationProfileId
+     *            the application profile ID.
+     * @param string $merchantProfileId
+     *            the merchant profile ID.
+     * @param string $workflowId
+     *            the workflow ID. If no workflow is going to be used,
+     *            then the service ID should be provided.
+     * @return Response transaction response.
+     * @throws CwsServiceException CWS Service Exception.
+     * @throws CwsCommunicationException Communication exception.
+     */
+    public function verify($sessionToken, $transaction, $applicationProfileId, $merchantProfileId, $workflowId)
+    {
+        $requestUrl = $this->getUrl('/' . $workflowId. '/verify');
+
+        $verify = new AuthorizeTransaction();
+        $verify->ApplicationProfileId = $applicationProfileId;
+        $verify->MerchantProfileId = $merchantProfileId;
+        $verify->Transaction = $transaction;
+
+        $body = json_encode($verify);
+        print_r($body);
+
+        $result = $this->getHttpConnections()->sendPostRequest($requestUrl,$sessionToken,$body);
+        return json_decode($result);
+    }
+    
+    /**
+     * Sends a receipt to a customer.
+     *
+     * @param string $sessionToken
+     *            the session token.
+     * @param string $email
+     *            customer's email.
+     * @param string $transactionId
+     *            transaction ID.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
+     */
+    public function sendReceipt($sessionToken, $email, $transactionId)
+    {
+        $requestUrl = $this->getUrl("/sendReceipt");
+        
+        $receiptRequest = new ReceiptRequest();
+        $receiptRequest->Email = $email;
+        $receiptRequest->TransactionId = $transactionId;
+        
+        $body = json_encode($receiptRequest);
+        $this->getHttpConnections()->sendPostRequest($requestUrl, $sessionToken, $body);
     }
 }

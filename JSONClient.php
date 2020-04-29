@@ -28,10 +28,11 @@
  */
 namespace Evosnap\Cws;
 
-use \Evosnap\Cws\Service\ServiceInformationServiceJson;
-use \Evosnap\Cws\Service\TransactionManagementServiceJson;
-use \Evosnap\Cws\Service\TransactionProcessingServiceJsonImpl;
-use \Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionsParameters;
+use Evosnap\Cws\Service\ServiceInformationServiceJson;
+use Evosnap\Cws\Service\TransactionManagementServiceJson;
+use Evosnap\Cws\Service\TransactionProcessingServiceJsonImpl;
+use Evosnap\Cws\V2\I0\Dataservices\Tms\QueryTransactionsParameters;
+use Evosnap\Cws\Model\Rest\CwsClientConfig;
 /**
  * JSON Client for CWS EVO Snap* API.
  *
@@ -143,9 +144,9 @@ class JSONClient
     /**
      * Retrieves the service information for the current session.
      *
-     * @return ServiceInformation the service information.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Serviceinformation\ServiceInformation the service information.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function getServiceInformation()
     {
@@ -162,8 +163,8 @@ class JSONClient
      *            the user name.
      * @param string $password
      *            the password.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function signOnWith($serviceKey, $username, $password)
     {
@@ -182,8 +183,8 @@ class JSONClient
      *            the old password.
      * @param string $newPassword
      *            the new password.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function changePassword($serviceKey, $username, $password, $newPassword)
     {
@@ -201,8 +202,8 @@ class JSONClient
      *            the password.
      * @param string $newUsername
      *            the new user name.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function changeUsername($serviceKey, $username, $password, $newUsername)
     {
@@ -220,8 +221,8 @@ class JSONClient
      *            the password.
      * @param string $newEmail
      *            the new email.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function changeEmail($serviceKey, $username, $password, $newEmail)
     {
@@ -238,8 +239,8 @@ class JSONClient
      * @param string $password
      *            the password.
      * @return string password expiration.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function getPasswordExpiration($serviceKey, $username, $password)
     {
@@ -251,9 +252,9 @@ class JSONClient
      *
      * @param string $applicationProfileId
      *            the application profile ID.
-     * @return ApplicationData the application data.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Serviceinformation\ApplicationData the application data.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function getApplicationData($applicationProfileId)
     {
@@ -269,8 +270,8 @@ class JSONClient
      * @param string $merchantProfileId
      *            the merchant profile ID.
      * @return boolean <code>true</code> if the merchant profile is initialized, <code>false</code> otherwise.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function isMerchantProfileInitialized($serviceId, $merchantProfileId)
     {
@@ -285,9 +286,9 @@ class JSONClient
      *            the service ID.
      * @param string $merchantProfileId
      *            the merchant profile ID.
-     * @return MerchantProfile the merchant profile, <code>null</code> if the profile is not found.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Serviceinformation\MerchantProfile the merchant profile, <code>null</code> if the profile is not found.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function getMerchantProfile($serviceId, $merchantProfileId)
     {
@@ -302,7 +303,7 @@ class JSONClient
     /**
      * Authorize a transaction.
      *
-     * @param Transaction $transaction
+     * @param \Evosnap\Cws\V2\I0\Transactions\Transaction $transaction
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -311,9 +312,9 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function authorize($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -324,16 +325,16 @@ class JSONClient
     /**
      * Adjusts a transaction.
      *
-     * @param Adjust $adjust
+     * @param \Evosnap\Cws\V2\I0\Transactions\Adjust $adjust
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function adjust($adjust, $applicationProfileId, $workflowId)
     {
@@ -344,16 +345,16 @@ class JSONClient
     /**
      * Captures a transaction.
      *
-     * @param Capture $capture
+     * @param \Evosnap\Cws\V2\I0\Transactions\Capture $capture
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function capture($capture, $applicationProfileId, $workflowId)
     {
@@ -374,8 +375,8 @@ class JSONClient
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
      * @return mixed transaction responses.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function captureSelective($transactionIds, $differenceData, $applicationProfileId, $workflowId)
     {
@@ -399,8 +400,8 @@ class JSONClient
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
      * @return mixed transaction responses.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function captureAll($batchIds, $differenceData, $forceClose, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -411,7 +412,7 @@ class JSONClient
     /**
      * Resubmits a transaction for 3D Secure.
      *
-     * @param Resubmit $resubmit
+     * @param \Evosnap\Cws\V2\I0\Transactions\Resubmit $resubmit
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -420,9 +421,9 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function resubmit($resubmit, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -433,7 +434,7 @@ class JSONClient
     /**
      * Authorize and capture transaction.
      *
-     * @param Transaction $transaction
+     * @param \Evosnap\Cws\V2\I0\Transactions\Transaction $transaction
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -442,9 +443,9 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function authorizeAndCapture($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -455,7 +456,7 @@ class JSONClient
 	/**
      * ManageAccount
      *
-     * @param Transaction $transaction
+     * @param \Evosnap\Cws\V2\I0\Transactions\Transaction $transaction
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -464,9 +465,9 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function manageAccount($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -477,16 +478,16 @@ class JSONClient
     /**
      * Undos a transaction.
      *
-     * @param Undo $undo
+     * @param \Evosnap\Cws\V2\I0\Transactions\Undo $undo
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function undo($undo, $applicationProfileId, $workflowId)
     {
@@ -497,7 +498,7 @@ class JSONClient
     /**
      * Returns a transaction by ID.
      *
-     * @param Return $differenceData
+     * @param \Evosnap\Cws\V2\I0\Transactions\CwsReturn $differenceData
      *            the transaction to execute.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -506,9 +507,9 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function returnById($differenceData, $applicationProfileId, $merchantProfileId, $workflowId)
     {
@@ -519,7 +520,7 @@ class JSONClient
     /**
      * Returns a transaction unlinked.
      *
-     * @param Transaction $transaction
+     * @param \Evosnap\Cws\V2\I0\Transactions\Transaction $transaction
      *            the transaction to return.
      * @param string $applicationProfileId
      *            the application profile ID.
@@ -528,16 +529,51 @@ class JSONClient
      * @param string $workflowId
      *            the workflow ID. If no workflow is going to be used,
      *            then the service ID should be provided.
-     * @return Response transaction response.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @return \Evosnap\Cws\V2\I0\Transactions\Response transaction response.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function returnUnlinked($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
     {
         $this->openSession();
         return $this->transactionProcessingService->returnUnlinked($this->sessionToken, $transaction, $applicationProfileId, $merchantProfileId, $workflowId);
     }
+    
+    /**
+     * Sends a receipt to a customer.
+     *
+     * @param string $email
+     *            customer's email.
+     * @param string $transactionId
+     *            transaction ID.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
+     */
+    public function sendReceipt($email, $transactionId)
+    {
+        $this->openSession();
+        $this->transactionProcessingService->sendReceipt($this->sessionToken, $email, $transactionId);
+    }
 
+    /**
+     * Verify if card is valid 
+     *
+     * @param Transaction $transaction
+     *            the transaction to execute.
+     * @param string $applicationProfileId
+     *            the application profile ID.
+     * @param string $merchantProfileId
+     *            the merchant profile ID.
+     * @param string $workflowId
+     *            the workflow ID. If no workflow is going to be used,
+     *            then the service ID should be provided.
+     */
+    public function verify($transaction, $applicationProfileId, $merchantProfileId, $workflowId)
+    {
+        $this->openSession();
+        return $this->transactionProcessingService->verify($this->sessionToken,$transaction,$applicationProfileId,$merchantProfileId,$workflowId);
+    }
+    
     /**
      * CwsTransactionManagementClient section.
      */
@@ -547,11 +583,11 @@ class JSONClient
      *
      * @param QueryTransactionsParameters $queryTransactionsParameters
      *            the query parameters.
-     * @param PagingParameters $pagingParameters
+     * @param \Evosnap\Cws\V2\I0\Dataservices\PagingParameters $pagingParameters
      *            paging parameters.
      * @return mixed the list of family details that accomplish with the indicated parameters.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function queryTransactionFamilies($queryTransactionsParameters, $pagingParameters)
     {
@@ -566,13 +602,13 @@ class JSONClient
      *            the query parameters.
      * @param string $transactionDetailFormat
      *            the transaction detail format.
-     * @param PagingParameters $pagingParameters
+     * @param \Evosnap\Cws\V2\I0\Dataservices\PagingParameters $pagingParameters
      *            paging parameters.
      * @param boolean $includeRelated
      *            flag indicating if related transactions should be included.
      * @return mixed the list of transaction details that accomplish with the indicated parameters.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function queryTransactionsDetail($queryTransactionsParameters, $transactionDetailFormat, $pagingParameters, $includeRelated)
     {
@@ -585,13 +621,13 @@ class JSONClient
      *
      * @param QueryTransactionsParameters $queryTransactionsParameters
      *            the query parameters.
-     * @param PagingParameters $pagingParameters
+     * @param \Evosnap\Cws\V2\I0\Dataservices\PagingParameters $pagingParameters
      *            paging parameters.
      * @param boolean $includeRelated
      *            flag indicating if related transactions should be included.
      * @return mixed the list of summary details that accomplish with the indicated parameters.
-     * @throws CwsServiceException CWS Service Exception.
-     * @throws CwsCommunicationException Communication exception.
+     * @throws \Evosnap\Cws\Exception\CwsServiceException CWS Service Exception.
+     * @throws \Evosnap\Cws\Exception\CwsCommunicationException Communication exception.
      */
     public function queryTransactionsSummary($queryTransactionsParameters, $pagingParameters, $includeRelated)
     {
